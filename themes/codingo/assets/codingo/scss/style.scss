@@ -1,0 +1,53 @@
+h1{
+    color: rgb(255, 255, 255);
+}
+
+.bg-black {
+    background-color: #050315;
+}
+
+header, main{
+    position: relative;
+    z-index: 20;
+}
+
+#site-intro{
+    font-size: 1.6em;
+
+    position: relative;
+    height: calc(100vh - 80px);
+
+    .intro-content{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        height: 100%;
+
+        .copy{
+            max-width: 600px;
+            text-align: center;
+            color: #fff;
+            strong{
+                font-weight: 600;
+            }
+        }
+    }
+
+    #background-ears {
+        top: 100%;
+        position: absolute;
+        z-index: 6;
+        transform: translateY(-220px) translateX(-50%);
+        left: 50%;
+    }
+
+    #fss-container{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+
+}

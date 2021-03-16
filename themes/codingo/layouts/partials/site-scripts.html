@@ -1,0 +1,4 @@
+{{ $fssScript := resources.Get "/codingo/js/fss.min.js" }}
+{{ $codingoScript := resources.Get "/codingo/js/codingo.js" }}
+<script src="{{ $fssScript.Permalink }}"></script>
+<script src="{{ $codingoScript.Permalink }}"></script>
