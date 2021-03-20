@@ -16,3 +16,7 @@ $RECYCLE.BIN/
 node_modules
 /**/node_modules
 workings
+
+# github pages to work
+cname
+/**/cname
