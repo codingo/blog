@@ -1,4 +1,4 @@
-baseURL = "http://codingo.com/"
+baseURL = "https://codingo.com/"
 languageCode = "en-us"
 title = "Codingo - Ethical Hacking and Bug Bounty Advice"
 theme = "codingo"
