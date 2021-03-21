@@ -13,15 +13,15 @@ Although it's possible to complete this challenge by bypassing a JMP instruction
 # Exploring CrackNet functionality
 When you first open CrackNet you're presented with the following:
 
-![CrackNet First Load](/images/cracknet/1-CrackNet-FirstLoad.PNG)
+![CrackNet First Load](/images/cracknet/1-CrackNet-FirstLoad.png)
 
 When you enter a guess you'll be presented with either the flag, or told it's incorrect and then presented with a countdown until you can make another guess:
 
-![CrackNet Guess Counter](/images/cracknet/2-CrackNet-GuessCounter.PNG)
+![CrackNet Guess Counter](/images/cracknet/2-CrackNet-GuessCounter.png)
 
 This wait time eliminates the ability to brute force the flag and after five incorrect guesses you'll hear a quick mario tune (if system speaker is enabled) and be presented with the following:
 
-![CrackNet GameOver](/images/cracknet/3-Cracknet-GameOver.PNG)
+![CrackNet GameOver](/images/cracknet/3-Cracknet-GameOver.png)
 
 # Decompiling with dnSpy
 ## Why and what is dnSpy?
@@ -32,12 +32,12 @@ This brings in a fantistic Github project - [dnSpy]. [dnSpy] is a tool to revers
 ## Loading the project
 After cloning the dnSpy repository and opening the project you will be presented with something similar to the following:
 
-![dnSpy initial load](/images/cracknet/4-dnSpy.PNG)
+![dnSpy initial load](/images/cracknet/4-dnSpy.png)
 
 ## Navigate to main
 We then want to navigate to the main entry point of our application so we can understand what's happening:
 
-![dnSpy Decompile Main](/images/cracknet/5-DecompileMain.PNG)
+![dnSpy Decompile Main](/images/cracknet/5-DecompileMain.png)
 
 ## Patching the application
 Looking at the code we can see that the instruction for decrypting the flag can only be reached by entering the result of the decryption (the flag). At this point we could take the Crypto class in this project along with the AES key and create a new application for our flag reveal however it's far more ideal if we instead patch our binary to bypass the if conditional and show the flag early. To do this we first need to select __Edit Method__ in dnSpy (found in the right click menu):
@@ -46,7 +46,7 @@ Looking at the code we can see that the instruction for decrypting the flag can 
 
 We can then relocate our key decrytion to the beginning of the method and comment out the remaining code. If we only move the key decryption and don't comment out the remaining code our key will be overwritten as the screen is redrawn for the timer.
 
-![dnSpy Decompile Main](/images/cracknet/7-PatchedCode.PNG)
+![dnSpy Decompile Main](/images/cracknet/7-PatchedCode.png)
 
 The relevant patched code is as follows:
 
@@ -90,7 +90,7 @@ static void Main(string[] args)
 ## Debug and reveal the flag
 We then run our patched application within dnSpy to reveal the flag:
 
-![dnSpy Decompile Main](/images/cracknet/9-FlagReveal.PNG)
+![dnSpy Decompile Main](/images/cracknet/9-FlagReveal.png)
 
 And wala!
 
