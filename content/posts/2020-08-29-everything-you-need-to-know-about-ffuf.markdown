@@ -4,7 +4,8 @@ title:  "Everything you need to know about FFUF"
 date:   2020-09-17 17:01:58 +1000
 categories: tools ffuf bounty
 aliases = [
-    "ffuf"
+    "/ffuf/",
+    "/posts/2020-08-29-everything-you-need-to-know-about-ffuf/"
 ]
 ---
 
