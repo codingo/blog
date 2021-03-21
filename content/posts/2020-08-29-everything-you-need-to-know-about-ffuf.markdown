@@ -9,7 +9,7 @@ aliases: [/posts/ffuf/]
 # Summary
 This guide is a large summary of the information security tool, FFUF. This is also paired with a video companion guide, shown below:
 
-<iframe width="978" height="550" src="https://www.youtube.com/embed/iLFkxAmwXF0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube iLFkxAmwXF0 >}}
 
 # Table of Contents
 - [Other Sources / Credit](#other-sources---credit)
