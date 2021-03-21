@@ -3,6 +3,7 @@ layout: post
 title:  "Everything you need to know about FFUF"
 date:   2020-09-17 17:01:58 +1000
 categories: tools ffuf bounty
+aliases: [/ffuf/]
 ---
 
 # Summary
