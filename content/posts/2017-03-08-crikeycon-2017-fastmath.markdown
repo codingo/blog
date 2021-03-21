@@ -21,7 +21,7 @@ The time between being presented with the challenge and receiving a timeout was 
 # First Answer Script Attempt
 I put together a bot which would connect to the host and parse the challenge question using regex so it could answer it using an expression. This resulted in the following:
 
-{% highlight python %}
+```python
 #!/usr/bin/python3
  
 import socket
@@ -79,14 +79,14 @@ if __name__ == '__main__':
         data = str(result).encode('utf-8') + b'\n'
         print('Sending: ' + str(result))
         client.send(data)
-{% endhighlight %}
+```
 
 # Regular Expression (attempt)
 The most important line here was the regex which consisted of the following (see if you can spot the mistake!):
 
-{% highlight python %}
+```python
 match = re.search('[^\:\s]\d+.{3}\d+', decoded)
-{% endhighlight %}
+```
 
 This would skip everything proceeding the colon and whitespace and then group both sets of numbers, and the whitespace/operator between them for evaluation.
 
@@ -108,24 +108,24 @@ And then the next question would be presented. This was causing issues with my r
 
 I resolved this by continuing back to the beginning of my loop if there wasn’t a mathematical operator in my decoded string, putting this after the sentinel check as I didn’t want to miss my flag (which likely wouldn’t contain an operator). This looked like the following:
 
-{% highlight python %}
+```python
 if not re.search('[-+/*]', decoded):
     continue
-{% endhighlight %}
+```
 
 # Updating regular expression to handle more than one digit
 
 This got me to question number 10 – at which point I realized that my regex from earlier:
 
-{% highlight python %}
+```python
 match = re.search('[^\:\s]\d+.{3}\d+', decoded)
-{% endhighlight %}
+```
 
 Would only work if I were to be presented with a single digit question. I updated this to the following:
 
-{% highlight python %}
+```python
 match = re.search('[^\:\s]\d+\d+.{3}\d+', decoded)
-{% endhighlight %}
+```
 
 Essentially the same as above, but it would now capture two digits over one as I didn’t expect the challenges to go past 99 (although could use \d* if they were to).
 
