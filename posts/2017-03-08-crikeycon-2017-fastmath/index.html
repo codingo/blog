@@ -1,69 +1,73 @@
 <!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>CrikeyCon 2017 - Fast Math Writeup | Codingo - Ethical Hacking and Bug Bounty Advice</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="Category: Coding Points: 300 Solves: 14 Description: crikeyconctf.dook.biz:23776 Enumeration Before doing anything else on this host I attempted to connect to it, receiving the following:
 The time between being presented with the challenge and receiving a timeout was a mere two seconds. Although handy with a calculator this wouldn’t be possible without a script/bot. I also noted that the response and timing to answer didn’t change on a second connection, but the base operator did."><meta name=generator content="Hugo 0.81.0"><meta name=ROBOTS content="NOINDEX, NOFOLLOW"><link rel=stylesheet href=/codingo/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css><link rel=stylesheet href=https://codingo.com/codingo/scss/style.43da1d60ebc47e233a67f808b2b66c8b106884cee9e9c65f98e0facad4eb00e5.css><meta property="og:title" content="CrikeyCon 2017 - Fast Math Writeup"><meta property="og:description" content="Category: Coding Points: 300 Solves: 14 Description: crikeyconctf.dook.biz:23776 Enumeration Before doing anything else on this host I attempted to connect to it, receiving the following:
 The time between being presented with the challenge and receiving a timeout was a mere two seconds. Although handy with a calculator this wouldn’t be possible without a script/bot. I also noted that the response and timing to answer didn’t change on a second connection, but the base operator did."><meta property="og:type" content="article"><meta property="og:url" content="https://codingo.com/posts/2017-03-08-crikeycon-2017-fastmath/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2017-03-08T17:01:58+10:00"><meta property="article:modified_time" content="2017-03-08T17:01:58+10:00"><meta itemprop=name content="CrikeyCon 2017 - Fast Math Writeup"><meta itemprop=description content="Category: Coding Points: 300 Solves: 14 Description: crikeyconctf.dook.biz:23776 Enumeration Before doing anything else on this host I attempted to connect to it, receiving the following:
-The time between being presented with the challenge and receiving a timeout was a mere two seconds. Although handy with a calculator this wouldn’t be possible without a script/bot. I also noted that the response and timing to answer didn’t change on a second connection, but the base operator did."><meta itemprop=datePublished content="2017-03-08T17:01:58+10:00"><meta itemprop=dateModified content="2017-03-08T17:01:58+10:00"><meta itemprop=wordCount content="689"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="CrikeyCon 2017 - Fast Math Writeup"><meta name=twitter:description content="Category: Coding Points: 300 Solves: 14 Description: crikeyconctf.dook.biz:23776 Enumeration Before doing anything else on this host I attempted to connect to it, receiving the following:
+The time between being presented with the challenge and receiving a timeout was a mere two seconds. Although handy with a calculator this wouldn’t be possible without a script/bot. I also noted that the response and timing to answer didn’t change on a second connection, but the base operator did."><meta itemprop=datePublished content="2017-03-08T17:01:58+10:00"><meta itemprop=dateModified content="2017-03-08T17:01:58+10:00"><meta itemprop=wordCount content="654"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="CrikeyCon 2017 - Fast Math Writeup"><meta name=twitter:description content="Category: Coding Points: 300 Solves: 14 Description: crikeyconctf.dook.biz:23776 Enumeration Before doing anything else on this host I attempted to connect to it, receiving the following:
 The time between being presented with the challenge and receiving a timeout was a mere two seconds. Although handy with a calculator this wouldn’t be possible without a script/bot. I also noted that the response and timing to answer didn’t change on a second connection, but the base operator did."></head><body class="ma0 avenir bg-near-white"><header><div class=bg-black><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l justify-between items-center center"><a href=/ class="f3 fw2 hover-white no-underline white-90 dib"><img src=/images/codingo-logo-lockup.png alt=CODINGO></a><div class="flex-l items-center"></div></div></nav></div></header><main class="pb7 bg-black" role=main><article class="flex-l flex-wrap justify-between mw8 center ph3"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked">POSTS</aside><div id=sharing class=mt3><a href="https://www.facebook.com/sharer.php?u=https://codingo.com/posts/2017-03-08-crikeycon-2017-fastmath/" class="facebook no-underline" aria-label="share on Facebook"><svg height="32" style="enable-background:new 0 0 67 67" viewBox="0 0 67 67" width="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765 50.32h6.744V33.998h4.499l.596-5.624h-5.095l.007-2.816c0-1.466.14-2.253 2.244-2.253h2.812V17.68h-4.5c-5.405.0-7.307 2.729-7.307 7.317v3.377h-3.369v5.625h3.369V50.32zM33 64C16.432 64 3 50.569 3 34S16.432 4 33 4s30 13.431 30 30S49.568 64 33 64z" style="fill-rule:evenodd;clip-rule:evenodd"/></svg></a><a href="https://twitter.com/share?url=https://codingo.com/posts/2017-03-08-crikeycon-2017-fastmath/&text=CrikeyCon%202017%20-%20Fast%20Math%20Writeup" class="twitter no-underline" aria-label="share on Twitter"><svg height="32" style="enable-background:new 0 0 67 67" viewBox="0 0 67 67" width="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167 22.283c-2.619.953-4.274 3.411-4.086 6.101l.063 1.038-1.048-.127c-3.813-.487-7.145-2.139-9.974-4.915l-1.383-1.377-.356 1.017c-.754 2.267-.272 4.661 1.299 6.271.838.89.649 1.017-.796.487-.503-.169-.943-.296-.985-.233-.146.149.356 2.076.754 2.839.545 1.06 1.655 2.097 2.871 2.712l1.027.487-1.215.021c-1.173.0-1.215.021-1.089.467.419 1.377 2.074 2.839 3.918 3.475l1.299.444-1.131.678c-1.676.976-3.646 1.526-5.616 1.568C19.775 43.256 19 43.341 19 43.405c0 .211 2.557 1.397 4.044 1.864 4.463 1.377 9.765.783 13.746-1.568 2.829-1.673 5.657-5 6.978-8.221.713-1.716 1.425-4.851 1.425-6.354.0-.975.063-1.102 1.236-2.267.692-.678 1.341-1.419 1.467-1.631.21-.403.188-.403-.88-.043-1.781.636-2.033.551-1.152-.402.649-.678 1.425-1.907 1.425-2.267.0-.063-.314.042-.671.233-.377.212-1.215.53-1.844.72l-1.131.361-1.027-.7c-.566-.381-1.361-.805-1.781-.932C39.766 21.902 38.131 21.944 37.167 22.283zM33 64C16.432 64 3 50.569 3 34S16.432 4 33 4s30 13.431 30 30S49.568 64 33 64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:"/></svg></a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://codingo.com/posts/2017-03-08-crikeycon-2017-fastmath/&title=CrikeyCon%202017%20-%20Fast%20Math%20Writeup" class="linkedin no-underline" aria-label="share on LinkedIn"><svg height="32" style="enable-background:new 0 0 65 65" viewBox="0 0 65 65" width="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M50.837 48.137V36.425c0-6.275-3.35-9.195-7.816-9.195-3.604.0-5.219 1.983-6.119 3.374V27.71h-6.79c.09 1.917.0 20.427.0 20.427h6.79V36.729c0-.609.044-1.219.224-1.655.49-1.22 1.607-2.483 3.482-2.483 2.458.0 3.44 1.873 3.44 4.618v10.929H50.837zM22.959 24.922c2.367.0 3.842-1.57 3.842-3.531-.044-2.003-1.475-3.528-3.797-3.528s-3.841 1.524-3.841 3.528c0 1.961 1.474 3.531 3.753 3.531H22.959zM34 64C17.432 64 4 50.568 4 34 4 17.431 17.432 4 34 4s30 13.431 30 30c0 16.568-13.432 30-30 30zM26.354 48.137V27.71h-6.789v20.427h6.789z" style="fill-rule:evenodd;clip-rule:evenodd;fill:"/></svg></a></div><h1 class="f1 athelas mt3 mb1">CrikeyCon 2017 - Fast Math Writeup</h1><time class="f6 mv4 dib tracked" datetime=2017-03-08T17:01:58+10:00>March 8, 2017</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><pre><code>Category: Coding
 Points: 300
 Solves: 14
 Description:  crikeyconctf.dook.biz:23776
-</code></pre><h1 id=enumeration>Enumeration</h1><p>Before doing anything else on this host I attempted to connect to it, receiving the following:</p><p><img src=/images/fastmath/FastMath-Preview.png alt="Math Preview"></p><p>The time between being presented with the challenge and receiving a timeout was a mere two seconds. Although handy with a calculator this wouldn’t be possible without a script/bot. I also noted that the response and timing to answer didn’t change on a second connection, but the base operator did. I then felt comfortable writing a script to connect to the host and return an answer to basic math questions (+-/*).</p><h1 id=first-answer-script-attempt>First Answer Script Attempt</h1><p>I put together a bot which would connect to the host and parse the challenge question using regex so it could answer it using an expression. This resulted in the following:</p><p>{% highlight python %}
-#!/usr/bin/python3</p><p>import socket
-import re
-import operator</p><p>MAXBUF = 4096
-SENTINEL = &lsquo;flag&rsquo;
-CTF_BOT = (&lsquo;crikeyconctf.dook.biz&rsquo;, 23776)</p><p>if <strong>name</strong> == &lsquo;<strong>main</strong>':
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(CTF_BOT)</p><pre><code>while True:
-    data = b''
-
-    # receive and store data
-    while True:
-        chunk = client.recv(MAXBUF)
-        data += chunk
-        if len(chunk) &lt; MAXBUF:
-            break
-   
-    # store decoded data for future usage
-    decoded = data.decode('utf-8')
-   
-    #temporary
-    print(decoded)
-    #
-
-    # our flag likely contains flag{}, once it's revealed print received data and exit
-    if SENTINEL in decoded:
-        print(decoded)
-        break
-
-    match = re.search('[^\:\s]\d+.{3}\d+', decoded)
-
-    if not match:
-        raise ValueError(&quot;Invalid expression string&quot;)
-   
-    expression = match.group(0)
-
-    # properly handle division
-    if '/' in expression:
-        expression = expression.replace('/', '//')
-
-    result = eval(expression)
-
-    # print results to screen to see script progress
-    print(expression + ' = ' + str(result))
-
-    # encode and transfer
-    data = str(result).encode('utf-8') + b'\n'
-    print('Sending: ' + str(result))
-    client.send(data)
-</code></pre><p>{% endhighlight %}</p><h1 id=regular-expression-attempt>Regular Expression (attempt)</h1><p>The most important line here was the regex which consisted of the following (see if you can spot the mistake!):</p><p>{% highlight python %}
-match = re.search('[^:\s]\d+.{3}\d+&rsquo;, decoded)
-{% endhighlight %}</p><p>This would skip everything proceeding the colon and whitespace and then group both sets of numbers, and the whitespace/operator between them for evaluation.</p><p>The response to this was the following:</p><p><img src=/images/fastmath/FirstRegexResponse.png alt="FastMath Regex First Attempt"></p><p>I spent far more time on this part of the challenge than I care to admit. I didn’t entirely read my logs and spent my time stuck on the two lines where I have Sending <code>1766845</code> and the response <code>459060</code> is <em>not correct</em> and put a lot of focus into trying to identify why a different response was being sent to what was calculated (not the truth, but it’s what I was thinking).</p><h1 id=adding-further-regular-expressions-to-catch-xx>Adding further regular expressions to catch x=x</h1><p>Eventually I identified that the response to an answer was:</p><pre><code>AnswerProvided is correct
+</code></pre><h1 id=enumeration>Enumeration</h1><p>Before doing anything else on this host I attempted to connect to it, receiving the following:</p><p><img src=/images/fastmath/FastMath-Preview.png alt="Math Preview"></p><p>The time between being presented with the challenge and receiving a timeout was a mere two seconds. Although handy with a calculator this wouldn’t be possible without a script/bot. I also noted that the response and timing to answer didn’t change on a second connection, but the base operator did. I then felt comfortable writing a script to connect to the host and return an answer to basic math questions (+-/*).</p><h1 id=first-answer-script-attempt>First Answer Script Attempt</h1><p>I put together a bot which would connect to the host and parse the challenge question using regex so it could answer it using an expression. This resulted in the following:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e>#!/usr/bin/python3</span>
+ 
+<span style=color:#f92672>import</span> socket
+<span style=color:#f92672>import</span> re
+<span style=color:#f92672>import</span> operator
+ 
+ 
+MAXBUF <span style=color:#f92672>=</span> <span style=color:#ae81ff>4096</span>
+SENTINEL <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;flag&#39;</span>
+CTF_BOT <span style=color:#f92672>=</span> (<span style=color:#e6db74>&#39;crikeyconctf.dook.biz&#39;</span>, <span style=color:#ae81ff>23776</span>)
+ 
+<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;__main__&#39;</span>:
+    client <span style=color:#f92672>=</span> socket<span style=color:#f92672>.</span>socket(socket<span style=color:#f92672>.</span>AF_INET, socket<span style=color:#f92672>.</span>SOCK_STREAM)
+    client<span style=color:#f92672>.</span>connect(CTF_BOT)
+ 
+    <span style=color:#66d9ef>while</span> True:
+        data <span style=color:#f92672>=</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;&#39;</span>
+ 
+        <span style=color:#75715e># receive and store data</span>
+        <span style=color:#66d9ef>while</span> True:
+            chunk <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span>recv(MAXBUF)
+            data <span style=color:#f92672>+=</span> chunk
+            <span style=color:#66d9ef>if</span> len(chunk) <span style=color:#f92672>&lt;</span> MAXBUF:
+                <span style=color:#66d9ef>break</span>
+       
+        <span style=color:#75715e># store decoded data for future usage</span>
+        decoded <span style=color:#f92672>=</span> data<span style=color:#f92672>.</span>decode(<span style=color:#e6db74>&#39;utf-8&#39;</span>)
+       
+        <span style=color:#75715e>#temporary</span>
+        <span style=color:#66d9ef>print</span>(decoded)
+        <span style=color:#75715e>#</span>
+ 
+        <span style=color:#75715e># our flag likely contains flag{}, once it&#39;s revealed print received data and exit</span>
+        <span style=color:#66d9ef>if</span> SENTINEL <span style=color:#f92672>in</span> decoded:
+            <span style=color:#66d9ef>print</span>(decoded)
+            <span style=color:#66d9ef>break</span>
+ 
+        match <span style=color:#f92672>=</span> re<span style=color:#f92672>.</span>search(<span style=color:#e6db74>&#39;[^\:\s]\d+.{3}\d+&#39;</span>, decoded)
+ 
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> match:
+            <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>ValueError</span>(<span style=color:#e6db74>&#34;Invalid expression string&#34;</span>)
+       
+        expression <span style=color:#f92672>=</span> match<span style=color:#f92672>.</span>group(<span style=color:#ae81ff>0</span>)
+ 
+        <span style=color:#75715e># properly handle division</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#e6db74>&#39;/&#39;</span> <span style=color:#f92672>in</span> expression:
+            expression <span style=color:#f92672>=</span> expression<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#39;/&#39;</span>, <span style=color:#e6db74>&#39;//&#39;</span>)
+ 
+        result <span style=color:#f92672>=</span> eval(expression)
+ 
+        <span style=color:#75715e># print results to screen to see script progress</span>
+        <span style=color:#66d9ef>print</span>(expression <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39; = &#39;</span> <span style=color:#f92672>+</span> str(result))
+ 
+        <span style=color:#75715e># encode and transfer</span>
+        data <span style=color:#f92672>=</span> str(result)<span style=color:#f92672>.</span>encode(<span style=color:#e6db74>&#39;utf-8&#39;</span>) <span style=color:#f92672>+</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>
+        <span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Sending: &#39;</span> <span style=color:#f92672>+</span> str(result))
+        client<span style=color:#f92672>.</span>send(data)
+</code></pre></div><h1 id=regular-expression-attempt>Regular Expression (attempt)</h1><p>The most important line here was the regex which consisted of the following (see if you can spot the mistake!):</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>match <span style=color:#f92672>=</span> re<span style=color:#f92672>.</span>search(<span style=color:#e6db74>&#39;[^\:\s]\d+.{3}\d+&#39;</span>, decoded)
+</code></pre></div><p>This would skip everything proceeding the colon and whitespace and then group both sets of numbers, and the whitespace/operator between them for evaluation.</p><p>The response to this was the following:</p><p><img src=/images/fastmath/FirstRegexResponse.png alt="FastMath Regex First Attempt"></p><p>I spent far more time on this part of the challenge than I care to admit. I didn’t entirely read my logs and spent my time stuck on the two lines where I have Sending <code>1766845</code> and the response <code>459060</code> is <em>not correct</em> and put a lot of focus into trying to identify why a different response was being sent to what was calculated (not the truth, but it’s what I was thinking).</p><h1 id=adding-further-regular-expressions-to-catch-xx>Adding further regular expressions to catch x=x</h1><p>Eventually I identified that the response to an answer was:</p><pre><code>AnswerProvided is correct
 AnswerProvided = AnswerProvided
-</code></pre><p>And then the next question would be presented. This was causing issues with my regex as I was passing values from the previous answer into my group, ultimately preventing the correct evaluation from sending.</p><p>I resolved this by continuing back to the beginning of my loop if there wasn’t a mathematical operator in my decoded string, putting this after the sentinel check as I didn’t want to miss my flag (which likely wouldn’t contain an operator). This looked like the following:</p><p>{% highlight python %}
-if not re.search('[-+/*]', decoded):
-continue
-{% endhighlight %}</p><h1 id=updating-regular-expression-to-handle-more-than-one-digit>Updating regular expression to handle more than one digit</h1><p>This got me to question number 10 – at which point I realized that my regex from earlier:</p><p>{% highlight python %}
-match = re.search('[^:\s]\d+.{3}\d+', decoded)
-{% endhighlight %}</p><p>Would only work if I were to be presented with a single digit question. I updated this to the following:</p><p>{% highlight python %}
-match = re.search('[^:\s]\d+\d+.{3}\d+', decoded)
-{% endhighlight %}</p><p>Essentially the same as above, but it would now capture two digits over one as I didn’t expect the challenges to go past 99 (although could use \d* if they were to).</p><h1 id=flag-reveal>Flag Reveal</h1><p>After making the changes above and letting the bot run for fifty questions I was then rewarded with the flag (redacted):</p><p><img src=/images/fastmath/flag.png alt="FastMath Flag Reveal"></p><p>Success!</p><p>I hope this helped you to better understand how to approach this kind of programming based ctf item. If you&rsquo;re Brisbane based, or find yourself here be sure to check out <a href=https://www.meetup.com/en-AU/SecTalks-Brisbane/>SecTalks</a>.</p><ul class=pa0></ul><div class="mt6 instapaper_ignoref"></div></div><aside class="w-30-l mt6-l"></aside></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://codingo.com/>&copy; Codingo - Ethical Hacking and Bug Bounty Advice 2021</a><div></div></div></footer><script src=https://codingo.com/codingo/js/fss.min.js></script><script src=https://codingo.com/codingo/js/codingo.js></script></body></html>
+</code></pre><p>And then the next question would be presented. This was causing issues with my regex as I was passing values from the previous answer into my group, ultimately preventing the correct evaluation from sending.</p><p>I resolved this by continuing back to the beginning of my loop if there wasn’t a mathematical operator in my decoded string, putting this after the sentinel check as I didn’t want to miss my flag (which likely wouldn’t contain an operator). This looked like the following:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> re<span style=color:#f92672>.</span>search(<span style=color:#e6db74>&#39;[-+/*]&#39;</span>, decoded):
+    <span style=color:#66d9ef>continue</span>
+</code></pre></div><h1 id=updating-regular-expression-to-handle-more-than-one-digit>Updating regular expression to handle more than one digit</h1><p>This got me to question number 10 – at which point I realized that my regex from earlier:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>match <span style=color:#f92672>=</span> re<span style=color:#f92672>.</span>search(<span style=color:#e6db74>&#39;[^\:\s]\d+.{3}\d+&#39;</span>, decoded)
+</code></pre></div><p>Would only work if I were to be presented with a single digit question. I updated this to the following:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>match <span style=color:#f92672>=</span> re<span style=color:#f92672>.</span>search(<span style=color:#e6db74>&#39;[^\:\s]\d+\d+.{3}\d+&#39;</span>, decoded)
+</code></pre></div><p>Essentially the same as above, but it would now capture two digits over one as I didn’t expect the challenges to go past 99 (although could use \d* if they were to).</p><h1 id=flag-reveal>Flag Reveal</h1><p>After making the changes above and letting the bot run for fifty questions I was then rewarded with the flag (redacted):</p><p><img src=/images/fastmath/flag.png alt="FastMath Flag Reveal"></p><p>Success!</p><p>I hope this helped you to better understand how to approach this kind of programming based ctf item. If you&rsquo;re Brisbane based, or find yourself here be sure to check out <a href=https://www.meetup.com/en-AU/SecTalks-Brisbane/>SecTalks</a>.</p><ul class=pa0></ul><div class="mt6 instapaper_ignoref"></div></div><aside class="w-30-l mt6-l"></aside></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://codingo.com/>&copy; Codingo - Ethical Hacking and Bug Bounty Advice 2021</a><div></div></div></footer><script src=https://codingo.com/codingo/js/fss.min.js></script><script src=https://codingo.com/codingo/js/codingo.js></script></body></html>
