@@ -1,13 +1,17 @@
 
+import { default as Util } from './utils';
+
 var container = document.getElementById('fss-container');
 var renderer = new FSS.CanvasRenderer();
 var scene = new FSS.Scene();
-var light = new FSS.Light('#880066', '#ff8800');
-var light2 = new FSS.Light('#880066', '#ff8800');
+var light = new FSS.Light('#880066', '#c80404');
+// var light2 = new FSS.Light('#880066', '#ff8800');
 var geometry = new FSS.Plane(container.offsetWidth + 200 , container.offsetHeight + 200, 12, 10);
 var material = new FSS.Material('#100089', '#FFFFFF');
 var mesh = new FSS.Mesh(geometry, material);
 var now, start = Date.now();
+
+
 
 var MESH = {
     width: 1.4,
@@ -18,9 +22,10 @@ var MESH = {
     xRange: 0.23,
     yRange: 0.24,
     zRange: 1.0,
-    ambient: '#100089',
+    ambient: '#c80404',
     diffuse: '#FFFFFF',
-    speed: 0.0003
+    speed: 0.0008,
+    colorHue: 130
 };
 
 
@@ -58,7 +63,6 @@ function resize() {
 function animate() {
     now = Date.now() - start;
 
-
     var ox, oy, oz, l, v, vertex, offset = MESH.depth/2;
 
     // Animate Vertices
@@ -73,6 +77,24 @@ function animate() {
             MESH.zRange*offset*oz - offset);
         FSS.Vector3.add(vertex.position, vertex.anchor);
     }
+
+    
+    /** Animate color transition */
+    let current = MESH.colorHue;
+    // 360 is the end value for HSL
+    let target = 360;
+    // Calculate the next step to reach target color, target has an offset value to 
+    // set time to target relative to starting postion so it doesn't speed up.
+    step = (current + ((target + current) - current) * 0.0002);
+    // Only the hue needs to chnage
+    let hex = Util.HSLToHex( step , 96, 40);
+    // console.log(`${current} - target:${target} - step:${step} - hex:${hex}`)
+    // If we've reached our target which is the end of the rainbow then reset back to the start
+    if(step >= 359) { step = 0 };
+    // Gotta save this for the next animation frame
+    MESH.colorHue = step;
+    // Create the new color on the existing light in the scene
+    light.diffuse = new FSS.Color(`${hex}`);
 
     renderer.render(scene);
     requestAnimationFrame(animate);
