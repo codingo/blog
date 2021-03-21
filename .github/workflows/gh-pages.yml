@@ -33,4 +33,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUBTOKEN }}
+          # Without `keep_files` the `CNAME` file in the target repo will get removed
+          # and the custom domain configured for GitHub pages will get dropped every 
+          # time the action runs…
+          keep_files: true
           publish_dir: ./public
