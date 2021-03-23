@@ -30,9 +30,10 @@
       </p>
       {{ end }}
       {{/* Hugo uses Go's date formatting is set by example. Here are two formats */}}
-      <time class="f6 mv4 dib tracked" {{ printf `datetime="%s"` (.Date.Format "2006-01-02T15:04:05Z07:00") | safeHTMLAttr }}>
-        {{- .Date.Format "January 2, 2006" -}}
-      </time>
+      <div class="post-date mb3">
+        <img class="icon-calendar" src="/images/icon-feather-calendar.png" alt="" srcset="">
+        <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+      </div>
 
       {{/*
           Show "reading time" and "word count" but only if one of the following are true:
@@ -45,7 +46,7 @@
         <span class="f6 mv4 dib tracked"> - {{ .WordCount}} words</span>
       {{ end }}
     </header>
-    <div class="nested-copy-line-height lh-copy {{ $.Param "post_content_classes"  | default "serif"}} f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+    <div class="nested-copy-line-height lh-copy {{ $.Param "post_content_classes" }} f4 nested-links nested-img pr4-l w-two-thirds-l">
       {{- .Content -}}
       {{- partial "tags.html" . -}}
       <div class="mt6 instapaper_ignoref">
