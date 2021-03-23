@@ -1,6 +1,9 @@
-h1{
+
+html, body{
     color: rgb(255, 255, 255);
 }
+
+
 
 .bg-black {
     background-color: #050315;
@@ -24,6 +27,7 @@ header, main{
         align-items: center;
         z-index: 10;
         height: 100%;
+        padding: 0 40px;
 
         .copy{
             max-width: 600px;
@@ -57,11 +61,20 @@ header, main{
     justify-content: center;
     align-items: center;
 
-    
+
     a{
         display: block;
         /* Nice amount of padding for fingers */
         margin: 4px 2px;
         padding: 4px 12px;
+    }
+}
+
+
+.post-date{
+    
+    .icon-calendar{
+        transform: translateY(1px);
+        margin-right: 6px;
     }
 }
