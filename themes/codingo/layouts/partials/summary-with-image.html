@@ -21,9 +21,9 @@
           <img class="icon-calendar" src="/images/icon-feather-calendar.png" alt="" srcset="">
           {{ .Date.Format "Jan 2, 2006" }}
         </div>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+        <p class="lh-copy nested-copy-line-height nested-links">
           {{ .Summary }}
-        </div>
+        </p>
           <a href="{{.Permalink}}" class="ba br2 color-inherit dib f8 hover-bg-gold hover-dark-grey link mt3 ph2 pv1 pointer">{{ $.Param "read_more_copy" | default (i18n "readMore") }}</a>
         {{/* TODO: add author
         <p class="f6 lh-copy mv0">By {{ .Author }}</p> */}}
