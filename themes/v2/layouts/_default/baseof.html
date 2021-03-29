@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ $.Site.LanguageCode | default "en" }}">
     {{- partial "head.html" . -}}
-    <body class="font-sans text-white antialiased">
+    <body class="font-sans text-white antialiased bg-black text-light">
         {{ if .IsHome }}
             {{ partial "site-intro.html" . }}
         {{ end }}
 
         {{- partial "header.html" . -}}
-        <div id="content">
+        <div id="content z-10 relative">
         {{- block "main" . }}{{- end }}
         </div>
         {{- partial "footer.html" . -}}

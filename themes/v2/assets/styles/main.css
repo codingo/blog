@@ -11,4 +11,23 @@
     .social-links a{
         @apply block p-4;
     }
-  }
+
+    .button{
+        @apply inline-block border rounded py-1 px-4 hover:bg-secondary transition-colors duration-200;
+    }
+    .button-solid{
+        @apply inline-block rounded py-1 px-4 bg-dark hover:bg-secondary transition-colors duration-200;
+    }
+}
+
+#background-ears {
+    top: 100%;
+    position: absolute;
+    z-index: 6;
+    transform: translateY(-220px) translateX(-50%);
+    left: 50%;
+}
+
+#site-intro{
+
+}

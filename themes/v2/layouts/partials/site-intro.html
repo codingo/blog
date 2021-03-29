@@ -1,13 +1,27 @@
-<div class="w-full">
+<div id="site-intro" class="w-full h-screen box-border z-10">
     <div id="fss-container" class="absolute w-full h-screen z-0"></div>
-    <div class="relative z-10 mx-auto max-w-screen-sm text-center">
-        <div class="content text-2xl">
-            <img src="/images/codingo-logo.png" alt="" class="mx-auto">
-            <img src="/images/codingo-logo-name.png" alt="CODINGO" class="mx-auto">
+    <div class="relative z-10 mx-auto max-w-screen-sm text-center px-8">
+        <div class="text-2xl near-black">
+            <video id="video-logo" preload="true" autoplay="autoplay" muted>
+                <source src="/video/codingo-logo.webm" type="video/webm">
+                <img src="/images/codingo-logo.png" alt=""><br />
+            </video>
+            <img class="mx-auto mb-8" src="/images/codingo-logo-name.png" alt="CODINGO">
 
-            <p class="px-7">A community built around the education of ethical hacking, with a focus on bug bounties and penetration testing.</p>
-
-
+            <p class="mb-8 text-light leading-tight font-normal">A community built around the education of ethical hacking, with a focus on bug bounties and penetration testing.</p>
+            
+            <div class="text-lg mb-8">
+                <a class="button-solid m-2 px-6" href="https://youtube.com/codingo" title="Facebook">
+                    <span>Videos</span>
+                </a>
+                <a class="button-solid m-2 px-6" href="https://chat.codingo.com" title="Facebook">
+                    <span>Forum</span>
+                </a>
+                <a class="button-solid m-2 px-6" href="https://codingo.com/posts" title="Facebook">
+                    <span>Blog</span>
+                </a>
+            </div>
+            
             <div class="social-links flex flex-row justify-center items-center">
                 <a href="https://youtube.com/codingo" target="_blank" rel="external">
                     <img src="/images/social-yt.png" alt="CODINGO on YouTube">
@@ -27,5 +41,5 @@
             </div>
         </div>
     </div>
-    <img id="background-ears" src="/images/background-ears.png" alt="">
+    <img id="background-ears" src="/images/background-ears.png" alt="" class="">
 </div>
