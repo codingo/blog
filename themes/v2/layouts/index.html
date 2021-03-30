@@ -16,12 +16,22 @@
       {{/* Use $section_name to get the section title. Use "with" to only show it if it exists */}}
        
 
-      {{ $n_posts := $.Param "recent_posts_number" | default 3 }}
+      {{ $n_posts := $.Param "recent_posts_number" | default 3 }}    
 
-      <section class="">
+      <section class="w-100 mw8">
         {{/* Range through the first $n_posts items of the section */}}
-        {{ range (first $n_posts $section) }}
-          <div class="">
+        {{ range (first 1 $section) }}
+          <div class="relative w-100 mb4">
+            {{ partial "summary-with-image.html" . }}
+          </div>
+        {{ end }}
+
+        <div class="relative w-100 mb4">
+        {{ partial "form-revue.html" . }}
+        </div>
+
+        {{ range first 4 (after 1 $section) }}
+          <div class="relative w-100 mb4">
             {{ partial "summary-with-image.html" . }}
           </div>
         {{ end }}
