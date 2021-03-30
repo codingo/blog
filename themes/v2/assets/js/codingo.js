@@ -2,16 +2,18 @@
 import { default as Util } from './utils';
 
 var container = document.getElementById('fss-container');
+var siteContainer = document.getElementById('site-intro');
+// console.log(siteContainer)
+container.setAttribute("style",`height:${siteContainer.offsetHeight}px`);
+
 var renderer = new FSS.CanvasRenderer();
 var scene = new FSS.Scene();
 var light = new FSS.Light('#880066', '#c80404');
 // var light2 = new FSS.Light('#880066', '#ff8800');
-var geometry = new FSS.Plane(container.offsetWidth + 200 , container.offsetHeight + 200, 12, 10);
+var geometry = new FSS.Plane(siteContainer.offsetWidth + 200 , siteContainer.offsetHeight + 200, 12, 10);
 var material = new FSS.Material('#100089', '#FFFFFF');
 var mesh = new FSS.Mesh(geometry, material);
 var now, start = Date.now();
-
-
 
 var MESH = {
     width: 1.4,
