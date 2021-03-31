@@ -14,6 +14,8 @@ var geometry = new FSS.Plane(siteContainer.offsetWidth + 200 , siteContainer.off
 var material = new FSS.Material('#100089', '#FFFFFF');
 var mesh = new FSS.Mesh(geometry, material);
 var now, start = Date.now();
+let newgeometry;
+let newMesh;
 
 var MESH = {
     width: 1.4,
@@ -58,18 +60,23 @@ function initialise() {
 }
 
 function resize() {
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
+    renderer.setSize(siteContainer.offsetWidth, siteContainer.offsetHeight);
+    // scene.remove(mesh);
+    // geometry = new FSS.Plane(siteContainer.offsetWidth + 200 , siteContainer.offsetHeight + 200, 12, 10);
+    // mesh = new FSS.Mesh(newgeometry, material);
+    // scene.add(mesh);
 }
+    
 
 
 function animate() {
     now = Date.now() - start;
 
     var ox, oy, oz, l, v, vertex, offset = MESH.depth/2;
-
     // Animate Vertices
     for (v = geometry.vertices.length - 1; v >= 0; v--) {
         vertex = geometry.vertices[v];
+        console.log(vertex);
         ox = Math.sin(vertex.time + vertex.step[0] * now * MESH.speed);
         oy = Math.cos(vertex.time + vertex.step[1] * now * MESH.speed);
         oz = Math.sin(vertex.time + vertex.step[2] * now * MESH.speed);
@@ -78,8 +85,8 @@ function animate() {
             MESH.yRange*geometry.sliceHeight*oy,
             MESH.zRange*offset*oz - offset);
         FSS.Vector3.add(vertex.position, vertex.anchor);
+        
     }
-
     
     /** Animate color transition */
     let current = MESH.colorHue;
@@ -103,5 +110,5 @@ function animate() {
 }
 
 initialise();
-resize();
 animate();
+resize();

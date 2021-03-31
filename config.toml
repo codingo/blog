@@ -3,3 +3,26 @@ languageCode = "en-au"
 title = "Codingo - Ethical Hacking and Bug Bounty Advice"
 theme = "v2"
 googleAnalytics = "G-43E5TE75S0"
+
+[menu]
+
+  [[menu.main]]
+    identifier = "videos"
+    name = "Videos"
+    url = "https://youtube.com/codingo"
+    weight = -110
+
+  [[menu.main]]
+    identifier = "forums"
+    name = "Forum"
+    url = "https://chat.codingo.com"
+    weight = -100
+
+[[menu.main]]
+    identifier = "posts"
+    name = "Blog"
+    url = "https://codingo.com/posts"
+    weight = -90
+
+[params]
+    show_reading_time = true

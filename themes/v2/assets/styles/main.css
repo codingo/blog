@@ -18,6 +18,23 @@
     .button-solid{
         @apply inline-block rounded py-1 px-4 bg-dark hover:bg-secondary transition-colors duration-200;
     }
+    .content-container{
+        @apply w-4/5 mx-auto box-border pt-20;
+    }
+
+    .navigation-menu:hover .hamburger{
+        @apply bg-secondary;
+    }
+
+    h1, h2{
+        @apply text-secondary text-3xl font-medium hover:text-light transition-colors duration-200;
+    }
+    h2{
+        @apply text-xl
+    }
+
+    @import './markdown.scss';
+
 }
 
 #background-ears {

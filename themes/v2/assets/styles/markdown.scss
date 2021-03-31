@@ -1,0 +1,35 @@
+.markdown{
+
+    p{
+        @apply mb-10;
+    }
+    
+    img{
+        @apply border border-secondary p-2 border-dashed;
+    }
+
+    pre{
+        @apply overflow-x-auto p-4 mb-10 text-xs;
+    }
+
+    h2{
+        @apply sticky top-24 bg-black py-4;
+    }
+
+    table{
+        @apply border border-dashed border-secondary mb-4;
+
+        tr{
+            @apply border-b border-dashed border-secondary;
+        }
+        td, th{
+            @apply border-r border-dashed border-secondary;
+        }
+        tr:last-child:not(tr:first-child), 
+        td:last-child, 
+        th:last-child{
+            @apply border-0;
+        }
+    }
+
+}

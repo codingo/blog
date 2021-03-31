@@ -6,6 +6,8 @@
             {{ partial "site-intro.html" . }}
         {{ end }}
 
+        {{- block "header" . }}{{- end }}
+
         {{- partial "header.html" . -}}
         <div id="content z-10 relative">
         {{- block "main" . }}{{- end }}

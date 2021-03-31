@@ -10,17 +10,18 @@
 
             <p class="mb-8 text-light leading-tight font-normal">A community built around the education of ethical hacking, with a focus on bug bounties and penetration testing.</p>
             
-            <div class="text-lg mb-8">
-                <a class="button-solid m-2 px-6" href="https://youtube.com/codingo" title="Facebook">
-                    <span>Videos</span>
-                </a>
-                <a class="button-solid m-2 px-6" href="https://chat.codingo.com" title="Facebook">
-                    <span>Forum</span>
-                </a>
-                <a class="button-solid m-2 px-6" href="https://codingo.com/posts" title="Facebook">
-                    <span>Blog</span>
-                </a>
-            </div>
+
+            {{ if .Site.Menus.main }}
+                <ul class="text-lg mb-8">
+                    {{ range .Site.Menus.main }}
+                    <li class="inline-block">
+                        <a class="button-solid m-2 px-6" href="{{ .URL }}" title="{{ .Name }}">
+                            <span>{{ .Name }}</span>
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            {{ end }}
             
             <div class="social-links flex flex-row justify-center items-center">
                 <a href="https://youtube.com/codingo" target="_blank" rel="external">
