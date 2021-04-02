@@ -103,8 +103,8 @@
     zRange: 1,
     ambient: "#c80404",
     diffuse: "#FFFFFF",
-    speed: 8e-4,
-    colorHue: 130
+    speed: 2e-4,
+    colorHue: 45
   };
   function initialise() {
     scene.add(mesh);
