@@ -28,8 +28,8 @@ var MESH = {
     zRange: 1.0,
     ambient: '#c80404',
     diffuse: '#FFFFFF',
-    speed: 0.0008,
-    colorHue: 130
+    speed: 0.0002,
+    colorHue: 45
 };
 
 
