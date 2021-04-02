@@ -13,10 +13,10 @@
     }
 
     .button{
-        @apply inline-block border rounded py-1 px-4 hover:bg-secondary transition-colors duration-200;
+        @apply inline-block border rounded py-1 px-4 hover:bg-secondary hover:text-dark transition-colors duration-200;
     }
     .button-solid{
-        @apply inline-block rounded py-1 px-4 bg-dark hover:bg-secondary transition-colors duration-200;
+        @apply inline-block rounded py-1 px-4 bg-dark hover:bg-secondary hover:text-dark transition-colors duration-200;
     }
     .content-container{
         @apply w-5/6 mx-auto box-border;

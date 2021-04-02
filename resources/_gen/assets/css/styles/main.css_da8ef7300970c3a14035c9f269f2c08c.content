@@ -571,6 +571,14 @@ video {
   padding-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.button:hover{
+  --tw-text-opacity: 1;
+  color: rgba(31, 41, 55, var(--tw-text-opacity));
+}
+
+.button{
   transition-property: background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
@@ -594,6 +602,14 @@ video {
   padding-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.button-solid:hover{
+  --tw-text-opacity: 1;
+  color: rgba(31, 41, 55, var(--tw-text-opacity));
+}
+
+.button-solid{
   transition-property: background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
