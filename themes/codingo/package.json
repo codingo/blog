@@ -1,0 +1,21 @@
+{
+  "name": "codingo-theme",
+  "version": "1.0.0",
+  "description": "a theme for the main community built site, codingo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "theme",
+    "hugo",
+    "codingo"
+  ],
+  "author": "avdw",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.4"
+  }
+}

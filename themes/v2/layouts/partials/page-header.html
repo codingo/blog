@@ -1,0 +1,33 @@
+<div class="py-6 bg-dark sticky -top-20 z-10">
+    <header class="content-container">
+        <nav class="" role="navigation">
+            <div class="flex">
+                <a href="{{ .Site.Home.RelPermalink }}" class="flex-none">
+                    <img src="/images/codingo-logo-lockup.png" alt="CODINGO">
+                </a>
+                <div class="flex-grow"></div>
+                <div class="flex-none w-12 relative navigation-menu">
+                    <div class="cursor-pointer hambuger">
+                        <svg class="fill-current text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="absolute bg-secondary p-2 right-0">
+                        {{ if .Site.Menus.main }}
+                        <ul class="divide-y divide-red-400">
+                            {{ range .Site.Menus.main }}
+                            <li>
+                            <a class="py-4 px-8 block cursor-pointer" href="{{ .URL }}" title="{{ .Name }}">
+                                {{ .Name }}
+                            </a>
+                            </li>
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
+
