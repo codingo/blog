@@ -19,7 +19,7 @@
         @apply inline-block rounded py-1 px-4 bg-dark hover:bg-secondary transition-colors duration-200;
     }
     .content-container{
-        @apply w-4/5 mx-auto box-border pt-20;
+        @apply w-5/6 mx-auto box-border;
     }
 
     .navigation-menu:hover .hamburger{
