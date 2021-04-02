@@ -76,7 +76,6 @@ function animate() {
     // Animate Vertices
     for (v = geometry.vertices.length - 1; v >= 0; v--) {
         vertex = geometry.vertices[v];
-        console.log(vertex);
         ox = Math.sin(vertex.time + vertex.step[0] * now * MESH.speed);
         oy = Math.cos(vertex.time + vertex.step[1] * now * MESH.speed);
         oz = Math.sin(vertex.time + vertex.step[2] * now * MESH.speed);

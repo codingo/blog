@@ -1,9 +1,9 @@
 
 {{ $styles := resources.Get "styles/main.css" }} 
-{{ $styles := $styles | resources.ToCSS | resources.PostCSS (dict "inlineImports" true) | fingerprint }}
+{{ $styles := $styles | resources.ToCSS | resources.PostCSS (dict "inlineImports" true) }}
 
 {{ if hugo.IsProduction }} 
-    {{ $styles = $styles | minify }} 
+    {{ $styles = $styles | minify | fingerprint }} 
 {{ end }}
 
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
