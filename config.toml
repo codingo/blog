@@ -3,6 +3,7 @@ languageCode = "en-au"
 title = "Codingo - Ethical Hacking and Bug Bounty Advice"
 theme = "v2"
 googleAnalytics = "G-43E5TE75S0"
+disqusShortname = "codingo"
 
 [menu]
 
