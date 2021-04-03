@@ -679,7 +679,7 @@ h2 {
   padding-top: 1rem;
   padding-bottom: 1rem;
   position: sticky;
-  top: 6rem;
+  top: 4rem;
 }
 
 .markdown table {
@@ -706,6 +706,10 @@ h2 {
 
 .markdown table tr:last-child:not(tr:first-child), .markdown table td:last-child, .markdown table th:last-child{
   border-width: 0px;
+}
+
+.main-navigation .logo-lockup, .main-navigation .hamburger svg {
+  height: 28px;
 }
 
 .container{

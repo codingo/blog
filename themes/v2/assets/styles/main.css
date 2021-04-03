@@ -34,6 +34,7 @@
     }
 
     @import './markdown.scss';
+    @import './styles.scss';
 
 }
 
@@ -43,8 +44,4 @@
     z-index: 6;
     transform: translateY(-220px) translateX(-50%);
     left: 50%;
-}
-
-#site-intro{
-
 }
