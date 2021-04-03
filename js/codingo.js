@@ -80,75 +80,99 @@
   };
   var utils_default = util;
 
+  // ns-hugo:/home/runner/work/blog/blog/themes/v2/assets/js/polygons.js
+  var polygons = {
+    siteContainer: null,
+    renderer: null,
+    scene: null,
+    light: null,
+    geometry: null,
+    material: null,
+    mesh: null,
+    start: null,
+    now: null,
+    newgeometry: null,
+    newMesh: null,
+    MESH: {
+      width: 1.4,
+      height: 1.4,
+      depth: 10,
+      segments: 20,
+      slices: 20,
+      xRange: 0.23,
+      yRange: 0.24,
+      zRange: 1,
+      ambient: "#c80404",
+      diffuse: "#FFFFFF",
+      speed: 2e-4,
+      colorHue: 45
+    },
+    initialise: (container2) => {
+      let fn = polygons;
+      fn.container = container2;
+      fn.siteContainer = document.getElementById("site-intro");
+      fn.renderer = new FSS.CanvasRenderer();
+      fn.scene = new FSS.Scene();
+      fn.light = new FSS.Light("#880066", "#c80404");
+      fn.geometry = new FSS.Plane(fn.siteContainer.offsetWidth + 200, fn.siteContainer.offsetHeight + 200, 12, 10);
+      fn.material = new FSS.Material("#100089", "#FFFFFF");
+      fn.mesh = new FSS.Mesh(polygons.geometry, polygons.material);
+      fn.start = Date.now();
+      fn.now = fn.start;
+      fn.newgeometry = null;
+      fn.newMesh = null;
+      fn.container.setAttribute("style", `height:${fn.siteContainer.offsetHeight}px`);
+      fn.scene.add(fn.mesh);
+      fn.scene.add(fn.light);
+      fn.light.mass = Math.randomInRange(0.5, 1.4);
+      fn.light.setPosition(fn.container.offsetWidth / 2.4, fn.container.offsetHeight / 2.4, 300);
+      var v, vertex;
+      for (v = fn.geometry.vertices.length - 1; v >= 0; v--) {
+        vertex = fn.geometry.vertices[v];
+        vertex.anchor = FSS.Vector3.clone(vertex.position);
+        vertex.step = FSS.Vector3.create(Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1));
+        vertex.time = Math.randomInRange(0, Math.PIM2);
+      }
+      fn.container.appendChild(fn.renderer.element);
+      window.addEventListener("resize", fn.resize);
+      fn.animate();
+      fn.resize();
+    },
+    resize: () => {
+      let fn = polygons;
+      fn.renderer.setSize(fn.siteContainer.offsetWidth, fn.siteContainer.offsetHeight);
+    },
+    animate: () => {
+      let fn = polygons;
+      fn.now = Date.now() - fn.start;
+      var ox, oy, oz, l, v, vertex, offset = fn.MESH.depth / 2;
+      for (v = fn.geometry.vertices.length - 1; v >= 0; v--) {
+        vertex = fn.geometry.vertices[v];
+        ox = Math.sin(vertex.time + vertex.step[0] * fn.now * fn.MESH.speed);
+        oy = Math.cos(vertex.time + vertex.step[1] * fn.now * fn.MESH.speed);
+        oz = Math.sin(vertex.time + vertex.step[2] * fn.now * fn.MESH.speed);
+        FSS.Vector3.set(vertex.position, fn.MESH.xRange * fn.geometry.segmentWidth * ox, fn.MESH.yRange * fn.geometry.sliceHeight * oy, fn.MESH.zRange * offset * oz - offset);
+        FSS.Vector3.add(vertex.position, vertex.anchor);
+      }
+      let current = fn.MESH.colorHue;
+      let target = 360;
+      let step = current + (target + current - current) * 2e-4;
+      let hex = utils_default.HSLToHex(step, 96, 40);
+      if (step >= 359) {
+        step = 0;
+      }
+      ;
+      fn.MESH.colorHue = step;
+      fn.light.diffuse = new FSS.Color(`${hex}`);
+      fn.renderer.render(fn.scene);
+      requestAnimationFrame(fn.animate);
+    }
+  };
+  var polygons_default = polygons;
+
   // <stdin>
   var container = document.getElementById("fss-container");
-  var siteContainer = document.getElementById("site-intro");
-  container.setAttribute("style", `height:${siteContainer.offsetHeight}px`);
-  var renderer = new FSS.CanvasRenderer();
-  var scene = new FSS.Scene();
-  var light = new FSS.Light("#880066", "#c80404");
-  var geometry = new FSS.Plane(siteContainer.offsetWidth + 200, siteContainer.offsetHeight + 200, 12, 10);
-  var material = new FSS.Material("#100089", "#FFFFFF");
-  var mesh = new FSS.Mesh(geometry, material);
-  var now;
-  var start = Date.now();
-  var MESH = {
-    width: 1.4,
-    height: 1.4,
-    depth: 10,
-    segments: 20,
-    slices: 20,
-    xRange: 0.23,
-    yRange: 0.24,
-    zRange: 1,
-    ambient: "#c80404",
-    diffuse: "#FFFFFF",
-    speed: 2e-4,
-    colorHue: 45
-  };
-  function initialise() {
-    scene.add(mesh);
-    scene.add(light);
-    light.mass = Math.randomInRange(0.5, 1.4);
-    light.setPosition(container.offsetWidth / 2.4, container.offsetHeight / 2.4, 300);
-    var v, vertex;
-    for (v = geometry.vertices.length - 1; v >= 0; v--) {
-      vertex = geometry.vertices[v];
-      vertex.anchor = FSS.Vector3.clone(vertex.position);
-      vertex.step = FSS.Vector3.create(Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1));
-      vertex.time = Math.randomInRange(0, Math.PIM2);
-    }
-    container.appendChild(renderer.element);
-    window.addEventListener("resize", resize);
+  if (container) {
+    polygons_default.initialise(container);
   }
-  function resize() {
-    renderer.setSize(siteContainer.offsetWidth, siteContainer.offsetHeight);
-  }
-  function animate() {
-    now = Date.now() - start;
-    var ox, oy, oz, l, v, vertex, offset = MESH.depth / 2;
-    for (v = geometry.vertices.length - 1; v >= 0; v--) {
-      vertex = geometry.vertices[v];
-      ox = Math.sin(vertex.time + vertex.step[0] * now * MESH.speed);
-      oy = Math.cos(vertex.time + vertex.step[1] * now * MESH.speed);
-      oz = Math.sin(vertex.time + vertex.step[2] * now * MESH.speed);
-      FSS.Vector3.set(vertex.position, MESH.xRange * geometry.segmentWidth * ox, MESH.yRange * geometry.sliceHeight * oy, MESH.zRange * offset * oz - offset);
-      FSS.Vector3.add(vertex.position, vertex.anchor);
-    }
-    let current = MESH.colorHue;
-    let target = 360;
-    step = current + (target + current - current) * 2e-4;
-    let hex = utils_default.HSLToHex(step, 96, 40);
-    if (step >= 359) {
-      step = 0;
-    }
-    ;
-    MESH.colorHue = step;
-    light.diffuse = new FSS.Color(`${hex}`);
-    renderer.render(scene);
-    requestAnimationFrame(animate);
-  }
-  initialise();
-  animate();
-  resize();
 })();
