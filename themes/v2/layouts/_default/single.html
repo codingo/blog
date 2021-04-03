@@ -26,14 +26,18 @@
           </strong>
       </p>
       {{ end }}
+
+
       {{/* Hugo uses Go's date formatting is set by example. Here are two formats */}}
       <div class="mb-4 mt-2">
         <img class="inline-block mr-2 -mt-1 icon-calendar" src="/images/icon-feather-calendar.png" alt="" srcset="">
         <date class="inline-block mr-6">{{ .Date.Format "Jan 2, 2006" }}</date>
         {{ if (or (eq (.Param "show_reading_time") true) (eq $section.Params.show_reading_time true) )}}
-        <span class="border-b border-secondary  mr-2">{{ .ReadingTime}} minutes read</span>
-        <span class="border-b border-secondary">{{ .WordCount}} words</span>
-      {{ end }}
+        <div class="inline-block">
+          <span class="border-b border-secondary mr-2 whitespace-nowrap">{{ .ReadingTime}} minutes read</span>
+          <span class="border-b border-secondary whitespace-nowrap">{{ .WordCount}} words</span>
+        </div>
+        {{ end }}
       </div>
 
     </header>
