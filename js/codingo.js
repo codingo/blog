@@ -175,4 +175,24 @@
   if (container) {
     polygons_default.initialise(container);
   }
+  var hamburger = document.querySelector(".navigation-menu .hamburger");
+  var navigationMenu = document.querySelector(".navigation-menu");
+  var navigationList = document.querySelector(".navigation-menu .menu-list");
+  hamburger.addEventListener("click", (event) => {
+    event.preventDefault();
+    navigationList.classList.toggle("hidden");
+  });
+  document.addEventListener("click", (event) => {
+    const flyoutElement = navigationMenu;
+    let targetElement = event.target;
+    do {
+      if (targetElement == flyoutElement) {
+        return;
+      }
+      targetElement = targetElement.parentNode;
+    } while (targetElement);
+    if (!navigationList.classList.contains("hidden")) {
+      navigationList.classList.add("hidden");
+    }
+  });
 })();
