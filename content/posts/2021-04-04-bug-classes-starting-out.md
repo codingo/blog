@@ -5,12 +5,10 @@ date:   2021-04-04 11:00:00 +1000
 categories: beginners bug bounty
 ---
 
-# What bug classes should I start with, and why?
-
 Over time I’ve answered this question a lot, and I’m hoping to build something more canonical I can reference for those starting out with bug bounties - where do you begin? The answer ultimately depends on your foundation, and I’ve aimed to break that down into two distinct answers.
 
 
-# If you’re new to security
+## If you’re new to security
 
 If you’re newer to security, and hacking in general, a hacking foundation is the most important thing to build. If you’re familiar with prior work I’ve written or authored, it’s no secret  that I love [pentesterlab](https://pentesterlab.com/), and I’m regularly giving vouchers for it away (you can find these hidden in videos). The reasoning for that is simple, I believe it to be the best return on investment for somebody building a foundation in security, who may not have a lot of money they’re willing or able to yet dedicate to the acquisition of knowledge.
 
@@ -28,7 +26,7 @@ So what is a proposed, better alternative? In my opinion, and it is an opinion, 
 So where do you begin? Authorisation bugs, at their simplest tend to begin with the ability to perform an action as if you’re performing it on behalf of another user. I recommend learning the mechanics of how websites authorise a user action through ID’s, cookies, and other flows and then starting to see what happens when you manipulate those items. What happens if you perform an action when authenticated with a session cookie, and then try that same request by removing it? What happens when you see a user ID in a request, and try that same request with another user's ID? Pentesterlab has two good resources for starting to learn more about authentication. Firstly, I recommend starting out with the [Essentials Badge](https://pentesterlab.com/badges/essential). After you’ve mastered the basics through there, take a look at the [Authentication/Authorisation](https://pentesterlab.com/badges/auth) badge. A number of the exercises on these videos contain videos, helping you to get started.
 
 
-# If you’re an experienced hacker, making a move
+## If you’re an experienced hacker, making a move
 
 Assuming you already have a background in hacking, there’s a different approach entirely that you should make when starting out in the bug bounty space. Most people will make the mistake of seeing the number of resources covering reconnaissance (recon), and the tools surrounding it and think that should be where they begin, spending time automating bug classes like subdomain takeovers and the like. Whilst that isn’t bad advice, I don’t think it’s the quickest path to success, and the invested time to a return is high. After all, the public resources for these bug classes are very readily available, and the most valuable items you can perform a takeover on are not included.
 
