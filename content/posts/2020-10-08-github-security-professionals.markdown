@@ -36,8 +36,6 @@ Without question, Github is the biggest of these platforms and although [Gitlab]
 
 Both Github and Gitlab are websites that wrap around git, a version control management system. This is well summarised below however don't worry if some of this seems daunting, as I'm aiming to cover the "how" throughout this guide, leaving you armed with enough information to jump in and get involved.
 
-{{< youtube 2ReR1YJrNOM >}}
-
 # How do I get started?
 After registering an account and poking around, it's worth understanding a few "how to" elements of Github. Let's use https://github.com/codingo for examples sake.
 
@@ -75,6 +73,8 @@ I also suggest initializing the repository with content, the best way I find to 
 
 After you've done that, click "create repository", and we're off!
 
+![github-codingo.png](/images/github/new-repository.png)
+
 # Master and Main Branches
 As you create pull requests you're performing work on your own branch, which you then propose to the owners of the repository in a pull request. Essentially, you're saying, "Hey, I did this work over here, but the main project should add it as it is good for others".
 
@@ -85,7 +85,6 @@ You can, as the owner of a repository also commit changes directly to the main b
 
 # Authentication
 Authentication is key if you're working with Github, and can be found discussed at length here: https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github
-
 
 # Projects for non-coders
 ## Disclose.io
