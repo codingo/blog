@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "What bug classes should I start with, and why?"
-date:   2021-04-04 17:01:58 +1000
+date:   2021-04-04 11:00:00 +1000
 categories: beginners bug bounty
 ---
 
