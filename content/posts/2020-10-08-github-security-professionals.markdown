@@ -4,6 +4,7 @@ title:  "Contributing to Github for Information Security Professionals"
 date:   2020-10-08 17:01:58 +1000
 categories: tools github bounty
 aliases: [/posts/github/]
+draft: false
 ---
 
 Every Month if [Hacktoberfest](https://hacktoberfest.digitalocean.com/), which, if you're not already familiar with is an event run by Digital Ocean to reward open source contributions with swag (normally a t-shirt and stickers). All in all, it's a very well received event that provides the perfect time to jump into open source, if you haven't already.
