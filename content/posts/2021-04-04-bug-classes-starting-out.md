@@ -3,6 +3,7 @@ layout: post
 title:  "Beginners Bug Bounty - what bug classes should you start with?"
 date:   2021-04-04 11:00:00 +1000
 categories: beginners bug bounty
+draft: false
 ---
 
 Over time I’ve answered this question a lot, and I’m hoping to build something more canonical I can reference for those starting out with bug bounties - where do you begin? The answer ultimately depends on your foundation, and I’ve aimed to break that down into two distinct answers.
