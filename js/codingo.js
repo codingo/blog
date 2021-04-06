@@ -105,7 +105,7 @@
       ambient: "#c80404",
       diffuse: "#FFFFFF",
       speed: 2e-4,
-      colorHue: 45
+      colorHue: 80
     },
     initialise: (container2) => {
       let fn = polygons;
