@@ -13,12 +13,14 @@ module.exports = {
       "dark": colors.gray[900],
       "black": '#050315',
       "light": colors.gray[50],
-      "secondary": colors.yellow[400],
+      "secondary": colors.green[500],
+      "highlight": colors.gray[900],
     },
     textColor: {
       "dark": colors.gray[800],
       "light": colors.gray[50],
-      "secondary": colors.yellow[400],
+      "secondary": colors.green[500],
+      "highlight": colors.gray[900],
     },
     minWidth: {
       '420': '420px'

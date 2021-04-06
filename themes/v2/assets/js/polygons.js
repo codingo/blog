@@ -24,7 +24,7 @@ let polygons = {
     ambient: '#c80404',
     diffuse: '#FFFFFF',
     speed: 0.0002,
-    colorHue: 45
+    colorHue: 80
   },
 
   initialise: (container)=>{
