@@ -12,22 +12,25 @@ if(container){
 let hamburger = document.querySelector('.navigation-menu .hamburger');
 let navigationMenu = document.querySelector('.navigation-menu');
 let navigationList = document.querySelector('.navigation-menu .menu-list');
-hamburger.addEventListener("click", (event)=>{
-    event.preventDefault();
-    navigationList.classList.toggle("hidden");
-})
-// If clicked outside, then close the menu
-document.addEventListener("click", (event)=>{
-    const flyoutElement = navigationMenu;
-    let targetElement = event.target; 
-    do {
-        if (targetElement == flyoutElement) {
-            return;
-        }
-        targetElement = targetElement.parentNode;
-    } while (targetElement);
-    if(!navigationList.classList.contains('hidden')){
-        navigationList.classList.add("hidden");
-    }
-})
 
+if(hamburger){
+    hamburger.addEventListener("click", (event)=>{
+        event.preventDefault();
+        navigationList.classList.toggle("hidden");
+    })
+
+    // If clicked outside, then close the menu
+    document.addEventListener("click", (event)=>{
+        const flyoutElement = navigationMenu;
+        let targetElement = event.target; 
+        do {
+            if (targetElement == flyoutElement) {
+                return;
+            }
+            targetElement = targetElement.parentNode;
+        } while (targetElement);
+        if(!navigationList.classList.contains('hidden')){
+            navigationList.classList.add("hidden");
+        }
+    })
+}

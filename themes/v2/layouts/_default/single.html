@@ -29,7 +29,7 @@
 
 
       {{/* Hugo uses Go's date formatting is set by example. Here are two formats */}}
-      <div class="mb-4 mt-2">
+      <div class="mb-12 mt-2">
         <img class="inline-block mr-2 -mt-1 icon-calendar" src="/images/icon-feather-calendar.png" alt="" srcset="">
         <date class="inline-block mr-6">{{ .Date.Format "Jan 2, 2006" }}</date>
         {{ if (or (eq (.Param "show_reading_time") true) (eq $section.Params.show_reading_time true) )}}
@@ -45,12 +45,21 @@
       {{- .Content -}}
       {{- partial "tags.html" . -}}
       <div class="mt6 instapaper_ignoref">
-      {{ if .Site.DisqusShortname }}
-        {{ template "_internal/disqus.html" . }}
-      {{ end }}
-      {{ if .Site.Params.commentoEnable }}
-        {{- partial "commento.html" . -}}
-      {{ end }}
+
+        <div id='discourse-comments'></div>
+
+        <script type="text/javascript">
+          DiscourseEmbed = { discourseUrl: 'https://chat.codingo.com/',
+                             discourseEmbedUrl: {{ printf .RelPermalink | absURL }} };
+        
+          (function() {
+            var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+            d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+          })();
+        </script>
+
+
       </div>
     </div>
 
