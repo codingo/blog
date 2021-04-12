@@ -123,18 +123,18 @@ Often, you'll hear FFUF compared to tools such as [dirb](https://tools.kali.org/
 ### Install from Source
 If you wish to install the latest stable build from the `main` branch of the ffuf project, you can do so with:
 
-```
+{{< highlight bash "linenos=table" >}}
 go get github.com/ffuf/ffuf
-```
+{{< / highlight >}}
 
 After installing, ffuf will be available in `~/go/bin/ffuf`. 
 
 ### Upgrading from Source
 Much like compiling from source, upgrading from source is not much more complicated, with the only change being the addition of the `-u` flag. Upgrading from source should be done with:
 
-```
+{{< highlight bash "linenos=table" >}}
 go get -u github.com/ffuf/ffuf  
-```
+{{< / highlight >}}
 
 ### Kali Linux APT Repositories
 If you're using [Kali Linux](https://www.kali.org/) you'll find FFUF in the [apt](https://en.wikipedia.org/wiki/APT_(software)) repositories, allowing you to install by running `sudo apt-get install ffuf`, this will present an output similar to the following:
@@ -143,9 +143,9 @@ If you're using [Kali Linux](https://www.kali.org/) you'll find FFUF in the [apt
 
 After installation, you can verify the version installed by using:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -V
-```
+{{< / highlight >}}
 
 If you also installed from source you'll note that the version you're operating is not the same as the version in your `$GOPATH` (`~/go/bin`). APT builds are normally older, but considered more stable builds of applications however can be less feature rich because of this.
 

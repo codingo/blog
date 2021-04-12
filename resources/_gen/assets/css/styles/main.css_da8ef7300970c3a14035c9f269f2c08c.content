@@ -17542,6 +17542,11 @@ h2 {
           animation: bounce 1s infinite;
 }
 
+.video-logo-compact-container {
+  display: block;
+  transform: scale(0.75) translate(-50px, 0px);
+}
+
 #background-ears {
   top: 100%;
   position: absolute;

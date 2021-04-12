@@ -2,9 +2,12 @@
 <div class="py-6 bg-dark sticky -top-2 z-10">
     <header class="content-container">
         <nav class="main-navigation" role="navigation">
-            <div class="flex">
-                <a href="{{ .Site.Home.RelPermalink }}" class="flex-none">
-                    <img class="logo-lockup" src="/images/codingo-logo-lockup.png" alt="CODINGO">
+            <div class="flex items-center">
+                <a class="video-logo-compact-container" href="{{ .Site.Home.RelPermalink }}" class="flex-none">    
+                    <video id="video-logo-compact" preload="true" autoplay="autoplay" muted>
+                        <source src="/video/codingo-logo-compact.webm" type="video/webm">
+                        <img src="/images/codingo-logo-lockup.png" alt=""><br />
+                    </video>
                 </a>
                 <div class="flex-grow"></div>
                 <div class="flex-none relative navigation-menu">
