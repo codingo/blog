@@ -95,44 +95,33 @@
     newMesh: null,
     MESH: {
       width: 1.4,
-      height: 1.4,
+      height: 1.8,
       depth: 10,
-      segments: 20,
-      slices: 20,
+      segments: 12,
+      slices: 10,
       xRange: 0.23,
       yRange: 0.24,
       zRange: 1,
-      ambient: "#c80404",
+      ambient: "#100089",
       diffuse: "#FFFFFF",
-      speed: 2e-4,
+      speed: 4e-4,
       colorHue: 80
     },
     initialise: (container) => {
       let fn = polygons;
+      fn.center = FSS.Vector3.create();
       fn.container = container;
       fn.siteContainer = container.parentElement;
       fn.renderer = new FSS.CanvasRenderer();
       fn.scene = new FSS.Scene();
       fn.light = new FSS.Light("#880066", "#c80404");
-      fn.geometry = new FSS.Plane(fn.siteContainer.offsetWidth + 200, fn.siteContainer.offsetHeight + 200, 12, 10);
-      fn.material = new FSS.Material("#100089", "#FFFFFF");
-      fn.mesh = new FSS.Mesh(polygons.geometry, polygons.material);
       fn.start = Date.now();
       fn.now = fn.start;
-      fn.newgeometry = null;
-      fn.newMesh = null;
-      fn.container.setAttribute("style", `height:${fn.siteContainer.offsetHeight}px`);
-      fn.scene.add(fn.mesh);
+      fn.container.setAttribute("style", `height:${fn.siteContainer.clientHeight}px`);
       fn.scene.add(fn.light);
       fn.light.mass = Math.randomInRange(0.5, 1.4);
-      fn.light.setPosition(fn.container.offsetWidth / 2.4, fn.container.offsetHeight / 2.4, 300);
-      var v, vertex;
-      for (v = fn.geometry.vertices.length - 1; v >= 0; v--) {
-        vertex = fn.geometry.vertices[v];
-        vertex.anchor = FSS.Vector3.clone(vertex.position);
-        vertex.step = FSS.Vector3.create(Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1));
-        vertex.time = Math.randomInRange(0, Math.PIM2);
-      }
+      fn.light.setPosition(fn.container.clientWidth / 2.4, fn.container.clientHeight / 2.4, 300);
+      fn.createMesh();
       fn.container.appendChild(fn.renderer.element);
       window.addEventListener("resize", fn.resize);
       fn.animate();
@@ -140,7 +129,25 @@
     },
     resize: () => {
       let fn = polygons;
-      fn.renderer.setSize(fn.siteContainer.offsetWidth, fn.siteContainer.offsetHeight);
+      fn.renderer.setSize(fn.siteContainer.clientWidth, fn.siteContainer.clientHeight);
+      FSS.Vector3.set(fn.center, fn.renderer.halfWidth, fn.renderer.halfHeight);
+      fn.createMesh();
+    },
+    createMesh: () => {
+      let fn = polygons;
+      fn.scene.remove(fn.mesh);
+      fn.renderer.clear();
+      fn.geometry = new FSS.Plane(fn.MESH.width * fn.renderer.width, fn.MESH.height * fn.renderer.height, fn.MESH.segments, fn.MESH.slices);
+      fn.material = new FSS.Material(fn.MESH.ambient, fn.MESH.diffuse);
+      fn.mesh = new FSS.Mesh(fn.geometry, fn.material);
+      fn.scene.add(fn.mesh);
+      var v, vertex;
+      for (v = fn.geometry.vertices.length - 1; v >= 0; v--) {
+        vertex = fn.geometry.vertices[v];
+        vertex.anchor = FSS.Vector3.clone(vertex.position);
+        vertex.step = FSS.Vector3.create(Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1));
+        vertex.time = Math.randomInRange(0, Math.PIM2);
+      }
     },
     animate: () => {
       let fn = polygons;
@@ -203,7 +210,8 @@
     let compactLogo = document.getElementById("video-logo-compact");
     let niceClassyName = "its-your-time-to-shine";
     window.addEventListener("scroll", () => {
-      if (window.pageYOffset >= secondMenu.offsetTop) {
+      let fromTop = secondMenu.offsetParent.offsetTop;
+      if (window.pageYOffset >= fromTop) {
         if (!secondMenu.classList.contains(niceClassyName)) {
           secondMenu.classList.toggle(niceClassyName);
           compactLogo.currentTime = 0;
