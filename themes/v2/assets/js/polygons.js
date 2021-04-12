@@ -14,45 +14,68 @@ let polygons = {
   newMesh : null,
   MESH : {
     width: 1.4,
-    height: 1.4,
+    height: 1.8,
     depth: 10,
-    segments: 20,
-    slices: 20,
+    segments: 12,
+    slices: 10,
     xRange: 0.23,
     yRange: 0.24,
     zRange: 1.0,
-    ambient: '#c80404',
+    ambient: '#100089',
     diffuse: '#FFFFFF',
-    speed: 0.0002,
+    speed: 0.0004,
     colorHue: 80
   },
 
   initialise: (container)=>{
     // Note: must be a nice way to do this, check support for classes
     let fn = polygons;
-
+    fn.center = FSS.Vector3.create();
     fn.container =  container;
     fn.siteContainer =  container.parentElement;
     fn.renderer =  new FSS.CanvasRenderer();
     fn.scene =  new FSS.Scene();
     fn.light =  new FSS.Light('#880066', '#c80404');
-    fn.geometry =  new FSS.Plane(fn.siteContainer.offsetWidth + 200 , fn.siteContainer.offsetHeight + 200, 12, 10);
-    fn.material =  new FSS.Material('#100089', '#FFFFFF');
-    fn.mesh =  new FSS.Mesh(polygons.geometry, polygons.material);
+    // fn.geometry =  new FSS.Plane(fn.siteContainer.clientWidth + 200 , fn.siteContainer.clientHeight + 200, 12, 10);
     fn.start = Date.now();
     fn.now = fn.start;
-    fn.newgeometry = null;
-    fn.newMesh = null;
 
-    fn.container.setAttribute("style",`height:${fn.siteContainer.offsetHeight}px`);
 
-    fn.scene.add(fn.mesh);
+    fn.container.setAttribute("style",`height:${fn.siteContainer.clientHeight}px`);
+
     fn.scene.add(fn.light);
     // scene.add(light2);
     
     fn.light.mass = Math.randomInRange(0.5, 1.4);
     // light.setPosition(300*Math.sin(now*0.001), 200*Math.cos(now*0.0005), 60);
-    fn.light.setPosition(fn.container.offsetWidth / 2.4, fn.container.offsetHeight / 2.4 , 300 );
+    fn.light.setPosition(fn.container.clientWidth / 2.4, fn.container.clientHeight / 2.4 , 300 );
+    // Augment vertices for animation
+    
+    fn.createMesh();
+
+    fn.container.appendChild(fn.renderer.element);
+    window.addEventListener('resize', fn.resize);
+
+    fn.animate();
+    fn.resize();
+  },
+
+  resize: ()=>{
+    let fn = polygons;
+    fn.renderer.setSize(fn.siteContainer.clientWidth, fn.siteContainer.clientHeight);
+    FSS.Vector3.set(fn.center, fn.renderer.halfWidth, fn.renderer.halfHeight);
+    fn.createMesh();
+  },
+
+  createMesh: ()=>{
+    let fn = polygons;
+    fn.scene.remove(fn.mesh);
+    fn.renderer.clear();
+    fn.geometry = new FSS.Plane(fn.MESH.width * fn.renderer.width, fn.MESH.height * fn.renderer.height, fn.MESH.segments, fn.MESH.slices);
+    fn.material = new FSS.Material(fn.MESH.ambient, fn.MESH.diffuse);
+    fn.mesh = new FSS.Mesh(fn.geometry, fn.material);
+    fn.scene.add(fn.mesh);
+
     // Augment vertices for animation
     var v, vertex;
     for (v = fn.geometry.vertices.length - 1; v >= 0; v--) {
@@ -65,22 +88,6 @@ let polygons = {
       );
       vertex.time = Math.randomInRange(0, Math.PIM2);
     }
-
-
-    fn.container.appendChild(fn.renderer.element);
-    window.addEventListener('resize', fn.resize);
-
-    fn.animate();
-    fn.resize();
-  },
-
-  resize: ()=>{
-    let fn = polygons;
-    fn.renderer.setSize(fn.siteContainer.offsetWidth, fn.siteContainer.offsetHeight);
-    // scene.remove(mesh);
-    // geometry = new FSS.Plane(siteContainer.offsetWidth + 200 , siteContainer.offsetHeight + 200, 12, 10);
-    // mesh = new FSS.Mesh(newgeometry, material);
-    // scene.add(mesh);
   },
 
   animate: ()=>{
