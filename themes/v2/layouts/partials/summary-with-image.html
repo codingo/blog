@@ -24,7 +24,7 @@
         <div class="mb-4">
           {{ .Summary }}
         </div>
-        <a href="{{.Permalink}}" class="inline-block border rounded py-2 px-3 hover:bg-secondary transition-colors duration-200">{{ $.Param "read_more_copy" | default (i18n "readMore") }}</a>
+        <a href="{{.Permalink}}" class="btn-ghost">{{ $.Param "read_more_copy" | default (i18n "readMore") }}</a>
         {{/* TODO: add author
         <p class="f6 lh-copy mv0">By {{ .Author }}</p> */}}
       </div>

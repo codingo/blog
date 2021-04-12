@@ -32,7 +32,7 @@ let polygons = {
     let fn = polygons;
 
     fn.container =  container;
-    fn.siteContainer =  document.getElementById('site-intro');
+    fn.siteContainer =  container.parentElement;
     fn.renderer =  new FSS.CanvasRenderer();
     fn.scene =  new FSS.Scene();
     fn.light =  new FSS.Light('#880066', '#c80404');

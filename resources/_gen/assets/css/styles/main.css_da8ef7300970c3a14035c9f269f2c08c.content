@@ -679,6 +679,65 @@ h2 {
   left: 50%;
 }
 
+.additional-posts {
+  border: 1px solid #f9fafb;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.additional-posts h2 {
+  font-size: 1.1em;
+  line-height: 1.2em;
+}
+
+#second-menu {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-60px);
+}
+
+#second-menu.its-your-time-to-shine {
+  transition: ease-in-out 400ms transform, ease-in-out 250ms opacity;
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: all;
+}
+
+.btn-ghost:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
+}
+
+.btn-ghost{
+  border-radius: 0.25rem;
+  border-width: 1px;
+  display: inline-block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 200ms;
+}
+
+#revue-embed form {
+  border-radius: 0 0 3px 3px;
+}
+
+#revue-embed form .revue-form-field {
+  border: solid 1px #0a6d53;
+}
+
+#revue-embed form .revue-form-actions {
+  color: #050315;
+}
+
+#fss-container-footer {
+  height: 500px;
+}
+
 @media (min-width: 1024px) {
   .post-summary {
     width: 48%;
@@ -690,6 +749,12 @@ h2 {
   .post-summaries {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .revue-form-group {
+    display: inline-block;
+    width: 40%;
+    margin-right: 10px;
   }
 }
 

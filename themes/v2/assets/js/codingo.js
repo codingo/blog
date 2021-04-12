@@ -1,40 +1,69 @@
 
-
 // Polygon Rendering
 import { default as Poly } from './polygons';
-let container = document.getElementById('fss-container');
-if(container){
-    Poly.initialise(container);
-}
 
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    
+    let container = document.getElementById('fss-container');
+    if(container){
+        Poly.initialise(container);
+    }
 
-// Hamburger menu
-let hamburger = document.querySelector('.navigation-menu .hamburger');
-let navigationMenu = document.querySelector('.navigation-menu');
-let navigationList = document.querySelector('.navigation-menu .menu-list');
+    // let footer = document.getElementById('fss-container-footer');
+    // console.log(footer)
+    // if(footer){
+    //     console.log('footin found')
+    //     Poly.initialise(footer);
+    // }
 
-if(hamburger){
-    hamburger.addEventListener("click", (event)=>{
-        event.preventDefault();
-        navigationList.classList.toggle("hidden");
-    })
+    
+    
+    // Hamburger menu
+    let hamburger = document.querySelector('.navigation-menu .hamburger');
+    let navigationMenu = document.querySelector('.navigation-menu');
+    let navigationList = document.querySelector('.navigation-menu .menu-list');
 
-    // If clicked outside, then close the menu
-    document.addEventListener("click", (event)=>{
-        const flyoutElement = navigationMenu;
-        let targetElement = event.target; 
-        do {
-            if (targetElement == flyoutElement) {
-                return;
+    if(hamburger){
+        hamburger.addEventListener("click", (event)=>{
+            event.preventDefault();
+            navigationList.classList.toggle("hidden");
+        })
+
+        // If clicked outside, then close the menu
+        document.addEventListener("click", (event)=>{
+            const flyoutElement = navigationMenu;
+            let targetElement = event.target; 
+            do {
+                if (targetElement == flyoutElement) {
+                    return;
+                }
+                targetElement = targetElement.parentNode;
+            } while (targetElement);
+            if(!navigationList.classList.contains('hidden')){
+                navigationList.classList.add("hidden");
             }
-            targetElement = targetElement.parentNode;
-        } while (targetElement);
-        if(!navigationList.classList.contains('hidden')){
-            navigationList.classList.add("hidden");
+        })
+    }
+
+    let secondMenu = document.getElementById('second-menu');
+    let niceClassyName = 'its-your-time-to-shine';
+    window.addEventListener("scroll", ()=>{
+        console.log(window.pageYOffset, secondMenu.offsetTop)
+        if(window.pageYOffset >= secondMenu.offsetTop){
+            if(!secondMenu.classList.contains(niceClassyName)){
+                secondMenu.classList.toggle(niceClassyName);
+            }
+        }else{
+            if(secondMenu.classList.contains(niceClassyName)){
+                secondMenu.classList.toggle(niceClassyName);
+            }
         }
     })
-}
 
+
+
+});
 
 document.addEventListener('sticky-change', e => {
     const header = e.detail.target;  // header became sticky or stopped sticking.

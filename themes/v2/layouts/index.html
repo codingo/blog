@@ -1,6 +1,43 @@
 {{ define "main" }}
-<h1 class="container mx-auto mt-5 text-3xl">{{ .Content }}</h1>
 
+
+
+<header id="second-menu" class="sticky top-0 bg-dark z-10">
+  <nav class="main-navigation content-container" role="navigation">
+      <div class="flex items-center">
+          <a class="video-logo-compact-container" href="{{ .Site.Home.RelPermalink }}" class="flex-none">    
+              <video id="video-logo-compact" preload="true" autoplay="autoplay" muted>
+                  <source src="/video/codingo-logo-compact.webm" type="video/webm">
+                  <img src="/images/codingo-logo-lockup.png" alt=""><br />
+              </video>
+          </a>
+          <div class="flex-grow"></div>
+          <div class="flex-none relative navigation-menu">
+              <div class="cursor-pointer hamburger">
+                  <svg class="fill-current text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                  </svg>
+              </div>
+              <div class="menu-list absolute bg-secondary p-2 right-0 hidden">
+                  {{ if .Site.Menus.main }}
+                  <ul class="divide-y divide-red-400">
+                      {{ range .Site.Menus.main }}
+                      <li>
+                      <a class="py-4 px-8 block cursor-pointer" href="{{ .URL }}" title="{{ .Name }}">
+                          {{ .Name }}
+                      </a>
+                      </li>
+                      {{ end }}
+                  </ul>
+                  {{ end }}
+              </div>
+          </div>
+      </div>
+  </nav>
+</header>
+
+
+<h1 class="container mx-auto mt-5 text-3xl">{{ .Content }}</h1>
 
 {{/* Define a section to pull recent posts from. For Hugo 0.20 this will default to the section with the most number of
 pages. */}}
@@ -42,22 +79,24 @@ pages. */}}
     {{ end }}
   </section>
 
+
+
   {{ if ge $section_count (add $n_posts 1) }}
   <section class="">
     <h1 class="">{{ i18n "more" }}</h1>
-    {{/* Now, range through the next four after the initial $n_posts items. Nest the requirements, "after" then "first"
-    on the outside */}}
-    {{ range (first 4 (after $n_posts $section)) }}
-    <h2 class="">
-      <a href="{{ .Permalink }}" class="">
-        {{ .Title }}
-      </a>
-    </h2>
+    {{ range (first 6 (after 6 $section)) }}
+    <div class="additional-posts">
+      <h2>
+        <a href="{{ .Permalink }}" class="">
+          {{ .Title }}
+        </a>
+      </h2>
+    </div>
     {{ end }}
-
+    
     {{/* As above, Use $section_name to get the section title, and URL. Use "with" to only show it if it exists */}}
     {{ with .Site.GetPage "section" $section_name }}
-    <a href="{{ .Permalink }}" class="">{{ i18n "allTitle" . }}</a>
+    <a href="{{ .Permalink }}" class="btn-ghost">{{ i18n "allTitle" . }}</a>
     {{ end }}
   </section>
   {{ end }}
