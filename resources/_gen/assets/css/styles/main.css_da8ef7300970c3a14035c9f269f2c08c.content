@@ -746,10 +746,18 @@ h2 {
   display: inline-block;
   width: 1em;
   margin-left: -1em;
+  --tw-text-opacity: 1;
+  color: rgba(16, 185, 129, var(--tw-text-opacity));
 }
 
 .markdown ul li a {
   display: inline-grid;
+}
+
+.markdown .table-of-contents > ul > li {
+  border: 1px solid #154c3a;
+  margin-bottom: 12px;
+  padding: 4px 6px;
 }
 
 .markdown .table-of-contents ul {
@@ -786,12 +794,7 @@ h2 {
   color: rgba(249, 250, 251, var(--tw-text-opacity));
 }
 
-.markdown .table-of-contents ul li ul li a {
-  --tw-text-opacity: 1;
-  color: rgba(249, 250, 251, var(--tw-text-opacity));
-}
-
-.markdown .table-of-contents ul ul li::before {
+.markdown .table-of-contents ul li ul li::before {
   content: "▪";
   display: inline-block;
   width: 1em;
@@ -800,9 +803,14 @@ h2 {
   color: rgba(16, 185, 129, var(--tw-text-opacity));
 }
 
-.markdown .table-of-contents ul ul li::before a {
+.markdown .table-of-contents ul li ul li::before a {
   --tw-text-opacity: 1;
   color: rgba(16, 185, 129, var(--tw-text-opacity));
+}
+
+.markdown .table-of-contents ul li ul li a {
+  --tw-text-opacity: 1;
+  color: rgba(249, 250, 251, var(--tw-text-opacity));
 }
 
 .markdown .table-of-contents ul {

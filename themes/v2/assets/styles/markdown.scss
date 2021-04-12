@@ -60,6 +60,7 @@
                 display: inline-block; 
                 width: 1em;
                 margin-left: -1em;
+                @apply text-secondary;
             }
             a {
                 display: inline-grid;
@@ -69,6 +70,13 @@
 
 
     .table-of-contents{
+
+        & > ul > li{
+            border: 1px solid #154c3a;
+            margin-bottom: 12px;
+            padding: 4px 6px;
+        }
+        
         ul{
             padding-left: 0px;
             &::before{
@@ -88,25 +96,24 @@
     
                 ul {
                     padding-left: 25px;
-    
+
                     li{
+                        &::before {
+                            content: "▪";
+                            display: inline-block; 
+                            width: 1em;
+                            margin-left: -1em;
+                            @apply text-secondary;
+                            a{
+                                @apply text-secondary;
+                            }
+                        }
                         font-weight: normal;
                         @apply text-light;
                         a{
                             @apply text-light;
                         }
                     }
-                }
-            }
-
-            ul li::before {
-                content: "▪";
-                display: inline-block; 
-                width: 1em;
-                margin-left: -1em;
-                @apply text-secondary;
-                a{
-                    @apply text-secondary;
                 }
             }
         }

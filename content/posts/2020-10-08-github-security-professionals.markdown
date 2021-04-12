@@ -14,6 +14,7 @@ The intention of this guide is to arm you with the knowledge of how you can get 
 {{< youtube BYV1iU0D9qg >}}
 
 # Table of Contents
+{{< toc >}}
 - [What is Github?](#what-is-github-)
   * [But what is Git?](#but-what-is-git-)
 - [How do I get started?](#how-do-i-get-started-)
@@ -27,7 +28,7 @@ The intention of this guide is to arm you with the knowledge of how you can get 
   * [Can-I-Take-Over-XYZ](#can-i-take-over-xyz)
   * [Keyhacks](#keyhacks)
   * [Infosec Community Repositories](#infosec-community-repositories)
-  
+{{< / toc >}}
 # What is Github?
 Glad you asked! [Github](https://github.com/) is self purported to be the worlds leading software development platform. In my own words, it's a programming social network where you can receive the benefit of open source projects others have contributed to, contribute to yourself, or host your own code upon. This isn't just limited to code also, some informational resources can be found here, completely community driven.
 
