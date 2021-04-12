@@ -1,6 +1,6 @@
 .markdown{
 
-    p{
+    p, div.highlight{
         @apply mb-10;
     }
     
@@ -9,7 +9,7 @@
     }
 
     pre{
-        @apply overflow-x-auto p-4 mb-10 text-xs;
+        @apply overflow-x-auto p-2 text-xs;
     }
 
     h1, h2, h3, h4, h5, h6{
@@ -35,6 +35,14 @@
             @apply border-0;
         }
     }
+
+    p > code {
+        color: #0fb981;
+        font-size: 0.9em;
+        padding: 2px;
+        background: #ffffff1f;
+    }
+
 
     a{
         white-space: break-spaces;

@@ -69,7 +69,7 @@ This guide is a large summary of the information security tool, FFUF. This is al
 - [Importing Requests](#importing-requests)
 - [Contributing to this guide](#contributing-to-this-guide)
   * [Contributors](#contributors)
-{{< /toc >}}
+{{< / toc >}}
 
 ## Other Sources / Credit
 Understandably, putting this guide and the associated video content together has taken quite a long time (in the order of months, as it's my first steps into video). Throughout that time some other great creators have put out other content, I heavily recommend watching. This content has inspired this project further, and I don't think it would be what it is without their input. Notably, and a video I recommend watching in addition to my own for a more complete picture is Katie Paxton-Fear's [How to Use FFUF](https://www.youtube.com/watch?v=aN3Nayvd7FU) YouTube video.
@@ -179,12 +179,12 @@ As you progress in your journey, be sure to revisit this and look into tooling a
 ### Your first Directory Brute Force
 For this example, let's create a simple wordlist. In this case, we'll put the following items into it:
 
-```
+{{< highlight bash "linenos=table" >}}
 test
 test1
 admin
 panel
-```
+{{< / highlight >}}
 
 Save this in the same location where you intend to run FFUF from, as `wordlist.txt`.
 
@@ -192,9 +192,9 @@ For this example, we'll also brute force against this website, codingo.io. FFUF 
 
 Putting this altogether, the command for our first directory brute force will be:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://codingo.io/FUZZ -w ./wordlist.txt
-```
+{{< / highlight >}}
 
 When we run this, we should receive similar to the following:
 
@@ -209,9 +209,10 @@ Congratulations! You've just brute forced a website and discovered your first en
 ## Recursion
 Recursion is essentially performing the same task again, but in this context, at another layer. For example, in our item above, we identified an admin panel, but what if we want to scan further under that? One method, could be to scan again, but by changing our URL and fuzzing endpoint to the following:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://codingo.io/admin/FUZZ -w ./wordlist.txt
-```
+{{< / highlight >}}
+
 
 Now whilst this will acheive our goal, it doesn't scale well. When bug hunting, we may find 20, 30, or even 100 directories, all which we want to explore at another level.
 
@@ -219,9 +220,9 @@ Enter, recursion. By setting the flag `recursion` we tell FFUF to take our scan,
 
 When we run this command again, but with the recursion flag, we can see the following:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://codingo.io/FUZZ -w ./wordlist -recursion
-```
+{{< / highlight >}}
 
 ![FFUF](/images/ffuf/ffuf-recursion.png)
 
@@ -232,9 +233,10 @@ Often when you find a directorty you're also going to want to look for file exte
 
 Extensions in FFUF are specified with the `e` parameter and are essentially suffixs to your wordlist (as not all extensions start with a `.`). For example, expanding upon our original scan with the following:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://codingo.io/FUZZ -w ./wordlist -recursion -e .bak
-```
+{{< / highlight >}}
+
 
 This now presents new hits! As shown below:
 
@@ -243,23 +245,23 @@ This now presents new hits! As shown below:
 ## Fuzzing Multiple Locations
 By default, FFUF will only look for a single location to fuzz, donate by the term `FUZZ`. Reviewing our original example, this was the approach taken to FUZZ the directory name:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://codingo.io/FUZZ -w ./wordlist.txt
-```
+{{< / highlight >}}
 
 But what if we want to fuzz multiple locations? This can be acomplished by comining the ability to define what a fuzz location would be with a wordlist, as well as using multiple wordlists.
 
 For example, in the following we're using the term `W1` to fuzz our location, instead of `FUZZ`:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://codingo.io/W1 -w ./wordlist.txt:W1
-```
+{{< / highlight >}}
 
 This runs the same scan as our previous example, except `W1` is now our insert instead of `FUZZ`. Now, let's assume that instead of `codingo.io` we had identified multiple websites we wanted to check over at the same time. For that, we could create a wordlist of all of the domains we wanted to test, and use the following:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://W2/W1 -w ./wordlist.txt:W1,./domains.txt:W2
-```
+{{< / highlight >}}
 
 This would scan each of the domains in our `domains.txt` files using the wordlist from `wordlist.txt`, allowing us to run at scale without needing the use of outside scripting or applications.
 
@@ -270,18 +272,18 @@ Why does this matter you wonder? Let me give you an example:
 Lets say we have a wordlist with 1000 domains `domains.txt` and a wordlist with 1000 directories `wordlist.txt`.
 
 If we run:
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://FUZZDOMAIN/FUZZDIR -w ./wordlist.txt:FUZZDIR,./domains.txt:FUZZDOMAIN
-```
+{{< / highlight >}}
 
 ffuf will try every directory for the first domain, then every directory on the second domain.
 When running with many threads, this means sending 1000 requests to the same server in a very short amount of time. 
 This often leads to getting rate-limited or banned.
 
 If we on the other hand swap the order of the wordlists and run:
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://FUZZDOMAIN/FUZZDIR -w ./domains.txt:FUZZDOMAIN,./wordlist.txt:FUZZDIR 
-```
+{{< / highlight >}}
 
 ffuf will try the first directory on all domains, before moving on to the next directory and trying that on all domains.
 This way you can send more requests without overloading the target servers.
@@ -291,16 +293,17 @@ This way you can send more requests without overloading the target servers.
 
 In older versions of FFUF there is a bug here whereby the `w` flag needs to be made use of multiple times for this to work as intended. If you receive the error:
 
-```
+{{< highlight bash >}}
 Encountered error(s): 1 errors occurred.
 * Keyword W1, defined, but not found in headers, method, URL or POST data.
-```
+{{< / highlight >}}
+
 
 Then you should instead either upgrade FFUF to the latest version, or use the `w` flag multiple times, like so:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://W2/W1 -w ./wordlist.txt:W1 -w ./domains.txt:W2
-```
+{{< / highlight >}}
 
 More information can be found here: https://github.com/ffuf/ffuf/issues/290
 
@@ -322,7 +325,7 @@ By default FFUF will use 40 threads to execute. Essentially, this means that FFU
 ## Using Silent Mode for Passing Results 
 By default FFUF will strip colour from results (unless you enable it with the `-c` flag). This makes results easy to pass to other application, for additional work. One challenge here, is the header information, essentially:
 
-```
+{{< highlight bash "linenos=table" >}}
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -342,24 +345,26 @@ ________________________________________________
  :: Threads          : 40
  :: Matcher          : Response status: 200,204,301,302,307,401,403
 ________________________________________________
-```
+{{< / highlight >}}
+
 
 and the footer:
 
-```
+{{< highlight bash "linenos=table" >}}
 :: Progress: [3/3] :: Job [1/1] :: 0 req/sec :: Duration: [0:00:10] :: Errors: 0 ::
-```
+{{< / highlight >}}
 
 To remove this, and only show results that line up with the `matcher` filters, you can use the silent flag, `-s`. This flag will enforce only successful hits to be shown. For example, our command from earlier, if exapnded with `-s` becomes:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -u https://codingo.io/FUZZ -w ./wordlist.txt -s
-```
+{{< / highlight >}}
 
 Which will then only show the result:
-```
+{{< highlight bash >}}
 admin
-```
+{{< / highlight >}}
+
 
 As that responds with a `301` request, which is within our `matcher` filters.
 
@@ -370,9 +375,10 @@ The `ac` flag in FFUF can be used to automatically calibrate filtering of reques
 ### Custom Automatic Calibration Filtering
 In addition to the `ac` flag, FFUF allows you to provide the seed request to build autocalibration against, instead of using pre-flight checks. A good example where this shines, is with Virtual Host Scanning. When checking for Virtual Hosts (VHosts), you are seeking responses that don't match the host request. If we were to do that with `acc`, we could use the following:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -w vhostnames.txt -u https://target -H "Host: FUZZ. target" -acc "www"
-```
+{{< / highlight >}}
+
 
 This would send a preflight check to our target to capture the content-length and response code of `www`, and then highlight only responses which have a different content length that return from our wordlist. This greatly helps to eliminate false positives, and in these types of cases is more accurate than `ac` which would use random strings to capture the response, and is unlikely to be as accurate for this type of (and other types of) fuzzing activity.
 
@@ -433,15 +439,15 @@ When using a remote VPS you'll occasionally hit decisions in your testing that w
 
 First connect to your remote VPS over SSH server using:
 
-```
+{{< highlight bash "linenos=table" >}}
 ssh -R 8888:localhost:8080 user@remotevps
-```
+{{< / highlight >}}
 
 And then run FFUF with the following:
 
-```
+{{< highlight bash "linenos=table" >}}
 ~/go/bin/ffuf -u http://codingo.io/FUZZ -w ./wordlist -replay-proxy http://127.0.0.1:8888
-```
+{{< / highlight >}}
 
 Since we bound port 8888 to relay over our reverse SSH tunnel to our remote burp instance, on port 8080, this will then replay back in Burp Suite.
 
@@ -475,15 +481,15 @@ As you can see when compared to the clusterbomb atack, the pitchfork attack work
 ### Using Silent and Tee
 If you want to print results only, without all of the padding, the `s` flag, or silent mode, works great for this. For example:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -request /tmp/request.txt -w ./wordlist.txt -s
-```
+{{< / highlight >}}
 
 With our original example, will only output `admin`, as it's the only successful match. This can also be useful to pass to other tools, however when doing so I suggest also using [`tee`](https://en.wikipedia.org/wiki/Tee_(command)). The `tee` command will output the results to console, whilst also redirecting it as `stdout`, allowing other applications to consume it. For example, the following:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -request /tmp/request.txt -w ./wordlist.txt -s | tee ./output.txt
-```
+{{< / highlight >}}
 
 Would output to the console and write to output.txt. This is a useful trick for a number of tools, including those that don't stream output, to allow you to see results in realtime, whilst also streaming them to a file.
 
@@ -506,9 +512,9 @@ Once we've saved the file, we then need to open it in our favorite editor, and a
 
 We can then open our request in FFUF, and instead of passing cookie information or a URL, we can use `request` to feed it the information in our saved request. In this case, this would look like the following:
 
-```
+{{< highlight bash "linenos=table" >}}
 ffuf -request /tmp/request.txt -w ./wordlist.txt
-```
+{{< / highlight >}}
 
 ## Contributing to this guide
 This guide is open source, maintained on Github. If you'd like to contribute to this guide, or to make a correction, you can do so here: https://github.com/codingo/codingo.github.io

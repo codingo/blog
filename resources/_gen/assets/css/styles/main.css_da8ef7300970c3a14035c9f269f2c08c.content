@@ -659,7 +659,7 @@ h2 {
   height: 28px;
 }
 
-.markdown p {
+.markdown p, .markdown div.highlight {
   margin-bottom: 2.5rem;
 }
 
@@ -674,9 +674,8 @@ h2 {
 .markdown pre {
   font-size: 0.75rem;
   line-height: 1rem;
-  margin-bottom: 2.5rem;
   overflow-x: auto;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6 {
@@ -718,6 +717,13 @@ h2 {
 
 .markdown table tr:last-child:not(tr:first-child), .markdown table td:last-child, .markdown table th:last-child{
   border-width: 0px;
+}
+
+.markdown p > code {
+  color: #0fb981;
+  font-size: 0.9em;
+  padding: 2px;
+  background: #ffffff1f;
 }
 
 .markdown a {
