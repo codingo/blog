@@ -1,7 +1,5 @@
 {{ define "main" }}
 
-
-
 <header id="second-menu" class="sticky top-0 bg-dark z-10">
   <nav class="main-navigation content-container" role="navigation">
       <div class="flex items-center">
@@ -78,11 +76,12 @@ pages. */}}
     </div>
     {{ end }}
   </section>
+</div>
 
 
-
+<div class="content-container">
   {{ if ge $section_count (add $n_posts 1) }}
-  <section class="">
+  <section class="more-posts">
     <h1 class="">{{ i18n "more" }}</h1>
     {{ range (first 6 (after 6 $section)) }}
     <div class="additional-posts">
@@ -98,10 +97,10 @@ pages. */}}
     {{ with .Site.GetPage "section" $section_name }}
     <a href="{{ .Permalink }}" class="btn-ghost">{{ i18n "allTitle" . }}</a>
     {{ end }}
+    {{ end }}
   </section>
-  {{ end }}
-
 </div>
+
 {{ end }}
 
 {{ end }}

@@ -18,7 +18,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // }
 
     
-    
     // Hamburger menu
     let hamburger = document.querySelector('.navigation-menu .hamburger');
     let navigationMenu = document.querySelector('.navigation-menu');
@@ -50,7 +49,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let compactLogo = document.getElementById('video-logo-compact');
     let niceClassyName = 'its-your-time-to-shine';
     window.addEventListener("scroll", ()=>{
-        if(window.pageYOffset >= secondMenu.offsetTop){
+        // console.dir(secondMenu.offsetParent.offsetTop)
+        let fromTop = secondMenu.offsetParent.offsetTop;
+        // console.log(window.pageYOffset, fromTop)
+        if(window.pageYOffset >= fromTop){
             if(!secondMenu.classList.contains(niceClassyName)){
                 secondMenu.classList.toggle(niceClassyName);
                 compactLogo.currentTime = 0;
@@ -62,8 +64,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
         }
     })
-
-
 
 });
 

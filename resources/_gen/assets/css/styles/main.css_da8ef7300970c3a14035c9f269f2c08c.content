@@ -660,6 +660,19 @@ h2 {
   height: 28px;
 }
 
+#site-intro, #main-content {
+  position: relative;
+  z-index: 1;
+}
+
+#main-content {
+  z-index: 2;
+}
+
+section.more-posts {
+  margin: 40px 0px;
+}
+
 .video-logo-compact-container {
   display: block;
   transform: scale(0.75) translate(-50px, 0px);
@@ -672,7 +685,9 @@ h2 {
 }
 
 #background-ears {
-  top: 100%;
+  top: 106%;
+  width: 100%;
+  max-width: none;
   position: absolute;
   z-index: 6;
   transform: translateY(-220px) translateX(-50%);
@@ -747,6 +762,11 @@ h2 {
 }
 
 @media (min-width: 1024px) {
+  #background-ears {
+    top: 98%;
+    width: 120%;
+  }
+
   .post-summary {
     width: 48%;
     padding: 16px;
@@ -759,10 +779,24 @@ h2 {
     flex-wrap: wrap;
   }
 
+  #revue-embed {
+    margin-top: 3.5rem;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
   .revue-form-group {
     display: inline-block;
     width: 40%;
     margin-right: 10px;
+  }
+
+  .main-navigation {
+    padding: 0 11px;
+  }
+
+  section.more-posts {
+    margin: 40px 10px;
   }
 }
 
