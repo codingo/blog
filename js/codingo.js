@@ -197,4 +197,11 @@
       }
     });
   }
+  document.addEventListener("sticky-change", (e) => {
+    const header = e.detail.target;
+    const sticking = e.detail.stuck;
+    header.classList.toggle("shadow", sticking);
+    console.log("Sticket");
+    document.querySelector(".who-is-sticking").textContent = header.textContent;
+  });
 })();
