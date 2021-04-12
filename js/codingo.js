@@ -107,10 +107,10 @@
       speed: 2e-4,
       colorHue: 80
     },
-    initialise: (container2) => {
+    initialise: (container) => {
       let fn = polygons;
-      fn.container = container2;
-      fn.siteContainer = document.getElementById("site-intro");
+      fn.container = container;
+      fn.siteContainer = container.parentElement;
       fn.renderer = new FSS.CanvasRenderer();
       fn.scene = new FSS.Scene();
       fn.light = new FSS.Light("#880066", "#c80404");
@@ -171,32 +171,49 @@
   var polygons_default = polygons;
 
   // <stdin>
-  var container = document.getElementById("fss-container");
-  if (container) {
-    polygons_default.initialise(container);
-  }
-  var hamburger = document.querySelector(".navigation-menu .hamburger");
-  var navigationMenu = document.querySelector(".navigation-menu");
-  var navigationList = document.querySelector(".navigation-menu .menu-list");
-  if (hamburger) {
-    hamburger.addEventListener("click", (event) => {
-      event.preventDefault();
-      navigationList.classList.toggle("hidden");
-    });
-    document.addEventListener("click", (event) => {
-      const flyoutElement = navigationMenu;
-      let targetElement = event.target;
-      do {
-        if (targetElement == flyoutElement) {
-          return;
+  window.addEventListener("DOMContentLoaded", (event) => {
+    console.log("DOM fully loaded and parsed");
+    let container = document.getElementById("fss-container");
+    if (container) {
+      polygons_default.initialise(container);
+    }
+    let hamburger = document.querySelector(".navigation-menu .hamburger");
+    let navigationMenu = document.querySelector(".navigation-menu");
+    let navigationList = document.querySelector(".navigation-menu .menu-list");
+    if (hamburger) {
+      hamburger.addEventListener("click", (event2) => {
+        event2.preventDefault();
+        navigationList.classList.toggle("hidden");
+      });
+      document.addEventListener("click", (event2) => {
+        const flyoutElement = navigationMenu;
+        let targetElement = event2.target;
+        do {
+          if (targetElement == flyoutElement) {
+            return;
+          }
+          targetElement = targetElement.parentNode;
+        } while (targetElement);
+        if (!navigationList.classList.contains("hidden")) {
+          navigationList.classList.add("hidden");
         }
-        targetElement = targetElement.parentNode;
-      } while (targetElement);
-      if (!navigationList.classList.contains("hidden")) {
-        navigationList.classList.add("hidden");
+      });
+    }
+    let secondMenu = document.getElementById("second-menu");
+    let niceClassyName = "its-your-time-to-shine";
+    window.addEventListener("scroll", () => {
+      console.log(window.pageYOffset, secondMenu.offsetTop);
+      if (window.pageYOffset >= secondMenu.offsetTop) {
+        if (!secondMenu.classList.contains(niceClassyName)) {
+          secondMenu.classList.toggle(niceClassyName);
+        }
+      } else {
+        if (secondMenu.classList.contains(niceClassyName)) {
+          secondMenu.classList.toggle(niceClassyName);
+        }
       }
     });
-  }
+  });
   document.addEventListener("sticky-change", (e) => {
     const header = e.detail.target;
     const sticking = e.detail.stuck;
