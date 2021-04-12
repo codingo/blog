@@ -200,12 +200,14 @@
       });
     }
     let secondMenu = document.getElementById("second-menu");
+    let compactLogo = document.getElementById("video-logo-compact");
     let niceClassyName = "its-your-time-to-shine";
     window.addEventListener("scroll", () => {
-      console.log(window.pageYOffset, secondMenu.offsetTop);
       if (window.pageYOffset >= secondMenu.offsetTop) {
         if (!secondMenu.classList.contains(niceClassyName)) {
           secondMenu.classList.toggle(niceClassyName);
+          compactLogo.currentTime = 0;
+          compactLogo.play();
         }
       } else {
         if (secondMenu.classList.contains(niceClassyName)) {
