@@ -12,6 +12,7 @@ This guide is a large summary of the information security tool, FFUF. This is al
 {{< youtube iLFkxAmwXF0 >}}
 
 ## Table of Contents
+{{< toc >}}
 - [Other Sources / Credit](#other-sources---credit)
 - [Before we start](#before-we-start)
 - [What is FFUF, and What is it used for?](#what-is-ffuf--and-what-is-it-used-for-)
@@ -68,6 +69,7 @@ This guide is a large summary of the information security tool, FFUF. This is al
 - [Importing Requests](#importing-requests)
 - [Contributing to this guide](#contributing-to-this-guide)
   * [Contributors](#contributors)
+{{< /toc >}}
 
 ## Other Sources / Credit
 Understandably, putting this guide and the associated video content together has taken quite a long time (in the order of months, as it's my first steps into video). Throughout that time some other great creators have put out other content, I heavily recommend watching. This content has inspired this project further, and I don't think it would be what it is without their input. Notably, and a video I recommend watching in addition to my own for a more complete picture is Katie Paxton-Fear's [How to Use FFUF](https://www.youtube.com/watch?v=aN3Nayvd7FU) YouTube video.

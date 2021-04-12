@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap");
 
 /*! tailwindcss v2.0.4 | MIT License | https://tailwindcss.com */
@@ -653,6 +655,10 @@ h2 {
   line-height: 1.75rem;
 }
 
+.main-navigation .logo-lockup, .main-navigation .hamburger svg {
+  height: 28px;
+}
+
 .markdown p {
   margin-bottom: 2.5rem;
 }
@@ -671,6 +677,12 @@ h2 {
   margin-bottom: 2.5rem;
   overflow-x: auto;
   padding: 1rem;
+}
+
+.markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6 {
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgba(16, 185, 129, var(--tw-text-opacity));
 }
 
 .markdown h2 {
@@ -708,8 +720,91 @@ h2 {
   border-width: 0px;
 }
 
-.main-navigation .logo-lockup, .main-navigation .hamburger svg {
-  height: 28px;
+.markdown a {
+  white-space: break-spaces;
+  word-break: break-word;
+  color: #22c3e8;
+}
+
+.markdown ul {
+  margin-bottom: 1rem;
+  padding-left: 25px;
+}
+
+.markdown ul li {
+  padding-bottom: 2px;
+}
+
+.markdown ul li::before {
+  content: "▪";
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.markdown ul li a {
+  display: inline-grid;
+}
+
+.markdown .table-of-contents ul {
+  padding-left: 0px;
+}
+
+.markdown .table-of-contents ul::before {
+  content: '';
+}
+
+.markdown .table-of-contents ul li {
+  --tw-text-opacity: 1;
+  color: rgba(16, 185, 129, var(--tw-text-opacity));
+  font-weight: 500;
+  padding-bottom: 2px;
+}
+
+.markdown .table-of-contents ul li::before {
+  content: '';
+}
+
+.markdown .table-of-contents ul li a {
+  --tw-text-opacity: 1;
+  color: rgba(16, 185, 129, var(--tw-text-opacity));
+}
+
+.markdown .table-of-contents ul li ul {
+  padding-left: 25px;
+}
+
+.markdown .table-of-contents ul li ul li {
+  font-weight: normal;
+  --tw-text-opacity: 1;
+  color: rgba(249, 250, 251, var(--tw-text-opacity));
+}
+
+.markdown .table-of-contents ul li ul li a {
+  --tw-text-opacity: 1;
+  color: rgba(249, 250, 251, var(--tw-text-opacity));
+}
+
+.markdown .table-of-contents ul ul li::before {
+  content: "▪";
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  --tw-text-opacity: 1;
+  color: rgba(16, 185, 129, var(--tw-text-opacity));
+}
+
+.markdown .table-of-contents ul ul li::before a {
+  --tw-text-opacity: 1;
+  color: rgba(16, 185, 129, var(--tw-text-opacity));
+}
+
+.markdown .table-of-contents ul {
+  margin-bottom: 2.5rem;
+}
+
+.markdown .table-of-contents ul ul {
+  margin-bottom: 0.5rem;
 }
 
 .container{
