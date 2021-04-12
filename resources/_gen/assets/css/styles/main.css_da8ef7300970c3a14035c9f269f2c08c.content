@@ -622,6 +622,7 @@ video {
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
+  max-width: 1024px;
   width: 83.333333%;
 }
 
@@ -657,6 +658,39 @@ h2 {
 
 .main-navigation .logo-lockup, .main-navigation .hamburger svg {
   height: 28px;
+}
+
+.video-logo-compact-container {
+  display: block;
+  transform: scale(0.75) translate(-50px, 0px);
+}
+
+.hamburger {
+  border: 1px solid #fff;
+  border-radius: 1px;
+  padding: 4px;
+}
+
+#background-ears {
+  top: 100%;
+  position: absolute;
+  z-index: 6;
+  transform: translateY(-220px) translateX(-50%);
+  left: 50%;
+}
+
+@media (min-width: 1024px) {
+  .post-summary {
+    width: 48%;
+    padding: 16px;
+    border: 1px solid #0fb981;
+    margin: 10px;
+  }
+
+  .post-summaries {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 .markdown p, .markdown div.highlight {
@@ -17540,25 +17574,6 @@ h2 {
 .animate-bounce{
   -webkit-animation: bounce 1s infinite;
           animation: bounce 1s infinite;
-}
-
-.video-logo-compact-container {
-  display: block;
-  transform: scale(0.75) translate(-50px, 0px);
-}
-
-.hamburger {
-  border: 1px solid #fff;
-  border-radius: 1px;
-  padding: 4px;
-}
-
-#background-ears {
-  top: 100%;
-  position: absolute;
-  z-index: 6;
-  transform: translateY(-220px) translateX(-50%);
-  left: 50%;
 }
 
 @media (min-width: 640px){

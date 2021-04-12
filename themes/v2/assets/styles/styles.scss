@@ -1,6 +1,39 @@
+@import './medias.scss';
 
 .main-navigation{
     .logo-lockup, .hamburger svg{
         height: 28px;
     }    
+}
+
+.video-logo-compact-container{
+    display: block;
+    transform: scale(0.75) translate(-50px, 0px);
+}
+
+.hamburger {
+    border: 1px solid #fff;
+    border-radius: 1px;
+    padding: 4px;
+}
+
+#background-ears {
+    top: 100%;
+    position: absolute;
+    z-index: 6;
+    transform: translateY(-220px) translateX(-50%);
+    left: 50%;
+}
+
+@include desktop{
+    .post-summary {
+        width: 48%;
+        padding: 16px;
+        border: 1px solid #0fb981;
+        margin: 10px;
+    }
+    .post-summaries {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

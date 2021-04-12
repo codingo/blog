@@ -19,8 +19,10 @@
         @apply inline-block rounded py-1 px-4 bg-dark hover:bg-secondary hover:text-dark transition-colors duration-200;
     }
     .content-container{
-        @apply w-5/6 mx-auto box-border;
+        @apply w-5/6 mx-auto box-border max-w-screen-lg;
     }
+
+
 
     .navigation-menu:hover .hamburger{
         @apply bg-secondary;
@@ -33,26 +35,8 @@
         @apply text-xl
     }
 
+    
     @import './styles.scss';
     @import './markdown.scss';
 
-}
-
-.video-logo-compact-container{
-    display: block;
-    transform: scale(0.75) translate(-50px, 0px);
-}
-
-.hamburger {
-    border: 1px solid #fff;
-    border-radius: 1px;
-    padding: 4px;
-}
-
-#background-ears {
-    top: 100%;
-    position: absolute;
-    z-index: 6;
-    transform: translateY(-220px) translateX(-50%);
-    left: 50%;
 }
