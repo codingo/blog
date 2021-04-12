@@ -6,10 +6,15 @@ categories: tools ffuf bounty
 aliases: [/posts/ffuf/]
 ---
 
+{{< section >}}
 ## Summary
 This guide is a large summary of the information security tool, FFUF. This is also paired with a video companion guide, shown below:
 
 {{< youtube iLFkxAmwXF0 >}}
+
+{{< /section >}}
+
+{{< section >}}
 
 ## Table of Contents
 {{< toc >}}
@@ -69,14 +74,20 @@ This guide is a large summary of the information security tool, FFUF. This is al
 - [Importing Requests](#importing-requests)
 - [Contributing to this guide](#contributing-to-this-guide)
   * [Contributors](#contributors)
-{{< / toc >}}
+{{< /toc >}}
+{{< /section >}}
 
+{{< section >}}
 ## Other Sources / Credit
 Understandably, putting this guide and the associated video content together has taken quite a long time (in the order of months, as it's my first steps into video). Throughout that time some other great creators have put out other content, I heavily recommend watching. This content has inspired this project further, and I don't think it would be what it is without their input. Notably, and a video I recommend watching in addition to my own for a more complete picture is Katie Paxton-Fear's [How to Use FFUF](https://www.youtube.com/watch?v=aN3Nayvd7FU) YouTube video.
 
 [![InsiderPHD-how-to-use-ffuf.png](/images/ffuf/InsiderPHD-how-to-use-ffuf.png)](https://www.youtube.com/watch?v=aN3Nayvd7FU)
 
 Also, a shoutout to [Jason Haddix](https://mobile.twitter.com/Jhaddix), [STÖK](https://mobile.twitter.com/stokfredrik), [hakluke](https://mobile.twitter.com/hakluke), [InsiderPHD](https://mobile.twitter.com/InsiderPhD), and [Joohoi](https://mobile.twitter.com/joohoi) for helping answer my numerous questions and being a soundboard as I pulled this together.
+
+{{< /section >}}
+
+{{< section >}}
 
 ## Before we start
 This guide is a reference point for using a web application security tool, FFUF. If you have a passion for this space, but the guide seems daunting, that doesn't mean you can't do this, it just means there's some prerequisites to dive into first.
@@ -98,7 +109,9 @@ Other notable creators well worth watching on your hacking journey include (but 
 - [Hakluke](https://www.youtube.com/channel/UCCzvz8jsulXm27Cd6k3vzyg) for direction on mindset, how to approach bug bounties, and industry insights.
 
 And many more, that I'm sure to have missed, but not intentionally. I love you all.
+{{< /section >}}
 
+{{< section >}}
 ## What is FFUF, and What is it used for?
 ### Who
 Being an open source project, FFUF is maintained by the community however notably, it's founder and principal maintainer, joohoi puts countless hours into driving the project forward. If you FFUF useful, you can support the work here: https://github.com/sponsors/joohoi
@@ -119,6 +132,9 @@ FFUF is a command line driven application that runs in the Linux Terminal, or th
 
 Often, you'll hear FFUF compared to tools such as [dirb](https://tools.kali.org/web-applications/dirb), or [dirbuster](https://tools.kali.org/web-applications/dirbuster), which whilst true at a certain level, isn't a very fair comparison. Whilst FFUF can be used to perform directory brute forcing it's true power lies in its flexibility, and a better comparison tool for FFUF should be made against something like Burp Suite Intruder, or Turbo Intruder. We'll aim to cover that flexiblity further throughout this guide.
 
+{{< /section >}}
+
+{{< section >}}
 ## Installation
 ### Install from Source
 If you wish to install the latest stable build from the `main` branch of the ffuf project, you can do so with:
@@ -151,7 +167,9 @@ If you also installed from source you'll note that the version you're operating 
 
 ### Other Locations - Debian Unstable / SNAP, etc'
 As it becomes more widely used, more ways to install FFUF are becoming available. FFUF currently flows into Debian Unstable, in addition to some flavours of Ubuntu who use those source. It's also available in the Fedora official repositories, and a SNAP integration is currently underway as well.
+{{< /section >}}
 
+{{< section >}}
 ## Basic Usage
 ### What is Directory Brute Forcing?
 At its core, one of the main functions that people use FFUF for, is directory brute forcing. With that in mind, let's fuzz! Without passing custom values (covered later in this course), FFUF will replace  the value of `FUZZ` with the value of your wordlist. 
@@ -205,7 +223,9 @@ Note that from our three results, one has come back with a result. In this case,
 ![FFUF](/images/ffuf/ffuf-codingo-admin.png)
 
 Congratulations! You've just brute forced a website and discovered your first endpoint that isn't present from the main page itself.
+{{< /section >}}
 
+{{< section >}}
 ## Recursion
 Recursion is essentially performing the same task again, but in this context, at another layer. For example, in our item above, we identified an admin panel, but what if we want to scan further under that? One method, could be to scan again, but by changing our URL and fuzzing endpoint to the following:
 
@@ -227,7 +247,9 @@ ffuf -u https://codingo.io/FUZZ -w ./wordlist -recursion
 ![FFUF](/images/ffuf/ffuf-recursion.png)
 
 In this case, both items "admin" and a subpage under that "panel" were discovered.
+{{< /section >}}
 
+{{< section >}}
 ## Extensions
 Often when you find a directorty you're also going to want to look for file extensions of that. This can be invaluable for finding bugs when there's a zip file, or backup file of the same name.
 
@@ -241,7 +263,9 @@ ffuf -u https://codingo.io/FUZZ -w ./wordlist -recursion -e .bak
 This now presents new hits! As shown below:
 
 ![FFUF](/images/ffuf/ffuf-extension-hits.png)
+{{< /section >}}
 
+{{< section >}}
 ## Fuzzing Multiple Locations
 By default, FFUF will only look for a single location to fuzz, donate by the term `FUZZ`. Reviewing our original example, this was the approach taken to FUZZ the directory name:
 
@@ -306,7 +330,9 @@ ffuf -u https://W2/W1 -w ./wordlist.txt:W1 -w ./domains.txt:W2
 {{< / highlight >}}
 
 More information can be found here: https://github.com/ffuf/ffuf/issues/290
+{{< /section >}}
 
+{{< section >}}
 ## Handling Authentication
 ### Cookie Based Authentication
 Often when performing a scan you will want to brute force behind an authentication point. In order to do this, FFUF provides the `b` flag for you to pas cookie data. These aren't limited to authentication based cookies, and any area of the cookie (from names to values) can also be fuzzed with a wordlist for additional discovery.
@@ -318,10 +344,14 @@ In addition to authentication, or fuzzing points, the `H` flag can also be utili
 
 ### More Complex Authentication Flows
 Occasionally, you'll come accross authentication flows or fuzzing situations Burp Suite can't provide. In those cases, I suggest creating an additional interface in Burp Suite and making use of Burp Suite Macros to acomplish this. Instructions for doing so can be found further on within this guide.
+{{< /section >}}
 
+{{< section >}}
 ## Threads
 By default FFUF will use 40 threads to execute. Essentially, this means that FFUF will start 40 seperate processes to execute the commands that you've provided. It may be tempting to set this much higher, but this will be limited by the power of your system, and the destination system you're scanning against. If you're in a network environment, such as HackTheBox, or OSCP then setting this higher may not pose much of an issue. If, however, you're working on a production system over the internet then you are likely better off spending time tailoring the flags you're passing to FFUF, and keeping your thread count lower, than trying to acheive a quicker result merely with raw thread count. Various flags you can use to better tailor your requests can be found further throughout this guide.
+{{< /section >}}
 
+{{< section >}}
 ## Using Silent Mode for Passing Results 
 By default FFUF will strip colour from results (unless you enable it with the `-c` flag). This makes results easy to pass to other application, for additional work. One challenge here, is the header information, essentially:
 
@@ -367,7 +397,9 @@ admin
 
 
 As that responds with a `301` request, which is within our `matcher` filters.
+{{< /section >}}
 
+{{< section >}}
 ## Error Handling and Scan Tweaks
 ### Automatically Calibrate Filtering
 The `ac` flag in FFUF can be used to automatically calibrate filtering of requests. This flag tells FFUF to send a number of preflight checks before brute forcing begins and to quantify common elements of those requests for further filtering. For example, FFUF may send random strings, and if each of those responses were a `200` response code, with a common content length, then that content length would be automatically filtered from future results.
@@ -387,7 +419,9 @@ FFUF can force stop once an error is received, using the `sa` flag. This overrul
 
 ### Stop on Spurious Errors
 FFUF has a flag to allow jobs to automatically stop when a percentage of the recent requests have thrown an error. This flag is `se`, and will end the job if the last 50 requests have thrown a `403` response code 95% of the time, or if 20% of the responses have been a `429` response code. This can be safer than the flag `sf`, which will only stop if a portion of the entire request pool have errored, and not just recent requests. These limits may change over time, and are referenced here, should you wish to manually review them: https://github.com/ffuf/ffuf/blob/master/pkg/ffuf/job.go#L382-L407
+{{< /section >}}
 
+{{< section >}}
 ## Request Throttling and Delays
 With production hosts, or under various testing conditions you will need to throttle your responses. When these conditions are required, FFUF provides a number of options.
 
@@ -396,19 +430,25 @@ The `p` flag specifies the seconds of delay between requests. This can be a rang
 
 ### Limited Max Requests/second
 As FFUF is a multi threaded application, you can easily end up overwealming a destination target with too many requests. In order to control this, you can specify a maximum number of requests that can be sent per second. This can be set with the `-rate` flag. For example, if you wish to limit to 2 requests per second, then you would specify `-rate 2`. 
+{{< /section >}}
 
+{{< section >}}
 ## Match Options
 ### Match on Response Code
 There are a variety of predescribed matching options in FFUF, the most common one that you'll find yourself using is `mc`, which matches the response code. In many cases, you'll want to change this to limit to only `200` requests, to help isolate the results to content that you're seeking.
 
 ### Match on Regular Expression
 In some cases, however, you may be fuzzing for more complex bugs and want to filter based on a [regular expression](https://en.wikipedia.org/wiki/Regular_expression). For example, if you're filtering for a path traversal bug you may wish to pass a value of `-mr "root:"` to FFUF to only identify successful responses that indicate a successful retreival of `/etc/passwd`. Such cases are quite common, and highlight some of the power that FFUF brings into fuzzing that competitive offerings are not yet able to match.
+{{< /section >}}
 
+{{< section >}}
 ## Filter and Matches
 As useful as matches are, filters being the inverse of matches can be just as, if not more useful. When returning the results of a page that has a sink (a location where your source, or wordlist item is reflected in the page) within the response, it can be more useful to filter the number of words in a page, rather than filter by content length. For this purpose, FFUF provides `fw`, or filter words. If you can identify the number of words commonly in the response, you can apply this filter to remove any results that have your content length. If words aren't specific enough, you can also filter on the number of lines within the HTTP response, using `fl`.
 
 Much like filters, you can also filter based on content length (`fc`) to remove response types from the results. This can be especially useful where you want to first filter for all defaults, which includes the `301` response code, and then filter this response code out from the results to see more specific responses.
+{{< /section >}}
 
+{{< section >}}
 ## Sending FFUF scans via Burp Suite
 For a variety of reasons, you'll often find yourself wanting your FFUF scans to be sent via Burp Suite. Notably, there's a few ways to acomplish this goal, and it's important to understand each of them, and apply the right one for your use case.
 
@@ -450,7 +490,9 @@ And then run FFUF with the following:
 {{< / highlight >}}
 
 Since we bound port 8888 to relay over our reverse SSH tunnel to our remote burp instance, on port 8080, this will then replay back in Burp Suite.
+{{< /section >}}
 
+{{< section >}}
 ## Advanced Wordlist Usage
 
 When using multiple wordlists, FFUF has two modes of operation.  The first, and the default, is clusterbomb. This takes both wordlists and tries all possible combinations of them, and is best for brute forcing operations. By default FFUF will use the clusterbomb attack mode, however you can specify other modes (for now, just pitchfork and clusterbomb) using the `mode` flag.
@@ -474,7 +516,9 @@ Much like the Clusterbomb approach, I've found the Pitchfork style of fuzzing is
 ![FFUF](/images/ffuf/pitchfork-attack.png)
 
 As you can see when compared to the clusterbomb atack, the pitchfork attack works the wordlists in series. Not all combinations will be reached, but the use case for these is that they aren't intended to and doing so would be a waste of requests.
+{{< /section >}}
 
+{{< section >}}
 ## Handling Output
 ### HTML Output
 
@@ -492,7 +536,9 @@ ffuf -request /tmp/request.txt -w ./wordlist.txt -s | tee ./output.txt
 {{< / highlight >}}
 
 Would output to the console and write to output.txt. This is a useful trick for a number of tools, including those that don't stream output, to allow you to see results in realtime, whilst also streaming them to a file.
+{{< /section >}}
 
+{{< section >}}
 ## Importing Requests
 On of the easiest ways to work with complex queries is to simply save the request you're working with from your intercepting proxy (such as Burp Suite), set your fuzzing paths, and then import it into FFUF for usage. You can do this with the `request` flag in FFUF, as explained below.
 
@@ -515,7 +561,9 @@ We can then open our request in FFUF, and instead of passing cookie information 
 {{< highlight bash "linenos=table" >}}
 ffuf -request /tmp/request.txt -w ./wordlist.txt
 {{< / highlight >}}
+{{< /section >}}
 
+{{< section >}}
 ## Contributing to this guide
 This guide is open source, maintained on Github. If you'd like to contribute to this guide, or to make a correction, you can do so here: https://github.com/codingo/codingo.github.io
 
@@ -526,4 +574,4 @@ The following authors have contributed to this guide:
 |-------------|-------------|------------------------------|-----------------------------|
 | 17 Sep 2020 | codingo     | [https://twitter.com/codingo_](https://twitter.com/codingo_) | Initial Draft / Publication |
 | 28 Sep 2020 | p4fg     | N/A | Added additional hints on fuzzing multiple domains |
-
+{{< /section >}}

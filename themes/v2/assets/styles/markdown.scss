@@ -17,7 +17,8 @@
     }
 
     h2{
-        @apply sticky top-16 bg-black py-4;
+        @apply sticky  bg-black py-4;
+        top: 56px;
     }
 
     table{
@@ -76,7 +77,7 @@
             margin-bottom: 12px;
             padding: 4px 6px;
         }
-        
+
         ul{
             padding-left: 0px;
             &::before{

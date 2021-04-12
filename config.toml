@@ -27,3 +27,7 @@ disqusShortname = "codingo"
 
 [params]
     show_reading_time = true
+
+
+[markup.goldmark.renderer]
+unsafe= true

@@ -34,3 +34,12 @@ if(hamburger){
         }
     })
 }
+
+
+document.addEventListener('sticky-change', e => {
+    const header = e.detail.target;  // header became sticky or stopped sticking.
+    const sticking = e.detail.stuck; // true when header is sticky.
+    header.classList.toggle('shadow', sticking); // add drop shadow when sticking.
+    console.log('Sticket')
+    document.querySelector('.who-is-sticking').textContent = header.textContent;
+});

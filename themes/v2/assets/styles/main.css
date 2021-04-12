@@ -43,6 +43,12 @@
     transform: scale(0.75) translate(-50px, 0px);
 }
 
+.hamburger {
+    border: 1px solid #fff;
+    border-radius: 1px;
+    padding: 4px;
+}
+
 #background-ears {
     top: 100%;
     position: absolute;
