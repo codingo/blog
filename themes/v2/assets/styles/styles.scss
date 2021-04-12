@@ -40,12 +40,18 @@
     opacity: 0;
     pointer-events: none;
     transform: translateY(-60px);
+    .video-logo-compact-container video{
+        display: none;
+    }
 
     &.its-your-time-to-shine{
         transition: ease-in-out 400ms transform, ease-in-out 250ms opacity;
         opacity: 1;
         transform: translateY(0px);
         pointer-events: all;
+        .video-logo-compact-container video{
+            display: block;
+        }
     }
 }
 

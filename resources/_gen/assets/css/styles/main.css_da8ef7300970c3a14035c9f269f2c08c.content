@@ -696,11 +696,19 @@ h2 {
   transform: translateY(-60px);
 }
 
+#second-menu .video-logo-compact-container video {
+  display: none;
+}
+
 #second-menu.its-your-time-to-shine {
   transition: ease-in-out 400ms transform, ease-in-out 250ms opacity;
   opacity: 1;
   transform: translateY(0px);
   pointer-events: all;
+}
+
+#second-menu.its-your-time-to-shine .video-logo-compact-container video {
+  display: block;
 }
 
 .btn-ghost:hover{
