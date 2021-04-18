@@ -124,6 +124,11 @@
       fn.createMesh();
       fn.container.appendChild(fn.renderer.element);
       window.addEventListener("resize", fn.resize);
+      setInterval(() => {
+        if (fn.container.clientHeight != fn.siteContainer.clientHeight) {
+          fn.resize();
+        }
+      }, 250);
       fn.animate();
       fn.resize();
     },
@@ -131,6 +136,7 @@
       let fn = polygons;
       fn.renderer.setSize(fn.siteContainer.clientWidth, fn.siteContainer.clientHeight);
       FSS.Vector3.set(fn.center, fn.renderer.halfWidth, fn.renderer.halfHeight);
+      fn.container.setAttribute("style", `height:${fn.siteContainer.clientHeight}px`);
       fn.createMesh();
     },
     createMesh: () => {
