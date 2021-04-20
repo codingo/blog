@@ -15,6 +15,10 @@
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     {{ end }}
 
+    {{/* NOTE: Twitter meta data  */}}
+    {{ template "_internal/twitter_cards.html" . }}
+
+    {{/* NOTE: Google Analytics internal template loaded only when in prod  */}}
     {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
         {{ template "_internal/google_analytics.html" . }}
     {{ end }}

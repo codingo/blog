@@ -5,6 +5,13 @@ theme = "v2"
 googleAnalytics = "G-43E5TE75S0"
 disqusShortname = "codingo"
 
+
+[params]
+  show_reading_time = true
+  description = "A community built around the education of ethical hacking, with a focus on bug bounties and penetration testing."
+  images = ["social-thumbnail.gif"]
+
+
 [menu]
 
   [[menu.main]]
@@ -24,9 +31,6 @@ disqusShortname = "codingo"
     name = "Blog"
     url = "https://codingo.com/posts"
     weight = -90
-
-[params]
-    show_reading_time = true
 
 
 [markup.goldmark.renderer]
