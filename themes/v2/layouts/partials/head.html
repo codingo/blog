@@ -15,6 +15,10 @@
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     {{ end }}
 
+    {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+        {{ template "_internal/google_analytics.html" . }}
+    {{ end }}
+
     {{ partial "site-styles.html" . }}
 
     {{ block "favicon" . }}
