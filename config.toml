@@ -10,7 +10,8 @@ disqusShortname = "codingo"
   show_reading_time = true
   description = "A community built around the education of ethical hacking, with a focus on bug bounties and penetration testing."
   images = ["/images//social-thumbnail.png"]
-
+[params.twitter]
+    card_type = "summary"
 
 [menu]
 
