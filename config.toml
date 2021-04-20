@@ -9,7 +9,7 @@ disqusShortname = "codingo"
 [params]
   show_reading_time = true
   description = "A community built around the education of ethical hacking, with a focus on bug bounties and penetration testing."
-  images = ["social-thumbnail.gif"]
+  images = ["/images//social-thumbnail.gif"]
 
 
 [menu]
