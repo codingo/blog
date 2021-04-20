@@ -16,12 +16,6 @@
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     {{ end }}
 
-    {{/* NOTE: Twitter meta data  */}}
-    <meta name="twitter:card" content="{{ $.Site.Params.twitter.card_type }}">
-    <meta name="twitter:image" content="https://codingo.com/images/social-thumbnail.png">
-    <meta name="twitter:title" content="{{ .Title }}">
-    <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}"/>
-
 
     {{/* NOTE: Google Analytics internal template loaded only when in prod - v4 needs non async version */}}
     {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
@@ -42,10 +36,16 @@
         <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
         {{ end }}
     {{ end }}
+    
+
+    {{/* NOTE: Twitter meta data  */}}
+    <meta name="twitter:card" content="{{ $.Site.Params.twitter.card_type }}">
+    <meta name="twitter:image" content="https://codingo.com/images/social-thumbnail.png">
+    <meta name="twitter:title" content="{{ .Title }}">
+    <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}"/>
 
     {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/gohugoio/hugo/tree/master/tpl/tplimpl/embedded/templates */}}
     {{- template "_internal/opengraph.html" . -}}
     {{- template "_internal/schema.html" . -}}
-    {{- template "_internal/twitter_cards.html" . -}}
 
 </head>
