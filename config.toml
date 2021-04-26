@@ -36,3 +36,18 @@ disqusShortname = "codingo"
 
 [markup.goldmark.renderer]
 unsafe= true
+
+
+[outputs]
+page = ["HTML", "RSS", "Algolia"]
+home = ["HTML", "RSS", "Algolia"]
+
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+params = ["categories", "tags"]
