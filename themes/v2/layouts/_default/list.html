@@ -1,0 +1,19 @@
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
+
+{{ define "main" }}
+<div class="content-container pt-20">
+  <article class="pa3 pa4-ns nested-copy-line-height nested-img">
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray">
+      {{- .Content -}}
+    </section>
+    <section class="w-100 mw8 post-summaries">
+      {{ range .Paginator.Pages }}
+        <div class="relative w-100 mb4 post-summary">
+          {{- partial "summary-with-image.html" . -}}
+        </div>
+      {{ end }}
+    </section>
+    {{- template "_internal/pagination.html" . -}}
+  </article>
+</div>
+{{ end }}

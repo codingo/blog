@@ -35,6 +35,8 @@ jobs:
 
       - name: Build
         run: hugo --minify --buildDrafts
+        env:
+          HUGO_ENV: "production"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.8.0
