@@ -3,7 +3,7 @@
 .main-navigation{   
     .logo-lockup, .hamburger svg{
         height: 28px;
-    }    
+    }
 }
 
 #site-intro, #main-content{
@@ -69,6 +69,15 @@ section.more-posts {
         }
     }
 }
+
+
+
+div#hits, div#searchbox {
+    color: #555;
+}
+
+
+
 
 .btn-ghost{
     @apply inline-block border rounded py-2 px-3 hover:bg-secondary transition-colors duration-200;
