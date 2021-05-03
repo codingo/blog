@@ -3,41 +3,75 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     
     const searchClient = algoliasearch('', '');
-
+    
     const search = instantsearch({
         indexName: 'dev_blog',
         searchClient,
+        searchFunction(helper) {
+            // Ensure we only trigger a search when there's a query
+            
+            const searchContainer = document.querySelector('#hits');
+            const searchInput = document.querySelector('#searchbox .ais-SearchBox-input');
+
+            if (helper.state.query) {
+                helper.search();
+                searchContainer.style.display = 'block';
+                searchInput.classList.add('active');
+            }else{
+                searchContainer.style.display = 'none';
+                searchInput.classList.remove('active');
+            }
+        }
     });
 
     search.addWidgets([
 
         instantsearch.widgets.configure({
-            hitsPerPage: 3
+            hitsPerPage: 3,
+            attributesToSnippet: ['content:50'],
+        }),
+
+        instantsearch.widgets.refinementList({
+            container: "#tags-list",
+            attribute: "categories",
+            limit: 5,
+            showMore: true,
         }),
 
         instantsearch.widgets.searchBox({
             container: '#searchbox',
+            placeholder: 'Search site',
             showLoadingIndicator: true,
-            searchAsYouType: true
+            searchAsYouType: true,
+            showReset: true,
+            showSubmit: true,
         }),
         
         instantsearch.widgets.hits({
             container: '#hits',
             templates: {
-                empty: 'No results for <q>{{ query }}</q>',
+                empty: '<div class="noResults">No results for <q>{{ query }}</q></div>',
                 item(hit, bindEvent) {
+
                     console.log(hit)
-                  return `
-                    <a href="${hit.url}" ${bindEvent('conversion', hit, 'Product Added')} >
-                      <article>
-                        <h3>${hit.title}
-                        ${instantsearch.highlight({ attribute: 'name', hit })}</h3>
-            
+                    let template = `
+                        <a href="${hit.url}" ${bindEvent('conversion', hit, 'Search used')} >
+                            <article>
+                                <h3>${instantsearch.highlight({ attribute: 'title', hit })}</h3>
+                                <p>${instantsearch.snippet({ attribute: 'content', hit })}</p>
+                            </article>
+                        </a>`;
+
+                    if(hit.type === 'categories'){
+                        template = `
+                        <a class="searchHitCategory" href="${hit.url}" ${bindEvent('conversion', hit, 'Search categories used')} >
+                            <article>
+                                <div class="searchHitCategoryTitle">${instantsearch.highlight({ attribute: 'title', hit })}</h3>
+                            </article>
+                        </a>`;
                         
-                            
-                        </button>
-                      </article>
-                    `;
+                    }
+                    return template;
                 }
             }
         })
@@ -45,4 +79,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     search.start();
 
+    
 });
