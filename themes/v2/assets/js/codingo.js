@@ -46,21 +46,36 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 
     let secondMenu = document.getElementById('second-menu');
+    let pageMenu = document.getElementById('page-menu');
     let compactLogo = document.getElementById('video-logo-compact');
     let niceClassyName = 'its-your-time-to-shine';
     window.addEventListener("scroll", ()=>{
-        // console.dir(secondMenu.offsetParent.offsetTop)
-        let fromTop = secondMenu.offsetParent.offsetTop;
-        // console.log(window.pageYOffset, fromTop)
-        if(window.pageYOffset >= fromTop){
-            if(!secondMenu.classList.contains(niceClassyName)){
-                secondMenu.classList.toggle(niceClassyName);
-                compactLogo.currentTime = 0;
-                compactLogo.play();
+        
+        if(secondMenu){
+            let fromTop = secondMenu.offsetParent.offsetTop;
+            if(window.pageYOffset >= fromTop){
+                if(!secondMenu.classList.contains(niceClassyName)){
+                    secondMenu.classList.toggle(niceClassyName);
+                    compactLogo.currentTime = 0;
+                    compactLogo.play();
+                }
+            }else{
+                if(secondMenu.classList.contains(niceClassyName)){
+                    secondMenu.classList.toggle(niceClassyName);
+                }
             }
-        }else{
-            if(secondMenu.classList.contains(niceClassyName)){
-                secondMenu.classList.toggle(niceClassyName);
+        }
+
+        if(pageMenu){
+            let fromTop = pageMenu.offsetParent.offsetTop;
+            if(window.pageYOffset >= fromTop){
+                if(!pageMenu.parentElement.classList.contains('niceClassyName')){
+                    pageMenu.parentElement.classList.toggle('niceClassyName');
+                }
+            }else{
+                if(pageMenu.parentElement.classList.contains('niceClassyName')){
+                    pageMenu.parentElement.classList.toggle('niceClassyName');
+                }
             }
         }
     })

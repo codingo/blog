@@ -50,11 +50,19 @@ section.more-posts {
     }
 }
 
+.niceClassyName{
+    border-bottom: 1px solid #0fb981;
+    box-shadow: 0px 0px 28px -3px #14946a;
+}
+
 #second-menu{
     // transition: ease-in-out 250ms transform, ease-in-out 250ms opacity;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-60px);
+    border-bottom: 1px solid #0fb981;
+    box-shadow: 0px 0px 28px -3px #14946a;
+
     .video-logo-compact-container video{
         display: none;
     }
