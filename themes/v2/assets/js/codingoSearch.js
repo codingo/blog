@@ -38,11 +38,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
             showMore: true,
         }),
 
+        instantsearch.widgets.queryRuleCustomData({
+            container: '#searchbox',
+            templates: {
+              default: '',
+            },
+            transformItems(items) {
+              const match = items.find(data => Boolean(data.redirect));
+              if (match && match.redirect) {
+                window.location.href = match.redirect;
+              }
+              return [];
+            },
+        }),
+
         instantsearch.widgets.searchBox({
             container: '#searchbox',
             placeholder: 'Search site',
             showLoadingIndicator: true,
-            searchAsYouType: true,
+            searchAsYouType: false,
             showReset: true,
             showSubmit: true,
         }),

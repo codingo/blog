@@ -1,0 +1,19 @@
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
+
+{{ define "main" }}
+  {{ $section := .Site.GetPage "section" .Section }}
+  <article class="content-container pt-20">
+    <header class="">
+      <h1>{{- .Title -}}</h1>
+    </header>
+
+  </article>
+
+
+<div class="content-container pt-20">
+    <div id="tags-list"></div>
+    <div id="searchbox"></div>
+    <div id="hits"></div>
+</div>
+
+{{ end }}

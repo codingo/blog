@@ -32,7 +32,7 @@ section.more-posts {
 
 #background-ears {
     top: 106%;
-    width: 100%;
+    width: 120%;
     max-width: none;
     position: absolute;
     z-index: 6;
@@ -94,7 +94,7 @@ input.ais-SearchBox-input {
         color: #0fb981;
     }
 
-    &.active{
+    &.active, &:focus{
         background: #ffffff;
     }
 }

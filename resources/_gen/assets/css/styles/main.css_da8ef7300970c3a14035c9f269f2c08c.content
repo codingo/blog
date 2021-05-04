@@ -686,7 +686,7 @@ section.more-posts {
 
 #background-ears {
   top: 106%;
-  width: 100%;
+  width: 120%;
   max-width: none;
   position: absolute;
   z-index: 6;
@@ -757,7 +757,7 @@ input.ais-SearchBox-input::placeholder {
   color: #0fb981;
 }
 
-input.ais-SearchBox-input.active {
+input.ais-SearchBox-input.active, input.ais-SearchBox-input:focus {
   background: #ffffff;
 }
 
