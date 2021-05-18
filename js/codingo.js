@@ -97,8 +97,8 @@
       width: 1.4,
       height: 1.8,
       depth: 10,
-      segments: 12,
-      slices: 10,
+      segments: 10,
+      slices: 26,
       xRange: 0.23,
       yRange: 0.24,
       zRange: 1,
@@ -121,6 +121,8 @@
       fn.scene.add(fn.light);
       fn.light.mass = Math.randomInRange(0.5, 1.4);
       fn.light.setPosition(fn.container.clientWidth / 2.4, fn.container.clientHeight / 2.4, 300);
+      fn.MESH.segments = (Math.sqrt(fn.container.clientWidth) / 2.5).toFixed(0);
+      fn.MESH.slices = (Math.sqrt(fn.container.clientHeight) / 1.5).toFixed(0);
       fn.createMesh();
       fn.container.appendChild(fn.renderer.element);
       window.addEventListener("resize", fn.resize);
@@ -143,6 +145,8 @@
       let fn = polygons;
       fn.scene.remove(fn.mesh);
       fn.renderer.clear();
+      fn.MESH.segments = (Math.sqrt(fn.container.clientWidth) / 2.5).toFixed(0);
+      fn.MESH.slices = (Math.sqrt(fn.container.clientHeight) / 1.5).toFixed(0);
       fn.geometry = new FSS.Plane(fn.MESH.width * fn.renderer.width, fn.MESH.height * fn.renderer.height, fn.MESH.segments, fn.MESH.slices);
       fn.material = new FSS.Material(fn.MESH.ambient, fn.MESH.diffuse);
       fn.mesh = new FSS.Mesh(fn.geometry, fn.material);
@@ -213,19 +217,34 @@
       });
     }
     let secondMenu = document.getElementById("second-menu");
+    let pageMenu = document.getElementById("page-menu");
     let compactLogo = document.getElementById("video-logo-compact");
     let niceClassyName = "its-your-time-to-shine";
     window.addEventListener("scroll", () => {
-      let fromTop = secondMenu.offsetParent.offsetTop;
-      if (window.pageYOffset >= fromTop) {
-        if (!secondMenu.classList.contains(niceClassyName)) {
-          secondMenu.classList.toggle(niceClassyName);
-          compactLogo.currentTime = 0;
-          compactLogo.play();
+      if (secondMenu) {
+        let fromTop = secondMenu.offsetParent.offsetTop;
+        if (window.pageYOffset >= fromTop) {
+          if (!secondMenu.classList.contains(niceClassyName)) {
+            secondMenu.classList.toggle(niceClassyName);
+            compactLogo.currentTime = 0;
+            compactLogo.play();
+          }
+        } else {
+          if (secondMenu.classList.contains(niceClassyName)) {
+            secondMenu.classList.toggle(niceClassyName);
+          }
         }
-      } else {
-        if (secondMenu.classList.contains(niceClassyName)) {
-          secondMenu.classList.toggle(niceClassyName);
+      }
+      if (pageMenu) {
+        let fromTop = pageMenu.offsetParent.offsetTop;
+        if (window.pageYOffset >= fromTop) {
+          if (!pageMenu.parentElement.classList.contains("niceClassyName")) {
+            pageMenu.parentElement.classList.toggle("niceClassyName");
+          }
+        } else {
+          if (pageMenu.parentElement.classList.contains("niceClassyName")) {
+            pageMenu.parentElement.classList.toggle("niceClassyName");
+          }
         }
       }
     });
