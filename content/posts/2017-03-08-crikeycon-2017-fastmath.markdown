@@ -2,7 +2,8 @@
 layout: post
 title:  "CrikeyCon 2017 - Fast Math Writeup"
 date:   2017-03-08 17:01:58 +1000
-categories: ctf writeup programming crikeycon
+categories: [coding]
+tags: [ctf, writeup, programming, crikeycon]
 ---
 ```
 Category: Coding

@@ -2,7 +2,7 @@
 layout: post
 title:  "Bitcoin Wallets: What are the differences between them?"
 date:   2013-01-02 17:01:58 +1000
-categories: bitcoin
+tags: [bitcoin]
 draft: false
 ---
 Satoshi Nakamoto first published their paper on Bitcoin back in 2009, but it didn’t reach real mainstream popularity until recently. Only the users who understand the highly technical mechanics of Bitcoin invested their time in the technology during 2009-13 intermission period. In February of 2013 Bitcoin, and soon cryptocurrencies in general, finally entered the public consciousness. Despite being a four year old technology, many of the core features of the Bitcoin protocol were not polished in any capacity, let alone ready for mass public consumption. The Bitcoin wallet is an excellent example of one such component. Since that first popularity explosion, much expertise has gone into designing and refining the Bitcoin wallet. Today we will be taking a look at the differences in functionality of the three types of wallets as well as comparing their security and usefulness. These types of wallets suit users depending on the way people wish to access their funds, as well as who they want to entrust the long-term security of their accounts.

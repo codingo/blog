@@ -11,38 +11,52 @@
             </div>
 
             <p class="mb-8 text-light leading-tight font-normal">A community built around the education of ethical hacking, with a focus on bug bounties and penetration testing.</p>
-            
-
-            {{ if .Site.Menus.main }}
-                <ul class="text-lg mb-8">
-                    {{ range .Site.Menus.main }}
-                    <li class="inline-block">
-                        <a class="button-solid m-2 px-6" href="{{ .URL }}" title="{{ .Name }}">
-                            <span>{{ .Name }}</span>
-                        </a>
-                    </li>
-                    {{ end }}
-                </ul>
-            {{ end }}
-            
-            <div class="social-links flex flex-row justify-center items-center">
-                <a href="https://youtube.com/codingo" target="_blank" rel="external">
-                    <img src="/images/social-yt.png" alt="CODINGO on YouTube">
-                </a>
-                <a href="https://www.facebook.com/codingo" target="_blank" rel="external">
-                    <img src="/images/social-fb.png" alt="CODINGO on FaceBook">
-                </a>
-                <a href="https://twitter.com/codingo_" target="_blank" rel="external">
-                    <img src="/images/social-twitter.png" alt="CODINGO on Twitter">
-                </a>
-                <a href="https://www.twitch.tv/codingo_" target="_blank" rel="external">
-                    <img src="/images/social-twitch.png" alt="CODINGO on Twitch">
-                </a>
-                <a href="https://github.com/codingo" target="_blank" rel="external">
-                    <img src="/images/social-github.png" alt="CODINGO on Github">
-                </a>
-            </div>
-        </div>
-        <img id="background-ears" src="/images/background-ears.png" alt="" class="">
+        </div>        
     </div>
+    
+
+    
+    
+            
+    <div class="relative z-10 mx-auto max-w-screen-sm text-center px-4 overflow-hidden">
+        <div class="intro-bottom-content relative z-10">
+            <div class="z-10 relative">                
+                
+                <div class="social-links flex flex-row justify-center items-center">
+                    <a href="https://youtube.com/codingo" target="_blank" rel="external">
+                        <img src="/images/social-yt.png" alt="CODINGO on YouTube">
+                    </a>
+                    <a href="https://www.facebook.com/codingo" target="_blank" rel="external">
+                        <img src="/images/social-fb.png" alt="CODINGO on FaceBook">
+                    </a>
+                    <a href="https://twitter.com/codingo_" target="_blank" rel="external">
+                        <img src="/images/social-twitter.png" alt="CODINGO on Twitter">
+                    </a>
+                    <a href="https://www.twitch.tv/codingo_" target="_blank" rel="external">
+                        <img src="/images/social-twitch.png" alt="CODINGO on Twitch">
+                    </a>
+                    <a href="https://github.com/codingo" target="_blank" rel="external">
+                        <img src="/images/social-github.png" alt="CODINGO on Github">
+                    </a>
+                </div>
+            </div>
+            <!-- <img id="background-ears" src="/images/background-ears.png" alt="" class=""> -->
+        </div>
+
+    </div>
+
+    {{ if .Site.Menus.main }}
+            <ul class="text-lg btn-container">
+                {{ range .Site.Menus.main }}
+                <li class="inline-block mb-6">
+                    <a class="page-link" href="{{ .URL }}" title="{{ .Name }}">
+                        <span>{{ .Name }}</span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+            <!-- <div class="content-container pt-8 pb-8">
+                    <div id="searchbox"></div>                
+                </div> -->
+        {{ end }}
 </div>

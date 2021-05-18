@@ -2,7 +2,7 @@
 layout: post
 title:  "How do you perform arbitrage with Bitcoins?"
 date:   2014-09-28 17:01:58 +1000
-categories: bitcoin
+tags: [bitcoin]
 ---
 # What is Arbitrage?
 

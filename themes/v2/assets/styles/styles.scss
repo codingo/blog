@@ -3,12 +3,28 @@
 .main-navigation{   
     .logo-lockup, .hamburger svg{
         height: 28px;
-    }    
+    }
 }
 
 #site-intro, #main-content{
     position: relative;
     z-index: 1;
+}
+
+div#site-intro {
+    height: 95vh;
+    
+    .btn-container{
+        position: relative;
+        margin: 30px 0px;
+        text-align: center;
+        .inline-block a{
+            border: 2px solid;
+            border-radius: 4px;
+            padding: 5px 20px;
+            margin: 0px 5px;
+        }
+    }
 }
 
 #main-content{
@@ -32,7 +48,7 @@ section.more-posts {
 
 #background-ears {
     top: 106%;
-    width: 100%;
+    width: 120%;
     max-width: none;
     position: absolute;
     z-index: 6;
@@ -50,11 +66,19 @@ section.more-posts {
     }
 }
 
+.niceClassyName{
+    border-bottom: 1px solid #0fb981;
+    box-shadow: 0px 0px 28px -3px #14946a;
+}
+
 #second-menu{
     // transition: ease-in-out 250ms transform, ease-in-out 250ms opacity;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-60px);
+    border-bottom: 1px solid #0fb981;
+    box-shadow: 0px 0px 28px -3px #14946a;
+
     .video-logo-compact-container video{
         display: none;
     }
@@ -69,6 +93,151 @@ section.more-posts {
         }
     }
 }
+
+
+/** SEARCH **/
+
+form.ais-SearchBox-form{
+    background: none;
+    height: 3.5rem;
+    font-size: 1.2em;
+}
+
+input.ais-SearchBox-input {
+    border-radius: 100px;
+    border: 2px solid #0fb981;
+    background: none;
+    color: #fff;
+    padding: 24px 2.1em;
+
+    &::placeholder{
+        color: #0fb981;
+    }
+
+    &.active, &:focus{
+        border-color: #ffffff;
+        // background: #99d2be59;
+
+        &::placeholder{
+            color: #929292;
+        }
+    }
+}
+
+div#hits, div#searchbox {
+    color: #555;
+}
+
+
+div#hits{
+    a.searchHitCategory {
+        border: 2px solid #0fb981;
+        border-radius: 100px;
+        padding: 5px 16px;
+        color: #0fb981;
+
+        &:hover{
+            background-color: #0fb98126;
+        }
+
+        .ais-Highlight-highlighted, .ais-Snippet-highlighted {
+            text-decoration: none;
+            background: none;
+        }
+    }
+
+    .ais-Hits--empty{
+        .noResults {
+            background: #fff;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 20px;
+            overflow-wrap: break-word;
+        }
+    }
+}
+
+li.ais-Hits-item {
+    text-align: left;
+    padding: 16px;
+
+    article{
+        h3{
+            font-size: 1.3em;
+            margin-bottom: 12px;
+        }
+        p:before {
+            content: '...';
+        }
+        p:after {
+            content: '...';
+        }
+        .ais-Highlight-highlighted, .ais-Snippet-highlighted {
+            background-color: #0fb98126;
+            color: #0fb981;
+            text-decoration: underline;
+        }
+    }
+}
+
+
+
+li.ais-Hits-item {
+    background: none;
+    border: none;
+    color: #fff;
+    box-shadow: none;
+}
+
+
+.search-container{
+    .search-results {
+        margin-top: 40px;
+    }
+
+    div#tagslist .ais-RefinementList{
+        border: 1px solid #0fb981;
+        padding: 16px 20px;
+        height: fit-content;
+        margin: 10px;
+        min-width: 210px;
+    }
+
+    li.ais-Hits-item {
+        padding: 0px;
+    }
+
+    a.post-summary {
+        width: 100%;
+
+        &.youtube-result{
+
+            article {
+                display: block;
+
+                .youtube-thumbnail{
+                    height: auto;
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+                .youtube-text{
+                    padding: 0px 0px;
+                }
+            }
+        }
+
+    }
+    .post-summary {
+        width: 100%;
+        padding: 16px;
+        border: 1px solid #0fb981;
+        margin: 10px;
+    }
+}
+
+
+
+/******/
 
 .btn-ghost{
     @apply inline-block border rounded py-2 px-3 hover:bg-secondary transition-colors duration-200;
@@ -126,6 +295,46 @@ section.more-posts {
 
     section.more-posts {
         margin: 40px 10px;
+    }
+
+
+    .search-container{
+        .search-results {
+            display: flex;
+            margin-top: 40px;
+        }
+
+        div#tagslist .ais-RefinementList{
+            border: 1px solid #0fb981;
+            padding: 16px 20px;
+            height: fit-content;
+            margin: 10px;
+            min-width: 210px;
+        }
+
+        li.ais-Hits-item {
+            padding: 0px;
+        }
+
+        a.post-summary {
+            width: 100%;
+
+            &.youtube-result{
+
+                article {
+                    display: flex;
+
+                    .youtube-thumbnail{
+                        height: 90px;
+                        width: auto;
+                    }
+                    .youtube-text{
+                        padding: 0px 20px;
+                    }
+                }
+            }
+
+        }
     }
     
 }

@@ -2,7 +2,7 @@
 layout: post
 title: "Proof of Stake – How does it work and what are the advantages?" 
 date:   2014-09-19 17:01:58 +1000
-categories: bitcoin
+tags: [bitcoin]
 ---
 Recently more and more alt coins have decided to integrate a proof of stake system over the traditional proof of work system used by Bitcoin and Litecoin. But why, one may ask? Frankly, the proof of work system is not perfect. A cryptocurrency without proof of stake doesn’t just lack an incentive for users to continue holding on to their coins, but is also susceptible to a 51 percent attack if one party controls a majority of the total mining output. To solve help these problems, some cryptocurrencies, such as NXT, have implemented a 100 percent proof of stake system. Other currencies, such as Dogecoin, have implemented elements of proof of stake to take advantage of its benefits.
 

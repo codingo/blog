@@ -16,8 +16,8 @@ let polygons = {
     width: 1.4,
     height: 1.8,
     depth: 10,
-    segments: 12,
-    slices: 10,
+    segments: 10,
+    slices: 26,
     xRange: 0.23,
     yRange: 0.24,
     zRange: 1.0,
@@ -50,6 +50,9 @@ let polygons = {
     // light.setPosition(300*Math.sin(now*0.001), 200*Math.cos(now*0.0005), 60);
     fn.light.setPosition(fn.container.clientWidth / 2.4, fn.container.clientHeight / 2.4 , 300 );
     // Augment vertices for animation
+
+    fn.MESH.segments = (Math.sqrt(fn.container.clientWidth) / 2.5).toFixed(0);
+    fn.MESH.slices = (Math.sqrt(fn.container.clientHeight) / 1.5).toFixed(0);
     
     fn.createMesh();
 
@@ -79,6 +82,8 @@ let polygons = {
     let fn = polygons;
     fn.scene.remove(fn.mesh);
     fn.renderer.clear();
+    fn.MESH.segments = (Math.sqrt(fn.container.clientWidth) / 2.5).toFixed(0);
+    fn.MESH.slices = (Math.sqrt(fn.container.clientHeight) / 1.5).toFixed(0);
     fn.geometry = new FSS.Plane(fn.MESH.width * fn.renderer.width, fn.MESH.height * fn.renderer.height, fn.MESH.segments, fn.MESH.slices);
     fn.material = new FSS.Material(fn.MESH.ambient, fn.MESH.diffuse);
     fn.mesh = new FSS.Mesh(fn.geometry, fn.material);

@@ -2,7 +2,7 @@
 layout: post
 title:  "Contributing to Github for Information Security Professionals"
 date:   2020-10-08 17:01:58 +1000
-categories: github
+categories: [github]
 aliases: [/posts/github/]
 draft: false
 ---

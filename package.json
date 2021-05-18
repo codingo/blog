@@ -3,5 +3,11 @@
     "autoprefixer": "^10.2.5",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.4"
+  },
+  "scripts": {
+    "dev": "hugo server -D --disableFastRender -v --debug"
+  },
+  "devDependencies": {
+    "axios": "^0.21.1"
   }
 }
