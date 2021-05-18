@@ -11,28 +11,16 @@
             </div>
 
             <p class="mb-8 text-light leading-tight font-normal">A community built around the education of ethical hacking, with a focus on bug bounties and penetration testing.</p>
+        </div>        
+    </div>
+    
+
+    
+    
             
-
-            {{ if .Site.Menus.main }}
-                <ul class="text-lg mb-8">
-                    {{ range .Site.Menus.main }}
-                    <li class="inline-block">
-                        <a class="button-solid m-1 px-3" href="{{ .URL }}" title="{{ .Name }}">
-                            <span>{{ .Name }}</span>
-                        </a>
-                    </li>
-                    {{ end }}
-                </ul>
-            {{ end }}
-
-            
-        </div>
-
+    <div class="relative z-10 mx-auto max-w-screen-sm text-center px-4 overflow-hidden">
         <div class="intro-bottom-content relative z-10">
-            <div class="z-10 relative">
-                <div id="tags-list"></div>
-                <div id="searchbox"></div>
-                <div id="hits"></div>
+            <div class="z-10 relative">                
                 
                 <div class="social-links flex flex-row justify-center items-center">
                     <a href="https://youtube.com/codingo" target="_blank" rel="external">
@@ -52,8 +40,23 @@
                     </a>
                 </div>
             </div>
-            <img id="background-ears" src="/images/background-ears.png" alt="" class="">
+            <!-- <img id="background-ears" src="/images/background-ears.png" alt="" class=""> -->
         </div>
 
     </div>
+
+    {{ if .Site.Menus.main }}
+            <ul class="text-lg btn-container">
+                {{ range .Site.Menus.main }}
+                <li class="inline-block mb-6">
+                    <a class="page-link" href="{{ .URL }}" title="{{ .Name }}">
+                        <span>{{ .Name }}</span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+            <!-- <div class="content-container pt-8 pb-8">
+                    <div id="searchbox"></div>                
+                </div> -->
+        {{ end }}
 </div>

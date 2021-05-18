@@ -560,6 +560,13 @@ video {
   padding: 1rem;
 }
 
+div#site-intro .btn-container .button a {
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 5px 20px;
+  margin: 0px 5px;
+}
+
 .button:hover{
   --tw-bg-opacity: 1;
   background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
@@ -587,7 +594,14 @@ video {
   transition-duration: 200ms;
 }
 
-.button-solid {
+div#site-intro .btn-container .button-solid a {
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 5px 20px;
+  margin: 0px 5px;
+}
+
+.button-solid{
   --tw-bg-opacity: 1;
   background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
 }
@@ -665,6 +679,23 @@ h2 {
   z-index: 1;
 }
 
+div#site-intro {
+  height: 95vh;
+}
+
+div#site-intro .btn-container {
+  position: relative;
+  margin: 30px 0px;
+  text-align: center;
+}
+
+div#site-intro .btn-container .inline-block a {
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 5px 20px;
+  margin: 0px 5px;
+}
+
 #main-content {
   z-index: 2;
 }
@@ -737,12 +768,16 @@ section.more-posts {
 
 form.ais-SearchBox-form {
   background: none;
+  height: 3.5rem;
+  font-size: 1.2em;
 }
 
 input.ais-SearchBox-input {
   border-radius: 100px;
   border: 2px solid #0fb981;
   background: none;
+  color: #fff;
+  padding: 24px 2.1em;
 }
 
 input.ais-SearchBox-input::-moz-placeholder {
@@ -758,7 +793,19 @@ input.ais-SearchBox-input::placeholder {
 }
 
 input.ais-SearchBox-input.active, input.ais-SearchBox-input:focus {
-  background: #ffffff;
+  border-color: #ffffff;
+}
+
+input.ais-SearchBox-input.active::-moz-placeholder, input.ais-SearchBox-input:focus::-moz-placeholder {
+  color: #929292;
+}
+
+input.ais-SearchBox-input.active:-ms-input-placeholder, input.ais-SearchBox-input:focus:-ms-input-placeholder {
+  color: #929292;
+}
+
+input.ais-SearchBox-input.active::placeholder, input.ais-SearchBox-input:focus::placeholder {
+  color: #929292;
 }
 
 div#hits, div#searchbox {
@@ -796,7 +843,7 @@ li.ais-Hits-item {
 
 li.ais-Hits-item article h3 {
   font-size: 1.3em;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
 
 li.ais-Hits-item article p:before {
@@ -813,7 +860,64 @@ li.ais-Hits-item article .ais-Highlight-highlighted, li.ais-Hits-item article .a
   text-decoration: underline;
 }
 
+li.ais-Hits-item {
+  background: none;
+  border: none;
+  color: #fff;
+  box-shadow: none;
+}
+
+.search-container .search-results {
+  margin-top: 40px;
+}
+
+.search-container div#tagslist .ais-RefinementList {
+  border: 1px solid #0fb981;
+  padding: 16px 20px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 10px;
+  min-width: 210px;
+}
+
+.search-container li.ais-Hits-item {
+  padding: 0px;
+}
+
+.search-container a.post-summary {
+  width: 100%;
+}
+
+.search-container a.post-summary.youtube-result article {
+  display: block;
+}
+
+.search-container a.post-summary.youtube-result article .youtube-thumbnail {
+  height: auto;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search-container a.post-summary.youtube-result article .youtube-text {
+  padding: 0px 0px;
+}
+
+.search-container .post-summary {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #0fb981;
+  margin: 10px;
+}
+
 /******/
+
+div#site-intro .btn-container .btn-ghost a {
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 5px 20px;
+  margin: 0px 5px;
+}
 
 .btn-ghost:hover{
   --tw-bg-opacity: 1;
@@ -886,6 +990,42 @@ li.ais-Hits-item article .ais-Highlight-highlighted, li.ais-Hits-item article .a
 
   section.more-posts {
     margin: 40px 10px;
+  }
+
+  .search-container .search-results {
+    display: flex;
+    margin-top: 40px;
+  }
+
+  .search-container div#tagslist .ais-RefinementList {
+    border: 1px solid #0fb981;
+    padding: 16px 20px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 10px;
+    min-width: 210px;
+  }
+
+  .search-container li.ais-Hits-item {
+    padding: 0px;
+  }
+
+  .search-container a.post-summary {
+    width: 100%;
+  }
+
+  .search-container a.post-summary.youtube-result article {
+    display: flex;
+  }
+
+  .search-container a.post-summary.youtube-result article .youtube-thumbnail {
+    height: 90px;
+    width: auto;
+  }
+
+  .search-container a.post-summary.youtube-result article .youtube-text {
+    padding: 0px 20px;
   }
 }
 

@@ -2,23 +2,29 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
     
-    const searchClient = algoliasearch('', '');
+    const searchClient = algoliasearch('OBYNAPJHA8', '270b7adc91a10fff762de99c1dc3ddc7');
     
     const search = instantsearch({
-        indexName: 'dev_blog',
+        indexName: 'BLOG',
         searchClient,
+        routing: true,
+        stalledSearchDelay: 200,
         searchFunction(helper) {
             // Ensure we only trigger a search when there's a query
             
-            const searchContainer = document.querySelector('#hits');
+            const hitsContainer = document.querySelector('#hits');
             const searchInput = document.querySelector('#searchbox .ais-SearchBox-input');
 
             if (helper.state.query) {
                 helper.search();
-                searchContainer.style.display = 'block';
+                if(hitsContainer){
+                    hitsContainer.style.display = 'block';
+                }
                 searchInput.classList.add('active');
             }else{
-                searchContainer.style.display = 'none';
+                if(hitsContainer){
+                    hitsContainer.style.display = 'none';
+                }
                 searchInput.classList.remove('active');
             }
         }
@@ -27,16 +33,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     search.addWidgets([
 
         instantsearch.widgets.configure({
-            hitsPerPage: 3,
-            attributesToSnippet: ['content:50'],
+            hitsPerPage: 10,
+            attributesToSnippet: ['content:50', 'description:20'],
         }),
 
-        instantsearch.widgets.refinementList({
-            container: "#tags-list",
-            attribute: "categories",
-            limit: 5,
-            showMore: true,
-        }),
+        
 
         instantsearch.widgets.queryRuleCustomData({
             container: '#searchbox',
@@ -56,42 +57,81 @@ window.addEventListener('DOMContentLoaded', (event) => {
             container: '#searchbox',
             placeholder: 'Search site',
             showLoadingIndicator: true,
-            searchAsYouType: false,
-            showReset: true,
-            showSubmit: true,
-        }),
-        
-        instantsearch.widgets.hits({
-            container: '#hits',
-            templates: {
-                empty: '<div class="noResults">No results for <q>{{ query }}</q></div>',
-                item(hit, bindEvent) {
-
-                    console.log(hit)
-                    let template = `
-                        <a href="${hit.url}" ${bindEvent('conversion', hit, 'Search used')} >
-                            <article>
-                                <h3>${instantsearch.highlight({ attribute: 'title', hit })}</h3>
-                                <p>${instantsearch.snippet({ attribute: 'content', hit })}</p>
-                            </article>
-                        </a>`;
-
-                    if(hit.type === 'categories'){
-                        template = `
-                        <a class="searchHitCategory" href="${hit.url}" ${bindEvent('conversion', hit, 'Search categories used')} >
-                            <article>
-                                <div class="searchHitCategoryTitle">${instantsearch.highlight({ attribute: 'title', hit })}</h3>
-                            </article>
-                        </a>`;
-                        
-                    }
-                    return template;
-                }
-            }
+            autofocus: true,
+            searchAsYouType: true
+            // showReset: true,
+            // showSubmit: true,
         })
     ]);
 
+    if(document.getElementById('tagslist')){
+        search.addWidgets([
+            instantsearch.widgets.refinementList({
+                container: "#tagslist",
+                attribute: "kind",
+                item: `
+                    <a href="{{url}}" style="{{#isRefined}}font-weight: bold{{/isRefined}}">
+                        <span>{{label}} ({{count}})</span>
+                    </a>
+                    `
+            })
+        ])
+    };
+
+    if(document.getElementById('hits')){
+        search.addWidgets([
+            instantsearch.widgets.hits({
+                container: '#hits',
+                templates: {
+                    empty: '<div class="noResults">No results for <q>{{ query }}</q></div>',
+                    item(hit, bindEvent) {
+
+                        let template = '';
+                        console.log(hit.kind)
+                        if(hit.kind == 'youtube'){
+                            var desired = hit.description.replace(/[^\w\s]/gi, '')
+                            console.log(hit)
+                            template = `
+                                <a class="post-summary youtube-result" href="${hit.url}" ${bindEvent('conversion', hit, 'Search used')} >
+                                    <article>
+                                        <img class="youtube-thumbnail" src="${hit.thumbnails.medium.url}" />
+                                        <div class="youtube-text">
+                                            <h3>${instantsearch.highlight({ attribute: 'title', hit })}</h3>
+                                            <p>${instantsearch.snippet({ attribute: 'description', hit })}</p>
+                                        </div>
+                                    </article>
+                                </a>`;
+
+                        }else if(hit.kind == 'page'){ 
+                            template = `
+                                <a class="post-summary" href="${hit.url}" ${bindEvent('conversion', hit, 'Search used')} >
+                                    <article>
+                                        <h3>${instantsearch.highlight({ attribute: 'title', hit })}</h3>
+                                        <p>${instantsearch.snippet({ attribute: 'content', hit })}</p>
+                                    </article>
+                                </a>`;
+
+                            if(hit.type === 'categories'){
+                                template = `
+                                <a class="searchHitCategory" href="${hit.url}" ${bindEvent('conversion', hit, 'Search categories used')} >
+                                    <article>
+                                        <div class="searchHitCategoryTitle">${instantsearch.highlight({ attribute: 'title', hit })}</h3>
+                                    </article>
+                                </a>`;
+                                
+                            }
+                        }
+                        return template;
+                    }
+                }
+            })
+        ])
+    }
+
     search.start();
 
+    search.on('render', () => {
+        document.querySelector('#searchbox .ais-SearchBox-input').focus();
+    });
     
 });

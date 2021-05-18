@@ -30,8 +30,14 @@ disqusShortname = "codingo"
 [[menu.main]]
     identifier = "posts"
     name = "Blog"
-    url = "https://codingo.com/posts"
+    url = "posts"
     weight = -90
+
+[[menu.main]]
+    identifier = "search"
+    name = "Search"
+    url = "/search/"
+    weight = -80
 
 
 [markup.goldmark.renderer]

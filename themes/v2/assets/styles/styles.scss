@@ -11,6 +11,22 @@
     z-index: 1;
 }
 
+div#site-intro {
+    height: 95vh;
+    
+    .btn-container{
+        position: relative;
+        margin: 30px 0px;
+        text-align: center;
+        .inline-block a{
+            border: 2px solid;
+            border-radius: 4px;
+            padding: 5px 20px;
+            margin: 0px 5px;
+        }
+    }
+}
+
 #main-content{
     z-index: 2;
 }
@@ -83,19 +99,28 @@ section.more-posts {
 
 form.ais-SearchBox-form{
     background: none;
+    height: 3.5rem;
+    font-size: 1.2em;
 }
 
 input.ais-SearchBox-input {
     border-radius: 100px;
     border: 2px solid #0fb981;
     background: none;
+    color: #fff;
+    padding: 24px 2.1em;
 
     &::placeholder{
         color: #0fb981;
     }
 
     &.active, &:focus{
-        background: #ffffff;
+        border-color: #ffffff;
+        // background: #99d2be59;
+
+        &::placeholder{
+            color: #929292;
+        }
     }
 }
 
@@ -139,7 +164,7 @@ li.ais-Hits-item {
     article{
         h3{
             font-size: 1.3em;
-            margin-bottom: 4px;
+            margin-bottom: 12px;
         }
         p:before {
             content: '...';
@@ -152,6 +177,61 @@ li.ais-Hits-item {
             color: #0fb981;
             text-decoration: underline;
         }
+    }
+}
+
+
+
+li.ais-Hits-item {
+    background: none;
+    border: none;
+    color: #fff;
+    box-shadow: none;
+}
+
+
+.search-container{
+    .search-results {
+        margin-top: 40px;
+    }
+
+    div#tagslist .ais-RefinementList{
+        border: 1px solid #0fb981;
+        padding: 16px 20px;
+        height: fit-content;
+        margin: 10px;
+        min-width: 210px;
+    }
+
+    li.ais-Hits-item {
+        padding: 0px;
+    }
+
+    a.post-summary {
+        width: 100%;
+
+        &.youtube-result{
+
+            article {
+                display: block;
+
+                .youtube-thumbnail{
+                    height: auto;
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+                .youtube-text{
+                    padding: 0px 0px;
+                }
+            }
+        }
+
+    }
+    .post-summary {
+        width: 100%;
+        padding: 16px;
+        border: 1px solid #0fb981;
+        margin: 10px;
     }
 }
 
@@ -215,6 +295,46 @@ li.ais-Hits-item {
 
     section.more-posts {
         margin: 40px 10px;
+    }
+
+
+    .search-container{
+        .search-results {
+            display: flex;
+            margin-top: 40px;
+        }
+
+        div#tagslist .ais-RefinementList{
+            border: 1px solid #0fb981;
+            padding: 16px 20px;
+            height: fit-content;
+            margin: 10px;
+            min-width: 210px;
+        }
+
+        li.ais-Hits-item {
+            padding: 0px;
+        }
+
+        a.post-summary {
+            width: 100%;
+
+            &.youtube-result{
+
+                article {
+                    display: flex;
+
+                    .youtube-thumbnail{
+                        height: 90px;
+                        width: auto;
+                    }
+                    .youtube-text{
+                        padding: 0px 20px;
+                    }
+                }
+            }
+
+        }
     }
     
 }
