@@ -8,6 +8,7 @@
     "dev": "hugo server -D --disableFastRender -v --debug"
   },
   "devDependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "html-entities": "^2.3.2"
   }
 }
