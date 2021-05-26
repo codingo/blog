@@ -46,14 +46,15 @@ section.more-posts {
     padding: 4px;
 }
 
-#background-ears {
-    top: 106%;
-    width: 120%;
-    max-width: none;
-    position: absolute;
-    z-index: 6;
-    transform: translateY(-220px) translateX(-50%);
-    left: 50%;
+.ear-container{
+    pointer-events: none;
+    transform: translateY(-80px) translateX(0%);
+    #background-ears {
+        
+        width: 100%;
+        max-width: none;
+        z-index: 6;
+    }
 }
 
 .additional-posts {
@@ -261,9 +262,12 @@ li.ais-Hits-item {
 
 @include desktop{
 
-    #background-ears {
-        top: 98%;
-        width: 120%;
+    .ear-container{
+        width: 80%;
+        #background-ears {
+            // top: 98%;
+            width: 100%;
+        }
     }
     
     .post-summary {
