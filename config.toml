@@ -23,7 +23,7 @@ disqusShortname = "codingo"
 
   [[menu.main]]
     identifier = "forums"
-    name = "Forum"
+    name = "Community"
     url = "https://chat.codingo.com"
     weight = -100
 

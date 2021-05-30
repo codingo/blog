@@ -1,28 +1,47 @@
 <div id="site-intro" class="w-full h-full">
     <div id="fss-container" class="absolute w-full h-full z-0"></div>
     <div class="relative z-10 mx-auto max-w-screen-sm text-center px-8 overflow-hidden">
-        <div class="text-2xl near-black relative z-10">
-            <div class="transform scale-75 -mb-10">
-                <video id="video-logo" class="mx-auto -mb-20 transform scale-75" preload="true" autoplay="autoplay" muted>
+            <div class="logo-container">
+                <video id="video-logo" preload="true" autoplay="autoplay" muted>
                     <source src="/video/codingo-logo.webm" type="video/webm">
                     <img src="/images/codingo-logo.png" alt=""><br />
                 </video>
-                <img class="mx-auto mb-8" src="/images/codingo-logo-name.png" alt="CODINGO">
             </div>
 
-            <p class="mb-8 text-light leading-tight font-normal">A community built around the education of ethical hacking, with a focus on bug bounties and penetration testing.</p>
-        </div>        
+            <div class="logo-name">
+                <img src="/images/codingo-logo-name.png" alt="CODINGO">
+            </div>
+            <p class="mb-8 text-light leading-tight font-normal site-byline"><span>A community built around the education of ethical hacking, with a focus on bug bounties and penetration testing.</span></p>
     </div>
     
 
+
     
-    
-            
-    <div class="relative z-10 mx-auto max-w-screen-sm text-center px-4 overflow-hidden">
+    {{ if .Site.Menus.main }}
+    <ul class="text-lg btn-container px-8 mx-auto max-w-screen-sm text-center" >
+        {{ range .Site.Menus.main }}
+            {{ if ne .Identifier "search"  }}
+            <li class="inline-block mb-6">
+                <a class="page-link" href="{{ .URL }}" title="{{ .Name }}">
+                    <span>{{ .Name }}</span>
+                </a>
+            </li>
+            {{ end }}
+        {{ end }}
+    </ul>
+    {{ end }}
+
+    <div class="route-searchbox-container mx-auto max-w-screen-sm px-8 pt-8 pb-8 relative z-10">
+        <input id="route-searchbox" placeholder="// search site"></input>
+    </div>
+
+
+
+    <div class="relative z-10 mx-auto max-w-screen-sm px-8 overflow-hidden">
         <div class="intro-bottom-content relative z-10">
             <div class="z-10 relative">                
                 
-                <div class="social-links flex flex-row justify-center items-center">
+                <div class="social-links flex flex-row items-center">
                     <a href="https://youtube.com/codingo" target="_blank" rel="external">
                         <img src="/images/social-yt.png" alt="CODINGO on YouTube">
                     </a>
@@ -42,21 +61,11 @@
             </div>
             <!-- <img id="background-ears" src="/images/background-ears.png" alt="" class=""> -->
         </div>
-
     </div>
 
-    {{ if .Site.Menus.main }}
-            <ul class="text-lg btn-container">
-                {{ range .Site.Menus.main }}
-                <li class="inline-block mb-6">
-                    <a class="page-link" href="{{ .URL }}" title="{{ .Name }}">
-                        <span>{{ .Name }}</span>
-                    </a>
-                </li>
-                {{ end }}
-            </ul>
-            <!-- <div class="content-container pt-8 pb-8">
-                    <div id="searchbox"></div>                
-                </div> -->
-        {{ end }}
+    
+    
+</div>
+<div class="relative z-10 mx-auto max-w-screen-sm text-center ear-container">
+    <img id="background-ears" src="/images/background-ears.png" alt="" class="absolute">
 </div>
