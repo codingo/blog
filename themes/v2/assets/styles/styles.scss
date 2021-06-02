@@ -16,8 +16,8 @@ div#site-intro {
     
     .btn-container{
         position: relative;
-        margin: 30px 0px;
-        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
         .inline-block a{
             border: 2px solid;
             border-radius: 4px;
@@ -25,10 +25,69 @@ div#site-intro {
             margin: 0px 5px;
         }
     }
+
+    .logo-container{
+        width: 40%;
+        margin: 20px auto 0px auto;
+
+        #video-logo{
+            // transform: translateX(-22%);
+            transform: scale(0.9) translateY(25px);
+            margin: 0 0 10px 0;
+        }
+    }
+    .logo-name{
+        margin: 0px auto 30px;
+        width: 50%;
+        height: 50px;
+    }
+    .site-byline{
+        text-align: center;
+        font-size: 22px;
+        &>span {
+            // background-color:#181818;
+            // box-shadow: 6px 0 0px 0px #181818, -6px 0 0px 0px #181818;
+            // line-height: 1.3em;
+        }
+    }
+
+    .social-links {
+        justify-content: center;
+        a {
+            display: block;
+            padding: 0 2rem 0px 0px;
+        }
+    }    
+}
+
+.querybox-container{
+    &::before{
+        content: ' ';
+        height: 35px;
+        width: 35px;
+        background-color: #0a6d53;
+        display: block;
+        position: absolute;
+        margin-top: 6px;
+        margin-left: 6px;
+    }
+}
+
+input#querybox {
+    width: 100%;
+    padding: 10px 15px 10px 50px;
+    border: 2px solid #ffffff;
+    background: none;
+    border-radius: 4px;
+    position: relative;
+
+    &::placeholder{
+        color: #ffffff;
+    }
 }
 
 #main-content{
-    z-index: 2;
+    z-index: 10;
 }
 
 section.more-posts {
@@ -50,10 +109,10 @@ section.more-posts {
     pointer-events: none;
     transform: translateY(-80px) translateX(0%);
     #background-ears {
-        
         width: 100%;
         max-width: none;
         z-index: 6;
+        top: -30px;
     }
 }
 
