@@ -60,7 +60,7 @@ div#site-intro {
     }    
 }
 
-.route-searchbox-container{
+.querybox-container{
     &::before{
         content: ' ';
         height: 35px;
@@ -73,7 +73,7 @@ div#site-intro {
     }
 }
 
-input#route-searchbox {
+input#querybox {
     width: 100%;
     padding: 10px 15px 10px 50px;
     border: 2px solid #ffffff;
