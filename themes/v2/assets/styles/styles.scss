@@ -321,9 +321,12 @@ li.ais-Hits-item {
 
 @include desktop{
 
-    #background-ears {
-        top: 98%;
-        width: 120%;
+    .ear-container{
+        width: 80%;
+        #background-ears {
+            // top: 98%;
+            width: 100%;
+        }
     }
     
     .post-summary {

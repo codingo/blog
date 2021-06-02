@@ -1,4 +1,4 @@
-
+import {decode} from 'html-entities';
 
 window.addEventListener('DOMContentLoaded', (event) => {
     
@@ -108,8 +108,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
                                     <article>
                                         <img class="youtube-thumbnail" src="${hit.thumbnails.medium.url}" />
                                         <div class="youtube-text">
-                                            <h3>${instantsearch.highlight({ attribute: 'title', hit })}</h3>
-                                            <p>${instantsearch.snippet({ attribute: 'description', hit })}</p>
+                                            <h3>${decode(instantsearch.highlight({ attribute: 'title', hit }))}</h3>
+                                            <p>${decode(instantsearch.snippet({ attribute: 'description', hit }))}</p>
                                         </div>
                                     </article>
                                 </a>`;
@@ -118,8 +118,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
                             template = `
                                 <a class="post-summary" href="${hit.url}" ${bindEvent('conversion', hit, 'Search used')} >
                                     <article>
-                                        <h3>${instantsearch.highlight({ attribute: 'title', hit })}</h3>
-                                        <p>${instantsearch.snippet({ attribute: 'content', hit })}</p>
+                                        <h3>${decode(instantsearch.highlight({ attribute: 'title', hit }))}</h3>
+                                        <p>${decode(instantsearch.snippet({ attribute: 'content', hit }))}</p>
                                     </article>
                                 </a>`;
 
