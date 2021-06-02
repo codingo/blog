@@ -229,6 +229,7 @@
   // <stdin>
   var import_html_entities = __toModule(require_lib());
   window.addEventListener("DOMContentLoaded", (event) => {
+    const searchbox = document.getElementById("searchbox");
     const searchClient = algoliasearch("OBYNAPJHA8", "270b7adc91a10fff762de99c1dc3ddc7");
     const search = instantsearch({
       indexName: "BLOG",
@@ -238,46 +239,54 @@
       searchFunction(helper) {
         const hitsContainer = document.querySelector("#hits");
         const searchInput = document.querySelector("#searchbox .ais-SearchBox-input");
-        if (helper.state.query) {
-          helper.search();
-          if (hitsContainer) {
-            hitsContainer.style.display = "block";
+        if (searchbox) {
+          if (helper.state.query) {
+            helper.search();
+            if (hitsContainer) {
+              hitsContainer.style.display = "block";
+            }
+            searchInput.classList.add("active");
+          } else {
+            if (hitsContainer) {
+              hitsContainer.style.display = "none";
+            }
+            searchInput.classList.remove("active");
           }
-          searchInput.classList.add("active");
-        } else {
-          if (hitsContainer) {
-            hitsContainer.style.display = "none";
-          }
-          searchInput.classList.remove("active");
         }
       }
     });
-    search.addWidgets([
-      instantsearch.widgets.configure({
-        hitsPerPage: 10,
-        attributesToSnippet: ["content:50", "description:20"]
-      }),
-      instantsearch.widgets.queryRuleCustomData({
-        container: "#searchbox",
-        templates: {
-          default: ""
-        },
-        transformItems(items) {
-          const match = items.find((data) => Boolean(data.redirect));
-          if (match && match.redirect) {
-            window.location.href = match.redirect;
+    if (searchbox) {
+      search.addWidgets([
+        instantsearch.widgets.configure({
+          hitsPerPage: 10,
+          attributesToSnippet: ["content:50", "description:20"]
+        }),
+        instantsearch.widgets.queryRuleCustomData({
+          container: "#searchbox",
+          templates: {
+            default: ""
+          },
+          transformItems(items) {
+            const match = items.find((data) => Boolean(data.redirect));
+            if (match && match.redirect) {
+              window.location.href = match.redirect;
+            }
+            return [];
           }
-          return [];
-        }
-      }),
-      instantsearch.widgets.searchBox({
-        container: "#searchbox",
-        placeholder: "Search site",
-        showLoadingIndicator: true,
-        autofocus: true,
-        searchAsYouType: true
-      })
-    ]);
+        }),
+        instantsearch.widgets.searchBox({
+          container: "#searchbox",
+          placeholder: "Search site",
+          showLoadingIndicator: true,
+          autofocus: true,
+          searchAsYouType: true
+        })
+      ]);
+    }
+    search.start();
+    search.on("render", () => {
+      document.querySelector("#searchbox .ais-SearchBox-input").focus();
+    });
     if (document.getElementById("tagslist")) {
       search.addWidgets([
         instantsearch.widgets.refinementList({
@@ -337,9 +346,21 @@
         })
       ]);
     }
-    search.start();
-    search.on("render", () => {
-      document.querySelector("#searchbox .ais-SearchBox-input").focus();
-    });
+    let queryBox = document.getElementById("querybox");
+    if (queryBox) {
+      console.log("found query box");
+      let timer = null;
+      queryBox.addEventListener("blur", () => {
+        console.log("clearing timeout");
+        window.clearTimeout(timer);
+      });
+      queryBox.addEventListener("keydown", () => {
+        console.log("setting timeout");
+        timer = window.setTimeout(() => {
+          let query = queryBox.value;
+          window.location.href = `/search/?BLOG%5Bquery%5D=${query}`;
+        }, 1500);
+      });
+    }
   });
 })();
