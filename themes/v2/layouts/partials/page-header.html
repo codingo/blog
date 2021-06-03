@@ -1,7 +1,7 @@
 
 <div class="py-4 bg-dark"></div>
 
-<header class="sticky top-0 bg-dark z-10">
+<header class="sticky top-0 bg-dark z-20">
     <nav id="page-menu" class="main-navigation content-container" role="navigation">
         <div class="flex items-center">
             <a class="video-logo-compact-container" href="{{ .Site.Home.RelPermalink }}" class="flex-none">    
@@ -17,21 +17,26 @@
                         <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                     </svg>
                 </div>
-                <div class="menu-list absolute bg-secondary p-2 right-0 hidden">
-                    {{ if .Site.Menus.main }}
-                    <ul class="divide-y divide-red-400">
-                        {{ range .Site.Menus.main }}
-                        <li>
-                        <a class="py-4 px-8 block cursor-pointer" href="{{ .URL }}" title="{{ .Name }}">
-                            {{ .Name }}
-                        </a>
-                        </li>
-                        {{ end }}
-                    </ul>
-                    {{ end }}
-                </div>
             </div>
         </div>
     </nav>
 </header>
+
+<div id="site-menu" class="hidden">
+    <div class="menu-list">
+      {{ if .Site.Menus.main }}
+      <ul class="divide-y divide-red-400">
+          {{ range .Site.Menus.main }}
+          <li>
+          <a class="py-4 px-8 block cursor-pointer" href="{{ .URL }}" title="{{ .Name }}">
+              {{ .Name }}
+          </a>
+          </li>
+          {{ end }}
+      </ul>
+      {{ end }}
+    </div>
+  </div>
+
+
 <div class="py-4 bg-dark"></div>
