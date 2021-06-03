@@ -12,17 +12,38 @@
 }
 
 div#site-intro {
-    height: 95vh;
+
+    height: auto;
+    padding-bottom: 100px;
+
+    @include desktop{
+        height: 95vh;
+        padding-bottom: 20px;
+    }
     
     .btn-container{
+
         position: relative;
         margin-top: 30px;
-        margin-bottom: 30px;
-        .inline-block a{
-            border: 2px solid;
-            border-radius: 4px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-around;
+
+        li{
+            width: 100%;
+            &:nth-child(2){
+                border: 1px solid #fff;
+                border-top: 0px;
+                border-bottom: 0px;
+            }
+        }
+
+        a{
+            background-color: #181818;
             padding: 5px 20px;
+            display: block;
             margin: 0px 5px;
+            border-bottom: 2px solid #0fb981;
         }
     }
 
@@ -43,11 +64,15 @@ div#site-intro {
     }
     .site-byline{
         text-align: center;
-        font-size: 22px;
+        font-size: 18px;
+        @include desktop{
+            font-size: 20px;
+        }
+
         &>span {
-            // background-color:#181818;
-            // box-shadow: 6px 0 0px 0px #181818, -6px 0 0px 0px #181818;
-            // line-height: 1.3em;
+            background-color:#181818;
+            box-shadow: 6px 0px 0px 3px #181818, -6px 0px 0px 3px #181818;
+            line-height: 1.7em;
         }
     }
 
@@ -55,32 +80,42 @@ div#site-intro {
         justify-content: center;
         a {
             display: block;
-            padding: 0 2rem 0px 0px;
+            // padding: 0 2rem 0px 0px;
         }
     }    
 }
 
+
+
 .querybox-container{
     &::before{
         content: ' ';
-        height: 35px;
-        width: 35px;
-        background-color: #0a6d53;
+        height: 34px;
+        width: 34px;
+        background-image: url(/images/search_white_24dp.svg);
         display: block;
         position: absolute;
-        margin-top: 6px;
-        margin-left: 6px;
+        margin-top: 9px;
+        margin-left: 12px;
+        font-size: 18px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: 10;
     }
 }
 
 input#querybox {
     width: 100%;
     padding: 10px 15px 10px 50px;
-    border: 2px solid #ffffff;
-    background: none;
+    border: 4px solid #181818;
     border-radius: 4px;
     position: relative;
-
+    
+    background-color: #e5e5f700;
+    opacity: 0.8;
+    background-size: 5px 5px;
+    background-image: repeating-linear-gradient(135deg, #181818 0, #181818 1px, #e5e5f700 0, #e5e5f700 50%);
+    
     &::placeholder{
         color: #ffffff;
     }
