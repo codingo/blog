@@ -18,25 +18,24 @@
                     </svg>
                 </div>
             </div>
+            <div id="site-menu" class="hidden">
+                <div class="menu-list">
+                  {{ if .Site.Menus.main }}
+                  <ul class="divide-y divide-red-400">
+                      {{ range .Site.Menus.main }}
+                      <li>
+                      <a class="py-4 px-8 block cursor-pointer" href="{{ .URL }}" title="{{ .Name }}">
+                          {{ .Name }}
+                      </a>
+                      </li>
+                      {{ end }}
+                  </ul>
+                  {{ end }}
+                </div>
+              </div>
         </div>
     </nav>
 </header>
-
-<div id="site-menu" class="hidden">
-    <div class="menu-list">
-      {{ if .Site.Menus.main }}
-      <ul class="divide-y divide-red-400">
-          {{ range .Site.Menus.main }}
-          <li>
-          <a class="py-4 px-8 block cursor-pointer" href="{{ .URL }}" title="{{ .Name }}">
-              {{ .Name }}
-          </a>
-          </li>
-          {{ end }}
-      </ul>
-      {{ end }}
-    </div>
-  </div>
 
 
 <div class="py-4 bg-dark"></div>

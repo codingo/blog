@@ -68,6 +68,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 if(secondMenu.classList.contains(niceClassyName)){
                     secondMenu.classList.toggle(niceClassyName);
                 }
+                if(!navigationMenu.classList.contains('hidden')){
+                    navigationMenu.classList.add("hidden");
+                }
             }
         }
 
@@ -75,7 +78,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             let fromTop = pageMenu.offsetParent.offsetTop;
             if(window.pageYOffset >= fromTop){
                 if(!pageMenu.parentElement.classList.contains('niceClassyName')){
-                    pageMenu.parentElement.classList.toggle('niceClassyName');
+                    pageMenu.parentElement.classList.toggle('niceClassyName');                    
                 }
             }else{
                 if(pageMenu.parentElement.classList.contains('niceClassyName')){

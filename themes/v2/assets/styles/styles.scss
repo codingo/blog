@@ -173,14 +173,14 @@ section.more-posts {
     transform: translateY(-60px);
     border-bottom: 1px solid #0fb981;
     box-shadow: 0px 0px 28px -3px #14946a;
-    transition: ease 700ms opacity;
+    
 
     .video-logo-compact-container video{
         display: none;
     }
 
     &.its-your-time-to-shine{
-        transition: ease-in-out 400ms transform, ease-in-out 250ms opacity;
+        transition: ease-in-out 200ms transform, ease-in-out 200ms opacity;
         opacity: 1;
         transform: translateY(-2px);
         pointer-events: all;
@@ -195,12 +195,19 @@ section.more-posts {
     top: 60px;
     height: 100vh;
     width: 100vw;
+    left: 0;
     z-index: 50;
     background: #111827eb;
 
     background-color: #111827eb;
     background-size: 7px 7px;
     background-image: repeating-linear-gradient(45deg, #0fb980c7 0, #0fb980c7 1px, #e5e5f700 0, #e5e5f700 50%);
+
+    @include desktop{
+        left: initial;
+        right: 0;
+        width: 300px;
+    }
 
     .menu-list{
         background: #0fb981;
