@@ -195,24 +195,16 @@
       polygons_default.initialise(container);
     }
     let hamburger = document.querySelector(".navigation-menu .hamburger");
-    let navigationMenu = document.querySelector(".navigation-menu");
-    let navigationList = document.querySelector(".navigation-menu .menu-list");
+    let navigationMenu = document.querySelector("#site-menu");
+    let navigationList = document.querySelector("#site-menu .menu-list");
     if (hamburger) {
       hamburger.addEventListener("click", (event2) => {
         event2.preventDefault();
-        navigationList.classList.toggle("hidden");
-      });
-      document.addEventListener("click", (event2) => {
-        const flyoutElement = navigationMenu;
-        let targetElement = event2.target;
-        do {
-          if (targetElement == flyoutElement) {
-            return;
-          }
-          targetElement = targetElement.parentNode;
-        } while (targetElement);
-        if (!navigationList.classList.contains("hidden")) {
-          navigationList.classList.add("hidden");
+        navigationMenu.classList.toggle("hidden");
+        if (document.documentElement.scrollTop < 50) {
+          window.scrollTo({
+            top: 100
+          });
         }
       });
     }
@@ -232,6 +224,9 @@
         } else {
           if (secondMenu.classList.contains(niceClassyName)) {
             secondMenu.classList.toggle(niceClassyName);
+          }
+          if (!navigationMenu.classList.contains("hidden")) {
+            navigationMenu.classList.add("hidden");
           }
         }
       }
