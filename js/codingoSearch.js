@@ -319,6 +319,10 @@
                                         <img class="youtube-thumbnail" src="${hit.thumbnails.medium.url}" />
                                         <div class="youtube-text">
                                             <h3>${(0, import_html_entities.decode)(instantsearch.highlight({attribute: "title", hit}))}</h3>
+                                            <div class="youtube-meta">
+                                                <span class="youtube-icon"></span>
+                                                <p>Published by ${hit.videoOwnerChannelTitle}</p>
+                                            </div>
                                             <p>${(0, import_html_entities.decode)(instantsearch.snippet({attribute: "description", hit}))}</p>
                                         </div>
                                     </article>
