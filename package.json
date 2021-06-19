@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "autoprefixer": "^10.2.5",
+    "commander": "^6.2.1",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.4"
   },

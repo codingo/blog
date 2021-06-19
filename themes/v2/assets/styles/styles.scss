@@ -344,6 +344,29 @@ li.ais-Hits-item {
                     padding: 0px 0px;
                 }
             }
+
+            .youtube-meta{
+                display: flex;
+                align-items: center;
+                background: #1d1c1c;
+                padding: 4px 7px;
+                border-radius: 4px;
+                margin-bottom: 12px;
+            
+                p{
+                    &::before, &::after{
+                        content: '';
+                    }
+                }
+            }
+            .youtube-icon{
+                background-image: url(/images/yt_icon_rgb.png);
+                height: 16px;
+                width: 20px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-right: 12px;
+            }
         }
 
     }

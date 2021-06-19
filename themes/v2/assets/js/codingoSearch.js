@@ -109,6 +109,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
                                         <img class="youtube-thumbnail" src="${hit.thumbnails.medium.url}" />
                                         <div class="youtube-text">
                                             <h3>${decode(instantsearch.highlight({ attribute: 'title', hit }))}</h3>
+                                            <div class="youtube-meta">
+                                                <span class="youtube-icon"></span>
+                                                <p>Published by ${hit.videoOwnerChannelTitle}</p>
+                                            </div>
                                             <p>${decode(instantsearch.snippet({ attribute: 'description', hit }))}</p>
                                         </div>
                                     </article>
