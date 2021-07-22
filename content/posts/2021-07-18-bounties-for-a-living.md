@@ -8,6 +8,7 @@ draft: false
 
 {{< youtube vypKVlPEyMs >}}
 
+
 For a lot of people, bug bounties present a way to escape the rat race. A way to exchange the handcuffs of employment for the freedom of autonomous control of one's day, and one's financial future. As appealing as that looks, it’s also important to be very objective and methodical with decisions around making something like bug bounty the "way you keep the lights on" - It’s not good to make life altering decisions, without objectively considering all factors involved. Given that, this blog outlines a list of pros and cons to consider if you’re thinking about doing bug bounties for a living.
 
 Whilst I haven’t exclusively done bug bounties for a living, I have earnt enough in a year (with part time hunting around a pentesting job) that I easily could have. I've also played online poker professionally for seven years, as my only income, and whilst not the exact same, has very direct correlations in mindset and life requirements. I believe that these two shared experiences give me a reasonable position to discuss at length considerations I feel you should make before you take the leap, or whether or not you should.
