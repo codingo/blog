@@ -28,7 +28,7 @@ jobs:
           extended: true
 
       - name: Install NPM dependencies  
-        uses: actions/setup-node@v2.3.0
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: 14
       - run: npm install
